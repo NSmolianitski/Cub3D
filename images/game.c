@@ -292,10 +292,10 @@ static void draw_cat(t_all *all, int color)
 		if (lineH > all->pr->res_x / 2)
 			lineH = all->pr->res_x / 2;
 		double lineO = all->pr->res_x / 4 - lineH / 2;
-		raye.x = r * 19.3017;
+		raye.x = r * (all->pr->res_x / 60);
 		raye.y = lineO;
 		t_dpoint end;
-		end.x = r * 19.3017;
+		end.x = r * (all->pr->res_x / 60);
 		end.y = lineH + lineO;
 		if (distV < distH)
 			draw_wall(raye, end, color - 200, all, 500);
