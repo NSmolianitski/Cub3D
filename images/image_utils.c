@@ -1,7 +1,6 @@
 #include "cub_image.h"
-#include "mlx.h"
 
-void            fast_mlx_pixel_put(t_win *win, int x, int y, int color)
+void			fast_mlx_pixel_put(t_win *win, int x, int y, int color)
 {
 	char    *dst;
 
@@ -14,7 +13,7 @@ int	rgb_to_hex(int arr[3])
 	return ((arr[0] & 0xff) << 16) + ((arr[1] & 0xff) << 8) + (arr[2] & 0xff);
 }
 
-void	draw_scaled_pixel(t_point *map, t_win img, int color)
+void			draw_scaled_pixel(t_point *map, t_win img, int color)
 {
 	t_point		start;
 	t_point		end;
@@ -35,7 +34,7 @@ void	draw_scaled_pixel(t_point *map, t_win img, int color)
 	}
 }
 
-void	draw_player(t_player *player, t_win img, int color)
+void			draw_player(t_player *player, t_win img, int color)
 {
 	t_point		start;
 	t_point		end;
@@ -56,7 +55,7 @@ void	draw_player(t_player *player, t_win img, int color)
 	}
 }
 
-void draw_line(t_dpoint ray_end, int color, t_all *all, int len)
+void			draw_line(t_dpoint ray_end, int color, t_all *all, int len)
 {
 	t_dpoint	point;
 	int			i;
@@ -73,7 +72,7 @@ void draw_line(t_dpoint ray_end, int color, t_all *all, int len)
 	}
 }
 
-void draw_wall(t_dpoint start, t_dpoint ray_end, int color, t_all *all, int len)
+void			draw_wall(t_dpoint start, t_dpoint ray_end, int color, t_all *all, int len)
 {
 	t_dpoint	point;
 	int			i;

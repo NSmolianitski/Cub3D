@@ -27,9 +27,11 @@ static int	check_player_pos(char **map, t_parser *parser, int i, int j)
 {
 	if (ft_strchr("NSWE", map[i][j]))
 	{
-		if (parser->player_pos != '0')
+		if (parser->player_dir != '0')
 			return (0);
-		parser->player_pos = map[i][j];
+		parser->player_dir = map[i][j];
+		parser->player_pos.y = i;
+		parser->player_pos.x = j;
 	}
 	return (1);
 }
@@ -40,7 +42,7 @@ static int	check_map(char **map, t_map_size map_size, t_parser *parser)
 	int		j;
 
 	i = -1;
-	parser->player_pos = '0';
+	parser->player_dir = '0';
 	while (map[++i])
 	{
 		j = -1;
@@ -54,7 +56,7 @@ static int	check_map(char **map, t_map_size map_size, t_parser *parser)
 				print_error("The map is not surrounded by walls");
 		}
 	}
-	if (parser->player_pos == '0')
+	if (parser->player_dir == '0')
 		print_error("Zero or more than one player");
 	return (1);
 }

@@ -7,22 +7,22 @@
 #define texWidth 64
 #define texHeight 64
 
-static void	draw_vert(int x, int drawStart, int drawEnd, t_all *all, t_color color)
+static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color)
 {
 	int		y;
 
 	y = 0;
-	while (y < drawStart)
+	while (y < draw_start)
 	{
 		fast_mlx_pixel_put(all->win, x, y, color.ceiling);
 		++y;
 	}
-	while (drawStart <= drawEnd)
+	while (draw_start <= draw_end)
 	{
-		fast_mlx_pixel_put(all->win, x, drawStart, color.walls);
-		++drawStart;
+		fast_mlx_pixel_put(all->win, x, draw_start, color.walls);
+		++draw_start;
 	}
-	y = drawEnd + 1;
+	y = draw_end + 1;
 	while (y < all->pr->res_y)
 	{
 		fast_mlx_pixel_put(all->win, x, y, color.floor);
@@ -43,12 +43,82 @@ static void	draw_pov(t_all *all, int color)
 	draw_wall(start, end, color, all, 200);
 }
 
+static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side)
+{
+	double	wall_dist;
+	int		draw_start;
+	int		draw_end;
+	int		lineHeight;
+
+	if (side == 0)
+		wall_dist = (rc->map.x - all->plr->x + (1 - rc->step.x) / 2) / rc->ray_dir.x;
+	else
+		wall_dist = (rc->map.y - all->plr->y + (1 - rc->step.y) / 2) / rc->ray_dir.y;
+	lineHeight = (int)(all->pr->res_y / wall_dist);
+	draw_start = -lineHeight / 2 + all->pr->res_y / 2;
+	if (draw_start < 0)
+		draw_start = 0;
+	draw_end = lineHeight / 2 + all->pr->res_y / 2;
+	if (draw_end >= all->pr->res_y)
+		draw_end = all->pr->res_y - 1;
+	if (side == 1)
+		color.walls /= 2;
+	draw_vert(x, draw_start, draw_end, all, color);
+}
+
+static void	find_dist(int *side, t_ray_casting *rc, t_all *all)
+{
+	int	hit;
+
+	hit = 0;
+	*side = 0;
+	while (hit == 0)
+	{
+		if (rc->side_dist.x < rc->side_dist.y)
+		{
+			rc->side_dist.x += rc->delta_dist.x;
+			rc->map.x += rc->step.x;
+			*side = 0;
+		}
+		else
+		{
+			rc->side_dist.y += rc->delta_dist.y;
+			rc->map.y += rc->step.y;
+			*side = 1;
+		}
+		if (all->pr->map[rc->map.x][rc->map.y] != '0')
+			hit = 1;
+	}
+}
+
+static void	check_direction(t_ray_casting *rc, t_all *all)
+{
+	if(rc->ray_dir.x < 0)
+	{
+		rc->step.x = -1;
+		rc->side_dist.x = (all->plr->x - rc->map.x) * rc->delta_dist.x;
+	}
+	else
+	{
+		rc->step.x = 1;
+		rc->side_dist.x = (rc->map.x + 1.0 - all->plr->x) * rc->delta_dist.x;
+	}
+	if(rc->ray_dir.y < 0)
+	{
+		rc->step.y = -1;
+		rc->side_dist.y = (all->plr->y - rc->map.y) * rc->delta_dist.y;
+	}
+	else
+	{
+		rc->step.y = 1;
+		rc->side_dist.y = (rc->map.y + 1.0 - all->plr->y) * rc->delta_dist.y;
+	}
+}
+
 static void	ray_casting(t_all *all, t_color color)
 {
 	t_ray_casting	rc;
 	double			cameraX;
-	double			wall_dist;
-	int				hit;
 	int				side;
 
 	for(int x = 0; x < all->pr->res_x; x++)
@@ -60,70 +130,13 @@ static void	ray_casting(t_all *all, t_color color)
 		rc.map.y = (int)(all->plr->y);
 		rc.delta_dist.x = sqrt(1 + (rc.ray_dir.y * rc.ray_dir.y) / (rc.ray_dir.x * rc.ray_dir.x));
 		rc.delta_dist.y = sqrt(1 + (rc.ray_dir.x * rc.ray_dir.x) / (rc.ray_dir.y * rc.ray_dir.y));
-		hit = 0;
-		side = 0;
-		if(rc.ray_dir.x < 0)
-		{
-			rc.step.x = -1;
-			rc.side_dist.x = (all->plr->x - rc.map.x) * rc.delta_dist.x;
-		}
-		else
-		{
-			rc.step.x = 1;
-			rc.side_dist.x = (rc.map.x + 1.0 - all->plr->x) * rc.delta_dist.x;
-		}
-		if(rc.ray_dir.y < 0)
-		{
-			rc.step.y = -1;
-			rc.side_dist.y = (all->plr->y - rc.map.y) * rc.delta_dist.y;
-		}
-		else
-		{
-			rc.step.y = 1;
-			rc.side_dist.y = (rc.map.y + 1.0 - all->plr->y) * rc.delta_dist.y;
-		}
-		while (hit == 0)
-		{
-			if (rc.side_dist.x < rc.side_dist.y)
-			{
-				rc.side_dist.x += rc.delta_dist.x;
-				rc.map.x += rc.step.x;
-				side = 0;
-			}
-			else
-			{
-				rc.side_dist.y += rc.delta_dist.y;
-				rc.map.y += rc.step.y;
-				side = 1;
-			}
-			if (all->pr->map[rc.map.x][rc.map.y] != '0')
-				hit = 1;
-		}
-		if (side == 0)
-			wall_dist = (rc.map.x - all->plr->x + (1 - rc.step.x) / 2) / rc.ray_dir.x;
-		else
-			wall_dist = (rc.map.y - all->plr->y + (1 - rc.step.y) / 2) / rc.ray_dir.y;
-		int lineHeight = (int)(all->pr->res_y / wall_dist);
-		int drawStart = -lineHeight / 2 + all->pr->res_y / 2;
-		if (drawStart < 0)
-			drawStart = 0;
-
-		int drawEnd = lineHeight / 2 + all->pr->res_y / 2;
-		if (drawEnd >= all->pr->res_y)
-			drawEnd = all->pr->res_y - 1;
-		//choose wall color
-		color.walls = 0x0b81212; //red
-
-		//give x and y sides different brightness
-		if (side == 1)
-			color.walls /= 2;
-
-		//draw the pixels of the stripe as a vertical line
-		draw_vert(x, drawStart, drawEnd, all, color);
+		check_direction(&rc, all);
+		find_dist(&side, &rc, all);
+		draw_vertical_line(all, &rc, x, color, side);
 	}
 }
 
-void draw_screen(t_all *all, int color)
+void		draw_screen(t_all *all, int color)
 {
 	int x, y;
 
@@ -140,7 +153,7 @@ void draw_screen(t_all *all, int color)
 	}
 }
 
-void draw_rect(t_all *all, int left, int top, int width, int height, int color)
+void		draw_rect(t_all *all, int left, int top, int width, int height, int color)
 {
 	int x;
 	int y;
@@ -158,82 +171,78 @@ void draw_rect(t_all *all, int left, int top, int width, int height, int color)
 	}
 }
 
-static void	draw_map(void *mlx, void *mlx_win, char **lvlmap, t_win win,
-					 t_player *player, t_all *all)
+static void	draw_map(t_all *all)
 {
 	t_point	map;
+
+	map.y = 0;
+	while (all->pr->map[map.y])
+	{
+		map.x = 0;
+		while (all->pr->map[map.y][map.x])
+		{
+			if (all->pr->map[map.y][map.x] == '1')
+				draw_scaled_pixel(&map, *all->win, 0x0042f66);
+			else if (all->pr->map[map.y][map.x] == '2')
+				draw_scaled_pixel(&map, *all->win, 0x0c0eb34);
+			else if (all->pr->map[map.y][map.x] != ' ')
+				draw_scaled_pixel(&map, *all->win, 0x02d2d2e);
+			++map.x;
+		}
+		++map.y;
+	}
+}
+
+static void	draw_game(t_all *all)
+{
 	t_color color;
 
 	color.ceiling = rgb_to_hex(all->pr->ceilling_color);
 	color.floor = rgb_to_hex(all->pr->floor_color);
-	color.walls = 0x02d2d2e;
-	map.y = 0;
-	draw_screen(all, 0x0889bba);
 	color.walls = 0x0636391;
-//	draw_cat(all, color.walls);
-//	while (lvlmap[map.y])
-//	{
-//		map.x = 0;
-//		while (lvlmap[map.y][map.x])
-//		{
-//			if (lvlmap[map.y][map.x] == '1')
-//				draw_scaled_pixel(&map, win, 0x0042f66);
-//			else if (lvlmap[map.y][map.x] == '2')
-//				draw_scaled_pixel(&map, win, 0x0c0eb34);
-//			else if (lvlmap[map.y][map.x] != ' ')
-//				draw_scaled_pixel(&map, win, 0x02d2d2e);
-//			++map.x;
-//		}
-//		++map.y;
-//	}
-//	draw_player(player, win, 0x0636391);
-//	draw_pov(all, 0x0ff0000);
+	draw_screen(all, 0x0889bba);
+	draw_map(all);
+	draw_player(all->plr, *all->win, 0x0636391);
+	draw_pov(all, 0x0ff0000);
 	ray_casting(all, color);
-	mlx_put_image_to_window(mlx, mlx_win, win.img, 0, 0);
+	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, 0, 0);
 }
 
-void	render_next_frame(t_all *all)
+void		render_next_frame(t_all *all)
 {
 	mlx_clear_window(all->win->mlx, all->win->win);
-	draw_map(all->win->mlx, all->win->win, all->pr->map, *all->win, all->plr, all);
+	draw_game(all);
 }
 
-static void prepare_struct(t_all *all, t_win *win, t_player *player, t_parser
-*parser)
+static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *parser)
 {
 	all->win = win;
 	all->plr = player;
 	all->pr = parser;
+	all->plr->x = 3;
+	all->plr->y = 3;
+	all->plr->pov = 1;
+	all->plr->dir.x = -1;
+	all->plr->dir.y = 0;
+	all->plane.x = 0;
+	all->plane.y = 0.66;
 	all->win->mlx = mlx_init();
 }
 
-void	game(t_parser *parser)
+void		game(t_parser *parser)
 {
 	t_win		win;
 	t_player	player;
 	t_all		all;
 
-	player.x = 3;
-	player.y = 3;
-	player.pov = 1;
-	player.dir.x = -1;
-	player.dir.y = 0;
-	all.plane.x = 0;
-	all.plane.y = 0.66;
-
-	t_point image;
-	void *img;
-
-	//Add params to all struct
 	prepare_struct(&all, &win, &player, parser);
 	//Mlx init
 	win.img = mlx_new_image(all.win->mlx, parser->res_x, parser->res_y);
 	win.addr = mlx_get_data_addr(win.img, &win.bpp, &win.ll, &win.end);
 	win.win = mlx_new_window(all.win->mlx, parser->res_x, parser->res_y, "Cub3D");
-//	Game draw
+	//Game draw
 	render_next_frame(&all);
-//	mlx_loop_hook(all.win->mlx, render_next_frame, &all);
-//	Game control
+	//Game control
 	cub_control(&all);
 	mlx_loop(all.win->mlx);
 }

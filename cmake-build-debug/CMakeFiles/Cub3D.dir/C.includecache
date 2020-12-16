@@ -6,27 +6,33 @@
 
 #IncludeRegexTransform: 
 
-../includes/cub_control.h
-cub_image.h
-../includes/cub_image.h
-
-../includes/cub_image.h
-cub_parser.h
 ../includes/cub_parser.h
 
-../includes/cub_parser.h
+../includes/cub_utils.h
+libft.h
+../includes/libft.h
 
-../includes/mlx.h
-
-/Users/pkentaur/CLionProjects/Cub3D/images/game.c
-math.h
+../includes/get_next_line.h
+stdlib.h
 -
-mlx.h
-/Users/pkentaur/CLionProjects/Cub3D/images/mlx.h
+
+../includes/libft.h
+stdlib.h
+-
+
+/Users/pkentaur/CLionProjects/Cub3D/parser/map_parser.c
+fcntl.h
+-
+stdlib.h
+-
+unistd.h
+-
+libft.h
+/Users/pkentaur/CLionProjects/Cub3D/parser/libft.h
+get_next_line.h
+/Users/pkentaur/CLionProjects/Cub3D/parser/get_next_line.h
 cub_parser.h
-/Users/pkentaur/CLionProjects/Cub3D/images/cub_parser.h
-cub_image.h
-/Users/pkentaur/CLionProjects/Cub3D/images/cub_image.h
-cub_control.h
-/Users/pkentaur/CLionProjects/Cub3D/images/cub_control.h
+/Users/pkentaur/CLionProjects/Cub3D/parser/cub_parser.h
+cub_utils.h
+/Users/pkentaur/CLionProjects/Cub3D/parser/cub_utils.h
 

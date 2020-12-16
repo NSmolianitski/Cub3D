@@ -15,12 +15,6 @@ typedef struct	s_win
 	int 		end;
 }				t_win;
 
-typedef struct	s_point
-{
-	int			x;
-	int			y;
-}				t_point;
-
 typedef struct	s_dpoint
 {
 	double		x;

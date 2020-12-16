@@ -1,11 +1,19 @@
 #ifndef CUB3D_CUB_PARSER_H
 #define CUB3D_CUB_PARSER_H
 
+//#include "cub_image.h"
+
 typedef struct	s_map_size
 {
 	int			x;
 	int			y;
 }				t_map_size;
+
+typedef struct	s_point
+{
+	int			x;
+	int			y;
+}				t_point;
 
 typedef struct	s_parser
 {
@@ -18,7 +26,8 @@ typedef struct	s_parser
 	char 		*sprite;
 	int 		floor_color[3];
 	int 		ceilling_color[3];
-	char 		player_pos;
+	char 		player_dir;
+	t_point		player_pos;
 	char 		**map;
 }				t_parser;
 

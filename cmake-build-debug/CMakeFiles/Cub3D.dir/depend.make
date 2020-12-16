@@ -25,7 +25,6 @@ CMakeFiles/Cub3D.dir/images/game.c.o: ../images/game.c
 
 CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../includes/cub_image.h
 CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../includes/cub_parser.h
-CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../includes/mlx.h
 CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../images/image_utils.c
 
 CMakeFiles/Cub3D.dir/libft/ft_atoi.c.o: ../libft/ft_atoi.c
