@@ -4,84 +4,85 @@
 #include "cub_control.h"
 #include "mlx.h"
 #include "cub_image.h"
-//
-//int             move(int keycode, t_all *all)
-//{
-//	double speed;
-//	double oldDirX;
-//	double oldPlaneX;
-//
-//	speed = 0.2;
-//	if (keycode == 13 || keycode == 126)
-//	{
-//		if(all->pr->map[(int)(all->plr->y + all->plr->dir.x * (speed + 0.1))][(int)(all->plr->x)] == '0')
-//			all->plr->y += all->plr->dir.x * speed;
-//		if(all->pr->map[(int)(all->plr->y)][(int)(all->plr->x + all->plr->dir.y * (speed + 0.1))] == '0')
-//			all->plr->x += all->plr->dir.y * speed;
-//	} else if (keycode == 1 || keycode == 125)
-//	{
-//		if(all->pr->map[(int)(all->plr->y - all->plr->dir.x * speed)][(int)(all->plr->x)] == '0')
-//			all->plr->y -= all->plr->dir.x * speed;
-//		if(all->pr->map[(int)(all->plr->y)][(int)(all->plr->x - all->plr->dir.y * speed)] == '0')
-//			all->plr->x -= all->plr->dir.y * speed;
-//	} else if (keycode == 0 || keycode == 123)
-//	{
-//		oldDirX = all->plr->dir.x;
-//		all->plr->dir.x = all->plr->dir.x * cos(speed) - all->plr->dir.y * sin(speed);
-//		all->plr->dir.y = oldDirX * sin(speed) + all->plr->dir.y * cos(speed);
-//		oldPlaneX = all->plane.x;
-//		all->plane.x = all->plane.x * cos(speed) - all->plane.y * sin(speed);
-//		all->plane.y = oldPlaneX * sin(speed) + all->plane.y * cos(speed);
-//	} else if (keycode == 2 || keycode == 124)
-//	{
-//		oldDirX = all->plr->dir.x;
-//		all->plr->dir.x = all->plr->dir.x * cos(-speed) - all->plr->dir.y * sin(-speed);
-//		all->plr->dir.y = oldDirX * sin(-speed) + all->plr->dir.y * cos(-speed);
-//		oldPlaneX = all->plane.x;
-//		all->plane.x = all->plane.x * cos(-speed) - all->plane.y * sin(-speed);
-//		all->plane.y = oldPlaneX * sin(-speed) + all->plane.y * cos(-speed);
-//	}
-//	return (1);
-//}
 
-//Old movement
-int             move(int keycode, t_all *all)
+double moveSpeed = 0.1; //the constant value is in squares/second
+double rotSpeed = 0.1; //the constant value is in radians/second
+
+//lodev movement
+int 	move(int keycode, t_all *all)
 {
-	double	speed;
-
-	speed = SCALE / 15;
+	double	old_x;
+	double	old_plane_x;
 	if (keycode == 13 || keycode == 126)
 	{
-		all->plr->x += cos(all->plr->pov) * speed;
-		all->plr->y += sin(all->plr->pov) * speed;
-	}
-	else if (keycode == 1 || keycode == 125)
+		if(all->pr->map[(int)(all->plr->x + all->plr->dir.x * moveSpeed)][(int)(all->plr->y)] == '0') all->plr->x += all->plr->dir.x * moveSpeed;
+		if(all->pr->map[(int)(all->plr->x)][(int)(all->plr->y + all->plr->dir.y * moveSpeed)] == '0') all->plr->y += all->plr->dir.y * moveSpeed;
+	} else if (keycode == 1 || keycode == 125)
 	{
-		all->plr->x -= cos(all->plr->pov) * speed;
-		all->plr->y -= sin(all->plr->pov) * speed;
-	}
-	else if (keycode == 0 || keycode == 123)
+		if(all->pr->map[(int)(all->plr->x - all->plr->dir.x * moveSpeed)][(int)(all->plr->y)] == '0') all->plr->x -= all->plr->dir.x * moveSpeed;
+		if(all->pr->map[(int)(all->plr->x)][(int)(all->plr->y - all->plr->dir.y * moveSpeed)] == '0') all->plr->y -= all->plr->dir.y * moveSpeed;
+	} else if (keycode == 0 || keycode == 123)
 	{
-		all->plr->pov -= (speed / SCALE * 2);
-		if (all->plr->pov <= 0)
-			all->plr->pov += 2 * M_PI;
-	}
-	else if (keycode == 2 || keycode == 124)
+		//both camera direction and camera plane must be rotated
+		old_x = all->plr->dir.x;
+		all->plr->dir.x = all->plr->dir.x * cos(rotSpeed) - all->plr->dir.y * sin(rotSpeed);
+		all->plr->dir.y = old_x * sin(rotSpeed) + all->plr->dir.y * cos(rotSpeed);
+		old_plane_x = all->plane.x;
+		all->plane.x = all->plane.x * cos(rotSpeed) - all->plane.y * sin(rotSpeed);
+		all->plane.y = old_plane_x * sin(rotSpeed) + all->plane.y * cos(rotSpeed);
+	} else if (keycode == 2 || keycode == 124)
 	{
-		all->plr->pov += (speed / SCALE * 2);
-		if (all->plr->pov > 2 * M_PI)
-			all->plr->pov -= 2 * M_PI;
+		//both camera direction and camera plane must be rotated
+		old_x = all->plr->dir.x;
+		all->plr->dir.x = all->plr->dir.x * cos(-rotSpeed) - all->plr->dir.y * sin(-rotSpeed);
+		all->plr->dir.y = old_x * sin(-rotSpeed) + all->plr->dir.y * cos(-rotSpeed);
+		old_plane_x = all->plane.x;
+		all->plane.x = all->plane.x * cos(-rotSpeed) - all->plane.y * sin(-rotSpeed);
+		all->plane.y = old_plane_x * sin(-rotSpeed) + all->plane.y * cos(-rotSpeed);
 	}
-	if (all->plr->y < 1)
-		all->plr->y = all->pr->res_y - 1;
-	else if (all->plr->y >= all->pr->res_y - 1)
-		all->plr->y = 0;
-	if (all->plr->x < 1)
-		all->plr->x = all->pr->res_x - 1;
-	else if (all->plr->x >= all->pr->res_x - 1)
-		all->plr->x = 0;
+	render_next_frame(all);
 	return (1);
 }
+
+////Old movement
+//int             move(int keycode, t_all *all)
+//{
+//	double	speed;
+//
+//	speed = 4;
+//	if (keycode == 13 || keycode == 126)
+//	{
+//		all->plr->x += cos(all->plr->pov) * speed;
+//		all->plr->y += sin(all->plr->pov) * speed;
+//	}
+//	else if (keycode == 1 || keycode == 125)
+//	{
+//		all->plr->x -= cos(all->plr->pov) * speed;
+//		all->plr->y -= sin(all->plr->pov) * speed;
+//	}
+//	else if (keycode == 0 || keycode == 123)
+//	{
+//		all->plr->pov -= (speed / SCALE * 2);
+//		if (all->plr->pov <= 0)
+//			all->plr->pov += 2 * M_PI;
+//	}
+//	else if (keycode == 2 || keycode == 124)
+//	{
+//		all->plr->pov += (speed / SCALE * 2);
+//		if (all->plr->pov > 2 * M_PI)
+//			all->plr->pov -= 2 * M_PI;
+//	}
+//	if (all->plr->y < 1)
+//		all->plr->y = all->pr->res_y - 1;
+//	else if (all->plr->y >= all->pr->res_y - 1)
+//		all->plr->y = 0;
+//	if (all->plr->x < 1)
+//		all->plr->x = all->pr->res_x - 1;
+//	else if (all->plr->x >= all->pr->res_x - 1)
+//		all->plr->x = 0;
+//	render_next_frame(all);
+//	return (1);
+//}
 
 static int	close_game(t_all *all)
 {

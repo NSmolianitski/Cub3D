@@ -1,4 +1,5 @@
 #include "cub_image.h"
+#include "mlx.h"
 
 void            fast_mlx_pixel_put(t_win *win, int x, int y, int color)
 {
@@ -41,8 +42,8 @@ void	draw_player(t_player *player, t_win img, int color)
 
 	start.x = player->x;
 	start.y = player->y;
-	end.x = start.x + (SCALE / 4);
-	end.y = start.y + (SCALE / 4);
+	end.x = start.x + 1;
+	end.y = start.y + 1;
 	while (start.y < end.y)
 	{
 		start.x = player->x;
@@ -87,6 +88,7 @@ void draw_wall(t_dpoint start, t_dpoint ray_end, int color, t_all *all, int len)
 		++i;
 		if (point.y >= all->pr->res_y - 1|| point.x >= all->pr->res_x - 1)
 			break ;
-		fast_mlx_pixel_put(all->win, point.x, point.y, color);
+		for (int j = 0; j < (all->pr->res_x / 60); ++j)
+			fast_mlx_pixel_put(all->win, point.x + j, point.y, color);
 	}
 }

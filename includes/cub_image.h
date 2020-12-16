@@ -27,12 +27,14 @@ typedef struct	s_dpoint
 	double		y;
 }				t_dpoint;
 
-typedef struct	s_ray
+typedef struct	s_ray_casting
 {
-	double		x;
-	double		y;
-	int			g_size;
-}				t_ray;
+	t_dpoint	delta_dist;
+	t_dpoint	ray_dir;
+	t_point		step;
+	t_point		map;
+	t_dpoint	side_dist;
+}				t_ray_casting;
 
 typedef struct	s_player
 {
@@ -66,5 +68,6 @@ void			draw_scaled_pixel(t_point *map, t_win img, int color);
 void			draw_player(t_player *player, t_win img, int color);
 void			draw_line(t_dpoint ray_end, int color, t_all *all, int len);
 void			draw_wall(t_dpoint start, t_dpoint ray_end, int color, t_all *all, int len);
+void			render_next_frame(t_all *all);
 
 #endif

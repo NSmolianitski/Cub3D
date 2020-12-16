@@ -21,13 +21,12 @@ CMakeFiles/Cub3D.dir/images/game.c.o
  ../includes/cub_control.h
  ../includes/cub_image.h
  ../includes/cub_parser.h
- ../includes/cub_utils.h
- ../includes/libft.h
  ../includes/mlx.h
  /Users/pkentaur/CLionProjects/Cub3D/images/game.c
 CMakeFiles/Cub3D.dir/images/image_utils.c.o
  ../includes/cub_image.h
  ../includes/cub_parser.h
+ ../includes/mlx.h
  /Users/pkentaur/CLionProjects/Cub3D/images/image_utils.c
 CMakeFiles/Cub3D.dir/libft/ft_atoi.c.o
  /Users/pkentaur/CLionProjects/Cub3D/libft/ft_atoi.c

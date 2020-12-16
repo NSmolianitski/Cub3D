@@ -4,14 +4,14 @@ SO ./path_to_the_south_texture
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
 S ./path_to_the_sprite_texture
-F 156, 134, 92
-C 153, 186, 196
+F 117, 148, 121
+C 133, 175, 199
 
 11111111
-10100001
-10100101
-10100001
 10000001
+10000001
+10000001
+10001001
 1000N001
 10000001
 11111111
