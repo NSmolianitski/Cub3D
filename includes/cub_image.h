@@ -44,12 +44,25 @@ typedef struct s_color
 	int			walls;
 }				t_color;
 
+typedef struct	s_textures
+{
+	void 		*n_wall;
+	t_point		nw_prms;
+	void 		*s_wall;
+	t_point		sw_prms;
+	void 		*w_wall;
+	t_point		ww_prms;
+	void 		*e_wall;
+	t_point		ew_prms;
+}				t_textures;
+
 typedef struct	s_all
 {
 	t_dpoint	plane;
 	t_player	*plr;
 	t_win		*win;
 	t_parser	*pr;
+	t_textures	*txtrs;
 }				t_all;
 
 void            fast_mlx_pixel_put(t_win *win, int x, int y, int color);
@@ -60,5 +73,6 @@ void			draw_player(t_player *player, t_win img, int color);
 void			draw_line(t_dpoint ray_end, int color, t_all *all, int len);
 void			draw_wall(t_dpoint start, t_dpoint ray_end, int color, t_all *all, int len);
 void			render_next_frame(t_all *all);
+int				get_tex_color(t_win texture, int x, int y);
 
 #endif

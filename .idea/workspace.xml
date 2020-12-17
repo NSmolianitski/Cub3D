@@ -13,14 +13,25 @@
   <component name="ChangeListManager">
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/control/cub_control.c" beforeDir="false" afterPath="$PROJECT_DIR$/control/cub_control.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cubs/cube_map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cubs/cube_map.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/game.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/image_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/image_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub_control.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_control.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_image.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/barrel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/bluestone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/colorstone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/eagle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/greenlight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/greystone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/mossy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/pillar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/purplestone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/redbrick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/wood.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +60,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/textures" />
       <recent name="$PROJECT_DIR$/cmake-build-debug" />
+      <recent name="$PROJECT_DIR$/textures" />
       <recent name="$PROJECT_DIR$/cubs" />
     </key>
   </component>
@@ -83,12 +94,24 @@
       <workItem from="1608103735523" duration="13618000" />
       <workItem from="1608121578457" duration="10690000" />
       <workItem from="1608136167093" duration="16000" />
-      <workItem from="1608189699043" duration="6537000" />
+      <workItem from="1608189699043" duration="8145000" />
+      <workItem from="1608207304506" duration="170000" />
+      <workItem from="1608209440094" duration="5203000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607938274374">
@@ -99,22 +122,26 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="992" y="485" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1337@0.23.2560.1337" timestamp="1607938117254" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608196190613">
+    <state width="481" height="582" key="DebuggerActiveHint" timestamp="1608216646826">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608196190613" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608196190612">
+    <state width="481" height="582" key="DebuggerActiveHint/0.23.2560.1337@0.23.2560.1337" timestamp="1608216646826" />
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608217493232">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608196190612" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608196190612">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608217493232" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608217493232">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608196190612" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608196190613">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608217493232" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608217493227">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608196190613" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608217493227" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608217493232">
+      <screen x="0" y="23" width="2560" height="1337" />
+    </state>
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608217493232" />
     <state x="679" y="243" key="SettingsEditor" timestamp="1608125562453">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -144,21 +171,6 @@
           <url>file://$PROJECT_DIR$/images/game.c</url>
           <line>122</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/images/game.c</url>
-          <line>43</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/images/game.c</url>
-          <line>76</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/images/game.c</url>
-          <line>214</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

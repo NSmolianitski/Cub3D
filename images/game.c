@@ -108,7 +108,7 @@ static void	ray_casting(t_all *all, t_color color)
 	t_ray_casting	rc;
 	double			cameraX;
 	int				side;
-//changes
+
 	for(int x = 0; x < all->pr->res_x; x++)
 	{
 		cameraX = 2 * x / (double)(all->pr->res_x - 1) - 1;
@@ -206,8 +206,8 @@ static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *p
 	all->win = win;
 	all->plr = player;
 	all->pr = parser;
-	all->plr->y = parser->player_pos.y;
-	all->plr->x = parser->player_pos.x;
+	all->plr->y = parser->player_pos.y + 0.5;
+	all->plr->x = parser->player_pos.x + 0.5;
 	all->plr->dir.x = -1;
 	all->plr->dir.y = 0;
 	all->plane.x = 0;
@@ -220,6 +220,11 @@ static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *p
 		rotation(2, all, 1.57);
 	else if (all->pr->player_dir == 'S')
 		rotation(0, all, 3.14);
+	all->txtrs = malloc(sizeof(t_textures));
+	all->txtrs->n_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->nw_prms.x, &all->txtrs->nw_prms.y);
+	all->txtrs->s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->sw_prms.x, &all->txtrs->sw_prms.y);
+	all->txtrs->w_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->ww_prms.x, &all->txtrs->ww_prms.y);
+	all->txtrs->e_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->ew_prms.x, &all->txtrs->ew_prms.y);
 	all->win->mlx = mlx_init();
 }
 
@@ -228,13 +233,15 @@ void		game(t_parser *parser)
 	t_win		win;
 	t_player	player;
 	t_all		all;
-
 	prepare_struct(&all, &win, &player, parser);
 	//Mlx init
 	win.img = mlx_new_image(all.win->mlx, parser->res_x, parser->res_y);
 	win.addr = mlx_get_data_addr(win.img, &win.bpp, &win.ll, &win.end);
 	win.win = mlx_new_window(all.win->mlx, parser->res_x, parser->res_y, "Cub3D");
 	//Game draw
+	t_win	nwall;
+	nwall.img = all.txtrs->n_wall;
+	nwall.addr = mlx_get_data_addr(nwall.img, &nwall.bpp, &nwall.ll, &nwall.end);
 	render_next_frame(&all);
 	//Game control
 	cub_control(&all);

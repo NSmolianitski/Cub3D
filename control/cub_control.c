@@ -49,7 +49,7 @@ void	move(int keycode, t_all *all)
 		if(all->pr->map[(int)(all->plr->y)][(int)(all->plr->x - all->plr->dir.y * ms)] != '1')
 			all->plr->x -= all->plr->dir.y * ms;
 	}
-	else if (keycode == 0 || keycode == 123)
+	else if (keycode == 0 || keycode == 123) //Cделать движение боком на 'A' и 'D'!!!!!!!!!!!!!!!!!
 		rotation(0, all, rs);
 	else if (keycode == 2 || keycode == 124)
 		rotation(2, all, rs);
