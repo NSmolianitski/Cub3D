@@ -13,24 +13,14 @@
   <component name="ChangeListManager">
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/parser/cub_parser.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/parser/map_parser.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/parser/resolution_parser.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/parser/settings_parser.c.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/cub_control.c" beforeDir="false" afterPath="$PROJECT_DIR$/control/cub_control.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cubs/cube_map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cubs/cube_map.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/game.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/image_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/image_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_parser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/map_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser/map_parser.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/cub_control.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_control.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/cub_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_image.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +81,9 @@
       <workItem from="1608016940290" duration="16029000" />
       <workItem from="1608039714388" duration="5322000" />
       <workItem from="1608103735523" duration="13618000" />
-      <workItem from="1608121578457" duration="10347000" />
+      <workItem from="1608121578457" duration="10690000" />
+      <workItem from="1608136167093" duration="16000" />
+      <workItem from="1608189699043" duration="6537000" />
     </task>
     <servers />
   </component>
@@ -107,22 +99,22 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="992" y="485" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1337@0.23.2560.1337" timestamp="1607938117254" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608134539778">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608196190613">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608134539778" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608134539778">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608196190613" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608196190612">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608134539778" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608134539777">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608196190612" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608196190612">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608134539777" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608134539778">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608196190612" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608196190613">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608134539778" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608196190613" />
     <state x="679" y="243" key="SettingsEditor" timestamp="1608125562453">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -131,10 +123,10 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="728" y="364" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.2560.1337@0.23.2560.1337" timestamp="1608023193934" />
-    <state x="861" y="322" key="run.anything.popup" timestamp="1607953419752">
+    <state x="861" y="322" width="838" height="1032" key="run.anything.popup" timestamp="1608194820902">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="861" y="322" key="run.anything.popup/0.23.2560.1337@0.23.2560.1337" timestamp="1607953419752" />
+    <state x="861" y="322" width="838" height="1032" key="run.anything.popup/0.23.2560.1337@0.23.2560.1337" timestamp="1608194820902" />
     <state x="861" y="321" width="838" height="1032" key="search.everywhere.popup" timestamp="1608125924832">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -147,6 +139,26 @@
           <url>file://$PROJECT_DIR$/parser/settings_parser.c</url>
           <line>32</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>122</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>43</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>76</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>214</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

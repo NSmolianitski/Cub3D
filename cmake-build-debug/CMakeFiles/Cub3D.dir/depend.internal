@@ -21,6 +21,7 @@ CMakeFiles/Cub3D.dir/images/game.c.o
  ../includes/cub_control.h
  ../includes/cub_image.h
  ../includes/cub_parser.h
+ ../includes/libft.h
  ../includes/mlx.h
  /Users/pkentaur/CLionProjects/Cub3D/images/game.c
 CMakeFiles/Cub3D.dir/images/image_utils.c.o

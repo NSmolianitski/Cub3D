@@ -39,14 +39,14 @@ void			draw_player(t_player *player, t_win img, int color)
 	t_point		start;
 	t_point		end;
 
-	start.x = player->x;
-	start.y = player->y;
-	end.x = start.x + 1;
-	end.y = start.y + 1;
-	while (start.y < end.y)
+	start.x = player->x * SCALE;
+	start.y = player->y * SCALE;
+	end.x = start.x + (SCALE / 4);
+	end.y = start.y + (SCALE / 4);
+	while (start.y * SCALE < end.y * SCALE)
 	{
-		start.x = player->x;
-		while (start.x < end.x)
+		start.x = player->x * SCALE;
+		while (start.x * SCALE < end.x * SCALE)
 		{
 			fast_mlx_pixel_put(&img, start.x, start.y, color);
 			++start.x;

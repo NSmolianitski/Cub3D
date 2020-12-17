@@ -1,6 +1,6 @@
 #ifndef CUB3D_CUB_IMAGE_H
 #define CUB3D_CUB_IMAGE_H
-#define SCALE 64
+#define SCALE 20
 
 #include "cub_parser.h"
 
@@ -34,10 +34,7 @@ typedef struct	s_player
 {
 	double		x;
 	double		y;
-	double		pov;
 	t_dpoint	dir;
-	double		fov_start;
-	double		fov_end;
 }				t_player;
 
 typedef struct s_color

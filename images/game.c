@@ -1,4 +1,5 @@
 #include <math.h>
+#include "libft.h"
 #include "mlx.h"
 #include "cub_parser.h"
 #include "cub_image.h"
@@ -30,19 +31,6 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 }
 
-//RAY FROM PLAYER (POV)
-static void	draw_pov(t_all *all, int color)
-{
-	t_dpoint start;
-	t_dpoint end;
-
-	start.x = all->plr->x;
-	start.y = all->plr->y;
-	end.x = all->plr->x + cos(all->plr->pov) * 30;
-	end.y = all->plr->y + sin(all->plr->pov) * 30;
-	draw_wall(start, end, color, all, 200);
-}
-
 static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side)
 {
 	double	wall_dist;
@@ -51,9 +39,9 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	int		lineHeight;
 
 	if (side == 0)
-		wall_dist = (rc->map.x - all->plr->x + (1 - rc->step.x) / 2) / rc->ray_dir.x;
+		wall_dist = (rc->map.x - all->plr->y + (1 - rc->step.x) / 2) / rc->ray_dir.x;
 	else
-		wall_dist = (rc->map.y - all->plr->y + (1 - rc->step.y) / 2) / rc->ray_dir.y;
+		wall_dist = (rc->map.y - all->plr->x + (1 - rc->step.y) / 2) / rc->ray_dir.y;
 	lineHeight = (int)(all->pr->res_y / wall_dist);
 	draw_start = -lineHeight / 2 + all->pr->res_y / 2;
 	if (draw_start < 0)
@@ -62,7 +50,7 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	if (draw_end >= all->pr->res_y)
 		draw_end = all->pr->res_y - 1;
 	if (side == 1)
-		color.walls /= 2;
+		color.walls += 20;
 	draw_vert(x, draw_start, draw_end, all, color);
 }
 
@@ -86,7 +74,7 @@ static void	find_dist(int *side, t_ray_casting *rc, t_all *all)
 			rc->map.y += rc->step.y;
 			*side = 1;
 		}
-		if (all->pr->map[rc->map.x][rc->map.y] != '0')
+		if (ft_strchr("12", all->pr->map[rc->map.x][rc->map.y]))
 			hit = 1;
 	}
 }
@@ -96,22 +84,22 @@ static void	check_direction(t_ray_casting *rc, t_all *all)
 	if(rc->ray_dir.x < 0)
 	{
 		rc->step.x = -1;
-		rc->side_dist.x = (all->plr->x - rc->map.x) * rc->delta_dist.x;
+		rc->side_dist.x = (all->plr->y - rc->map.x) * rc->delta_dist.x;
 	}
 	else
 	{
 		rc->step.x = 1;
-		rc->side_dist.x = (rc->map.x + 1.0 - all->plr->x) * rc->delta_dist.x;
+		rc->side_dist.x = (rc->map.x + 1.0 - all->plr->y) * rc->delta_dist.x;
 	}
 	if(rc->ray_dir.y < 0)
 	{
 		rc->step.y = -1;
-		rc->side_dist.y = (all->plr->y - rc->map.y) * rc->delta_dist.y;
+		rc->side_dist.y = (all->plr->x - rc->map.y) * rc->delta_dist.y;
 	}
 	else
 	{
 		rc->step.y = 1;
-		rc->side_dist.y = (rc->map.y + 1.0 - all->plr->y) * rc->delta_dist.y;
+		rc->side_dist.y = (rc->map.y + 1.0 - all->plr->x) * rc->delta_dist.y;
 	}
 }
 
@@ -120,14 +108,14 @@ static void	ray_casting(t_all *all, t_color color)
 	t_ray_casting	rc;
 	double			cameraX;
 	int				side;
-
+//changes
 	for(int x = 0; x < all->pr->res_x; x++)
 	{
 		cameraX = 2 * x / (double)(all->pr->res_x - 1) - 1;
 		rc.ray_dir.x = all->plr->dir.x + all->plane.x * cameraX;
 		rc.ray_dir.y = all->plr->dir.y + all->plane.y * cameraX;
-		rc.map.x = (int)(all->plr->x);
-		rc.map.y = (int)(all->plr->y);
+		rc.map.x = (int)(all->plr->y);
+		rc.map.y = (int)(all->plr->x);
 		rc.delta_dist.x = sqrt(1 + (rc.ray_dir.y * rc.ray_dir.y) / (rc.ray_dir.x * rc.ray_dir.x));
 		rc.delta_dist.y = sqrt(1 + (rc.ray_dir.x * rc.ray_dir.x) / (rc.ray_dir.y * rc.ray_dir.y));
 		check_direction(&rc, all);
@@ -199,12 +187,11 @@ static void	draw_game(t_all *all)
 
 	color.ceiling = rgb_to_hex(all->pr->ceilling_color);
 	color.floor = rgb_to_hex(all->pr->floor_color);
-	color.walls = 0x0636391;
+	color.walls = 0x0104d3e;
 	draw_screen(all, 0x0889bba);
+	ray_casting(all, color);
 	draw_map(all);
 	draw_player(all->plr, *all->win, 0x0636391);
-	draw_pov(all, 0x0ff0000);
-	ray_casting(all, color);
 	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, 0, 0);
 }
 
@@ -219,13 +206,20 @@ static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *p
 	all->win = win;
 	all->plr = player;
 	all->pr = parser;
-	all->plr->x = 3;
-	all->plr->y = 3;
-	all->plr->pov = 1;
+	all->plr->y = parser->player_pos.y;
+	all->plr->x = parser->player_pos.x;
 	all->plr->dir.x = -1;
 	all->plr->dir.y = 0;
 	all->plane.x = 0;
 	all->plane.y = 0.66;
+	if (all->pr->player_dir == 'W')
+		rotation(0, all, 1.57);
+	else if (all->pr->player_dir == 'N')
+		all->plr->dir.x = -1;
+	else if (all->pr->player_dir == 'E')
+		rotation(2, all, 1.57);
+	else if (all->pr->player_dir == 'S')
+		rotation(0, all, 3.14);
 	all->win->mlx = mlx_init();
 }
 
