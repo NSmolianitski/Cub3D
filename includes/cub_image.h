@@ -56,6 +56,15 @@ typedef struct	s_textures
 	t_point		ew_prms;
 }				t_textures;
 
+typedef struct	s_tex_col
+{
+	int			tex_x;
+	int 		tex_y;
+	int 		tex_step;
+	int			wall_side;
+	double 		tex_pos;
+}				t_tex_col;
+
 typedef struct	s_all
 {
 	t_dpoint	plane;

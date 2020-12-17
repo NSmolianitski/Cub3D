@@ -7,8 +7,8 @@
 
 #define texWidth 64
 #define texHeight 64
-
-static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color)
+t_win	nwall;
+static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color, double step, double texPos, int texX, int side)
 {
 	int		y;
 
@@ -20,6 +20,11 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 	while (draw_start <= draw_end)
 	{
+		int texY = (int)texPos & (texHeight - 1);
+		texPos += step;
+		color.walls = get_tex_color(nwall, texX, texY);
+		if(side == 1)
+			color.walls = (color.walls >> 1) & 8355711;
 		fast_mlx_pixel_put(all->win, x, draw_start, color.walls);
 		++draw_start;
 	}
@@ -33,10 +38,12 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 
 static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side)
 {
-	double	wall_dist;
-	int		draw_start;
-	int		draw_end;
-	int		lineHeight;
+	double		wall_dist;
+	int			draw_start;
+	int			draw_end;
+	int			lineHeight;
+	t_tex_col	tex_col;
+	double		wall_x;
 
 	if (side == 0)
 		wall_dist = (rc->map.x - all->plr->y + (1 - rc->step.x) / 2) / rc->ray_dir.x;
@@ -49,9 +56,18 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	draw_end = lineHeight / 2 + all->pr->res_y / 2;
 	if (draw_end >= all->pr->res_y)
 		draw_end = all->pr->res_y - 1;
-	if (side == 1)
-		color.walls += 20;
-	draw_vert(x, draw_start, draw_end, all, color);
+	if (side == 0) wall_x = all->plr->x + wall_dist * rc->ray_dir.y;
+	else           wall_x = all->plr->y + wall_dist * rc->ray_dir.x;
+	wall_x -= floor(wall_x);
+	tex_col.tex_x = (int)(wall_x * (double)(texWidth));
+	if (side == 0 && rc->ray_dir.x > 0)
+		tex_col.tex_x = texWidth - tex_col.tex_x - 1;
+	if (side == 1 && rc->ray_dir.y < 0)
+		tex_col.tex_x = texWidth - tex_col.tex_x - 1;
+	double step = 1.0 * texHeight / lineHeight;
+	// Starting texture coordinate
+	double texPos = (draw_start - all->pr->res_y / 2 + lineHeight / 2) * step;
+	draw_vert(x, draw_start, draw_end, all, color, step, texPos, tex_col.tex_x, side);
 }
 
 static void	find_dist(int *side, t_ray_casting *rc, t_all *all)
@@ -239,7 +255,6 @@ void		game(t_parser *parser)
 	win.addr = mlx_get_data_addr(win.img, &win.bpp, &win.ll, &win.end);
 	win.win = mlx_new_window(all.win->mlx, parser->res_x, parser->res_y, "Cub3D");
 	//Game draw
-	t_win	nwall;
 	nwall.img = all.txtrs->n_wall;
 	nwall.addr = mlx_get_data_addr(nwall.img, &nwall.bpp, &nwall.ll, &nwall.end);
 	render_next_frame(&all);
