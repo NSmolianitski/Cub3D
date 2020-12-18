@@ -20,6 +20,7 @@ typedef struct	s_parser
 	int 		res_x;
 	int 		res_y;
 	char		*n_wall;
+	char 		*so_wall;
 	char 		*s_wall;
 	char 		*w_wall;
 	char 		*e_wall;

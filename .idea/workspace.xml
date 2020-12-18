@@ -13,12 +13,11 @@
   <component name="ChangeListManager">
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/game.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/image_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/image_utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_image.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/cub_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_parser.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +89,7 @@
       <workItem from="1608207304506" duration="170000" />
       <workItem from="1608209440094" duration="11080000" />
       <workItem from="1608276464675" duration="2959000" />
-      <workItem from="1608279673148" duration="844000" />
+      <workItem from="1608279673148" duration="10896000" />
     </task>
     <servers />
   </component>
@@ -116,26 +115,26 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="992" y="485" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1337@0.23.2560.1337" timestamp="1607938117254" />
-    <state width="481" height="582" key="DebuggerActiveHint" timestamp="1608216646826">
+    <state width="517" height="582" key="DebuggerActiveHint" timestamp="1608283272378">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="481" height="582" key="DebuggerActiveHint/0.23.2560.1337@0.23.2560.1337" timestamp="1608216646826" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608280390111">
+    <state width="517" height="582" key="DebuggerActiveHint/0.23.2560.1337@0.23.2560.1337" timestamp="1608283272378" />
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608294355232">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608280390111" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608280390110">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608294355232" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608294355231">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608280390110" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608280390110">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608294355231" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608294355231">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608280390110" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608280390110">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608294355230" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608294355232">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608280390110" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608294355232" />
     <state x="679" y="243" key="SettingsEditor" timestamp="1608125562453">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -165,7 +164,35 @@
           <line>32</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>106</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>108</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>110</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>112</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="nwall" language="ObjectiveC" />
+        <watch expression="swall" language="ObjectiveC" />
+        <watch expression="ewall" language="ObjectiveC" />
+        <watch expression="wwall" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

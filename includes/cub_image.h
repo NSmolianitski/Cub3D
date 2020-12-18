@@ -58,6 +58,7 @@ typedef struct	s_textures
 
 typedef struct	s_tex_col
 {
+	t_win		*wall;
 	int			tex_x;
 	int 		tex_y;
 	double 		tex_step;
@@ -82,6 +83,6 @@ void			draw_player(t_player *player, t_win img, int color);
 void			draw_line(t_dpoint ray_end, int color, t_all *all, int len);
 void			draw_wall(t_dpoint start, t_dpoint ray_end, int color, t_all *all, int len);
 void			render_next_frame(t_all *all);
-int				get_tex_color(t_win texture, int x, int y);
+int				get_tex_color(t_win *texture, int x, int y);
 
 #endif

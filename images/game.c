@@ -8,7 +8,10 @@
 #define texWidth 64
 #define texHeight 64
 t_win	nwall;
-static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color, t_tex_col tex_col)
+t_win	swall;
+t_win	wwall;
+t_win	ewall;
+static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color, t_tex_col *tex_col)
 {
 	int		y;
 
@@ -20,11 +23,15 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 	while (draw_start <= draw_end)
 	{
-		tex_col.tex_y = (int)tex_col.tex_pos & (texHeight - 1);
-		tex_col.tex_pos += tex_col.tex_step;
-		color.walls = get_tex_color(nwall, tex_col.tex_x, tex_col.tex_y);
-		if(tex_col.wall_side == 1)
+		tex_col->tex_y = (int)tex_col->tex_pos & (texHeight - 1);
+		tex_col->tex_pos += tex_col->tex_step;
+		if (tex_col->wall_side == 1)
+		{
+			color.walls = get_tex_color(tex_col->wall, tex_col->tex_x, tex_col->tex_y);
 			color.walls = (color.walls >> 1) & 8355711;
+		}
+		else
+			color.walls = get_tex_color(tex_col->wall, tex_col->tex_x, tex_col->tex_y);
 		fast_mlx_pixel_put(all->win, x, draw_start, color.walls);
 		++draw_start;
 	}
@@ -36,13 +43,12 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 }
 
-static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side)
+static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side, t_tex_col *tex_col)
 {
 	double		wall_dist;
 	int			draw_start;
 	int			draw_end;
 	int			lineHeight;
-	t_tex_col	tex_col;
 	double		wall_x;
 
 	if (side == 0)
@@ -59,19 +65,19 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	if (side == 0) wall_x = all->plr->x + wall_dist * rc->ray_dir.y;
 	else           wall_x = all->plr->y + wall_dist * rc->ray_dir.x;
 	wall_x -= floor(wall_x);
-	tex_col.tex_x = (int)(wall_x * (double)(texWidth));
+	tex_col->tex_x = (int)(wall_x * (double)(texWidth));
 	if (side == 0 && rc->ray_dir.x > 0)
-		tex_col.tex_x = texWidth - tex_col.tex_x - 1;
+		tex_col->tex_x = texWidth - tex_col->tex_x - 1;
 	if (side == 1 && rc->ray_dir.y < 0)
-		tex_col.tex_x = texWidth - tex_col.tex_x - 1;
-	tex_col.wall_side = side;
-	tex_col.tex_step = 1.0 * texHeight / lineHeight;
+		tex_col->tex_x = texWidth - tex_col->tex_x - 1;
+	tex_col->wall_side = side;
+	tex_col->tex_step = 1.0 * texHeight / lineHeight;
 	// Starting texture coordinate
-	tex_col.tex_pos = (draw_start - all->pr->res_y / 2 + lineHeight / 2) * tex_col.tex_step;
+	tex_col->tex_pos = (draw_start - all->pr->res_y / 2 + lineHeight / 2) * tex_col->tex_step;
 	draw_vert(x, draw_start, draw_end, all, color, tex_col);
 }
 
-static void	find_dist(int *side, t_ray_casting *rc, t_all *all)
+static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_col)
 {
 	int	hit;
 
@@ -90,13 +96,24 @@ static void	find_dist(int *side, t_ray_casting *rc, t_all *all)
 			rc->side_dist.y += rc->delta_dist.y;
 			rc->map.y += rc->step.y;
 			*side = 1;
+
 		}
 		if (ft_strchr("12", all->pr->map[rc->map.x][rc->map.y]))
+		{
 			hit = 1;
+			if (*side == 0 && all->plr->x > rc->map.x)
+				tex_col->wall = &nwall;
+			else if (*side == 0 && all->plr->x < rc->map.x)
+				tex_col->wall = &swall;
+			else if (*side == 1 && all->plr->y > rc->map.y)
+				tex_col->wall = &wwall;
+			else
+				tex_col->wall = &ewall;
+		}
 	}
 }
 
-static void	check_direction(t_ray_casting *rc, t_all *all)
+static void	check_direction(t_ray_casting *rc, t_all *all, t_tex_col *tex_col)
 {
 	if(rc->ray_dir.x < 0)
 	{
@@ -125,6 +142,7 @@ static void	ray_casting(t_all *all, t_color color)
 	t_ray_casting	rc;
 	double			cameraX;
 	int				side;
+	t_tex_col		tex_col;
 
 	for(int x = 0; x < all->pr->res_x; x++)
 	{
@@ -135,9 +153,9 @@ static void	ray_casting(t_all *all, t_color color)
 		rc.map.y = (int)(all->plr->x);
 		rc.delta_dist.x = sqrt(1 + (rc.ray_dir.y * rc.ray_dir.y) / (rc.ray_dir.x * rc.ray_dir.x));
 		rc.delta_dist.y = sqrt(1 + (rc.ray_dir.x * rc.ray_dir.x) / (rc.ray_dir.y * rc.ray_dir.y));
-		check_direction(&rc, all);
-		find_dist(&side, &rc, all);
-		draw_vertical_line(all, &rc, x, color, side);
+		check_direction(&rc, all, &tex_col);
+		find_dist(&side, &rc, all, &tex_col);
+		draw_vertical_line(all, &rc, x, color, side, &tex_col);
 	}
 }
 
@@ -239,9 +257,10 @@ static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *p
 		rotation(0, all, 3.14);
 	all->txtrs = malloc(sizeof(t_textures));
 	all->txtrs->n_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->nw_prms.x, &all->txtrs->nw_prms.y);
-	all->txtrs->s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->sw_prms.x, &all->txtrs->sw_prms.y);
-	all->txtrs->w_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->ww_prms.x, &all->txtrs->ww_prms.y);
-	all->txtrs->e_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->ew_prms.x, &all->txtrs->ew_prms.y);
+	all->txtrs->s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->so_wall, &all->txtrs->sw_prms.x, &all->txtrs->sw_prms.y);
+	all->txtrs->s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->s_wall, &all->txtrs->sw_prms.x, &all->txtrs->sw_prms.y);
+	all->txtrs->w_wall = mlx_xpm_file_to_image(all->win->mlx, parser->w_wall, &all->txtrs->ww_prms.x, &all->txtrs->ww_prms.y);
+	all->txtrs->e_wall = mlx_xpm_file_to_image(all->win->mlx, parser->e_wall, &all->txtrs->ew_prms.x, &all->txtrs->ew_prms.y);
 	all->win->mlx = mlx_init();
 }
 
@@ -250,6 +269,7 @@ void		game(t_parser *parser)
 	t_win		win;
 	t_player	player;
 	t_all		all;
+
 	prepare_struct(&all, &win, &player, parser);
 	//Mlx init
 	win.img = mlx_new_image(all.win->mlx, parser->res_x, parser->res_y);
@@ -258,6 +278,12 @@ void		game(t_parser *parser)
 	//Game draw
 	nwall.img = all.txtrs->n_wall;
 	nwall.addr = mlx_get_data_addr(nwall.img, &nwall.bpp, &nwall.ll, &nwall.end);
+	swall.img = all.txtrs->s_wall;
+	swall.addr = mlx_get_data_addr(swall.img, &swall.bpp, &swall.ll, &swall.end);
+	wwall.img = all.txtrs->w_wall;
+	wwall.addr = mlx_get_data_addr(wwall.img, &wwall.bpp, &wwall.ll, &wwall.end);
+	ewall.img = all.txtrs->e_wall;
+	ewall.addr = mlx_get_data_addr(ewall.img, &ewall.bpp, &ewall.ll, &ewall.end);
 	render_next_frame(&all);
 	//Game control
 	cub_control(&all);
