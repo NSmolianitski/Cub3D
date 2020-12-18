@@ -8,7 +8,7 @@
 #define texWidth 64
 #define texHeight 64
 t_win	nwall;
-static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color, double step, double texPos, int texX, int side)
+static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color, t_tex_col tex_col)
 {
 	int		y;
 
@@ -20,10 +20,10 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 	while (draw_start <= draw_end)
 	{
-		int texY = (int)texPos & (texHeight - 1);
-		texPos += step;
-		color.walls = get_tex_color(nwall, texX, texY);
-		if(side == 1)
+		tex_col.tex_y = (int)tex_col.tex_pos & (texHeight - 1);
+		tex_col.tex_pos += tex_col.tex_step;
+		color.walls = get_tex_color(nwall, tex_col.tex_x, tex_col.tex_y);
+		if(tex_col.wall_side == 1)
 			color.walls = (color.walls >> 1) & 8355711;
 		fast_mlx_pixel_put(all->win, x, draw_start, color.walls);
 		++draw_start;
@@ -64,10 +64,11 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 		tex_col.tex_x = texWidth - tex_col.tex_x - 1;
 	if (side == 1 && rc->ray_dir.y < 0)
 		tex_col.tex_x = texWidth - tex_col.tex_x - 1;
-	double step = 1.0 * texHeight / lineHeight;
+	tex_col.wall_side = side;
+	tex_col.tex_step = 1.0 * texHeight / lineHeight;
 	// Starting texture coordinate
-	double texPos = (draw_start - all->pr->res_y / 2 + lineHeight / 2) * step;
-	draw_vert(x, draw_start, draw_end, all, color, step, texPos, tex_col.tex_x, side);
+	tex_col.tex_pos = (draw_start - all->pr->res_y / 2 + lineHeight / 2) * tex_col.tex_step;
+	draw_vert(x, draw_start, draw_end, all, color, tex_col);
 }
 
 static void	find_dist(int *side, t_ray_casting *rc, t_all *all)
