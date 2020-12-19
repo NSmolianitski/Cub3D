@@ -7,7 +7,6 @@
 
 #define texWidth 64
 #define texHeight 64
-#define numSprites 2
 
 t_win	nwall;
 t_win	swall;
@@ -16,8 +15,6 @@ t_win	ewall;
 t_win	stex;
 
 //arrays used to sort the sprites
-int spriteOrder[numSprites];
-double spriteDistance[numSprites];
 //function used to sort the sprites
 //void sortSprites(int* order, double* dist, int amount)
 //{
@@ -166,9 +163,10 @@ static void	ray_casting(t_all *all, t_color color)
 {
 	t_ray_casting	rc;
 	double			cameraX;
-	int				side;
 	t_tex_col		tex_col;
 	double			ZBuffer[all->pr->res_x];
+	int spriteOrder[all->pr->objs_num];
+	double spriteDistance[all->pr->objs_num];
 
 	for(int x = 0; x < all->pr->res_x; x++)
 	{
@@ -180,34 +178,24 @@ static void	ray_casting(t_all *all, t_color color)
 		rc.delta_dist.x = sqrt(1 + (rc.ray_dir.y * rc.ray_dir.y) / (rc.ray_dir.x * rc.ray_dir.x));
 		rc.delta_dist.y = sqrt(1 + (rc.ray_dir.x * rc.ray_dir.x) / (rc.ray_dir.y * rc.ray_dir.y));
 		check_direction(&rc, all, &tex_col);
-		find_dist(&side, &rc, all, &tex_col);
-		draw_vertical_line(all, &rc, x, color, side, &tex_col, ZBuffer);
+		find_dist(&tex_col.wall_side, &rc, all, &tex_col);
+		draw_vertical_line(all, &rc, x, color, tex_col.wall_side, &tex_col, ZBuffer);
 	}
 	//SPRITE CASTING
 	//sort sprites from far to close
-	static int ss = 0;
-	if (ss)
-		return;
-	t_sprite	sprite[2];
-	sprite[0].y = 5;
-	sprite[0].x = 2;
-	sprite[1].y = 8;
-	sprite[1].x = 4;
-	//SPRITE CASTING
-	//sort sprites from far to close
-	for(int i = 0; i < numSprites; i++)
+	for(int i = 0; i < all->pr->objs_num; i++)
 	{
 		spriteOrder[i] = i;
-		spriteDistance[i] = ((all->plr->x - sprite[i].x) * (all->plr->x - sprite[i].x) + (all->plr->y - sprite[i].y) * (all->plr->y - sprite[i].y)); //sqrt not taken, unneeded
+		spriteDistance[i] = ((all->plr->x - all->pr->objs[i].x) * (all->plr->x - all->pr->objs[i].x) + (all->plr->y - all->pr->objs[i].y) * (all->plr->y - all->pr->objs[i].y)); //sqrt not taken, unneeded
 	}
 //	sortSprites(spriteOrder, spriteDistance, numSprites);
 
 	//after sorting the sprites, do the projection and draw them
-	for(int i = 0; i < numSprites; i++)
+	for(int i = 0; i < all->pr->objs_num; i++)
 	{
 		//translate sprite position to relative to camera
-		double spriteX = sprite[spriteOrder[i]].x - all->plr->y;
-		double spriteY = sprite[spriteOrder[i]].y - all->plr->x;
+		double spriteX = all->pr->objs[spriteOrder[i]].x - all->plr->y;
+		double spriteY = all->pr->objs[spriteOrder[i]].y - all->plr->x;
 
 		//transform sprite with the inverse camera matrix
 		// [ planeX   dirX ] -1                                       [ dirY      -dirX ]
