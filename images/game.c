@@ -63,7 +63,7 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 }
 
-static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side, t_tex_col *tex_col, double *ZBuffer)
+static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side, t_tex_col *tex_col, double ZBuffer[])
 {
 	double		wall_dist;
 	int			draw_start;
@@ -99,85 +99,7 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	draw_vert(x, draw_start, draw_end, all, color, tex_col);
 
 	ZBuffer[x] = wall_dist;
-	//SPRITE CASTING
-	//sort sprites from far to close
-	static int ss = 0;
-	if (ss)
-		return;
-	t_sprite	sprite[2];
-	sprite[0].y = 5;
-	sprite[0].x = 2;
-	sprite[1].y = 8;
-	sprite[1].x = 4;
-	//SPRITE CASTING
-	//sort sprites from far to close
-	for(int i = 0; i < numSprites; i++)
-	{
-		spriteOrder[i] = i;
-		spriteDistance[i] = ((all->plr->x - sprite[i].x) * (all->plr->x - sprite[i].x) + (all->plr->y - sprite[i].y) * (all->plr->y - sprite[i].y)); //sqrt not taken, unneeded
-	}
-//	sortSprites(spriteOrder, spriteDistance, numSprites);
 
-	//after sorting the sprites, do the projection and draw them
-	for(int i = 0; i < numSprites; i++)
-	{
-		//translate sprite position to relative to camera
-		double spriteX = sprite[spriteOrder[i]].x - all->plr->y;
-		double spriteY = sprite[spriteOrder[i]].y - all->plr->x;
-
-		//transform sprite with the inverse camera matrix
-		// [ planeX   dirX ] -1                                       [ dirY      -dirX ]
-		// [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
-		// [ planeY   dirY ]                                          [ -planeY  planeX ]
-
-		double invDet = 1.0 / (all->plane.x * all->plr->dir.y - all->plr->dir.x * all->plane.y); //required for correct matrix multiplication
-
-		double transformX = invDet * (all->plr->dir.y * spriteX - all->plr->dir.x * spriteY);
-		double transformY = invDet * (-all->plane.y * spriteX + all->plane.x * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
-
-		int spriteScreenX = (int)((all->pr->res_x / 2) * (1 + transformX / transformY));
-
-		//calculate height of the sprite on screen
-		int spriteHeight = fabs((int)(all->pr->res_y / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
-		//calculate lowest and highest pixel to fill in current stripe
-		int drawStartY = -spriteHeight / 2 + all->pr->res_y / 2;
-		if (drawStartY < 0)
-			drawStartY = 0;
-		int drawEndY = spriteHeight / 2 + all->pr->res_y / 2;
-		if (drawEndY >= all->pr->res_y)
-			drawEndY = all->pr->res_y - 1;
-
-		//calculate width of the sprite
-		int spriteWidth = abs( (int) (all->pr->res_y / (transformY)));
-		int drawStartX = -spriteWidth / 2 + spriteScreenX;
-		if (drawStartX < 0)
-			drawStartX = 0;
-		int drawEndX = spriteWidth / 2 + spriteScreenX;
-		if (drawEndX >= all->pr->res_x)
-			drawEndX = all->pr->res_x - 1;
-		tex_col->wall = &stex;
-		//loop through every vertical stripe of the sprite on screen
-		for(int stripe = drawStartX; stripe < drawEndX; stripe++)
-		{
-			int texX = (int)(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * texWidth / spriteWidth) / 256;
-			//the conditions in the if are:
-			//1) it's in front of camera plane so you don't see things behind you
-			//2) it's on the screen (left)
-			//3) it's on the screen (right)
-			//4) ZBuffer, with perpendicular distance
-			if (transformY > 0 && stripe > 0 && stripe < all->pr->res_x && transformY < ZBuffer[stripe])
-			{
-				for (int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
-				{
-					int d = (y) * 256 - all->pr->res_y * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
-					int texY = ((d * texHeight) / spriteHeight) / 256;
-					color.walls = get_tex_color(tex_col->wall, texX, texY);
-					if ((color.walls & 0x00FFFFFF) != 0)
-						fast_mlx_pixel_put(all->win, stripe, y, color.walls); //paint pixel if it isn't black, black is the invisible color
-				}
-			}
-		}
-	}
 }
 
 static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_col)
@@ -246,9 +168,8 @@ static void	ray_casting(t_all *all, t_color color)
 	double			cameraX;
 	int				side;
 	t_tex_col		tex_col;
-	double			*ZBuffer;
+	double			ZBuffer[all->pr->res_x];
 
-	ZBuffer = malloc(sizeof(double) * all->pr->res_x);
 	for(int x = 0; x < all->pr->res_x; x++)
 	{
 		cameraX = 2 * x / (double)(all->pr->res_x - 1) - 1;
@@ -261,7 +182,85 @@ static void	ray_casting(t_all *all, t_color color)
 		check_direction(&rc, all, &tex_col);
 		find_dist(&side, &rc, all, &tex_col);
 		draw_vertical_line(all, &rc, x, color, side, &tex_col, ZBuffer);
-//		free(ZBuffer);
+	}
+	//SPRITE CASTING
+	//sort sprites from far to close
+	static int ss = 0;
+	if (ss)
+		return;
+	t_sprite	sprite[2];
+	sprite[0].y = 5;
+	sprite[0].x = 2;
+	sprite[1].y = 8;
+	sprite[1].x = 4;
+	//SPRITE CASTING
+	//sort sprites from far to close
+	for(int i = 0; i < numSprites; i++)
+	{
+		spriteOrder[i] = i;
+		spriteDistance[i] = ((all->plr->x - sprite[i].x) * (all->plr->x - sprite[i].x) + (all->plr->y - sprite[i].y) * (all->plr->y - sprite[i].y)); //sqrt not taken, unneeded
+	}
+//	sortSprites(spriteOrder, spriteDistance, numSprites);
+
+	//after sorting the sprites, do the projection and draw them
+	for(int i = 0; i < numSprites; i++)
+	{
+		//translate sprite position to relative to camera
+		double spriteX = sprite[spriteOrder[i]].x - all->plr->y;
+		double spriteY = sprite[spriteOrder[i]].y - all->plr->x;
+
+		//transform sprite with the inverse camera matrix
+		// [ planeX   dirX ] -1                                       [ dirY      -dirX ]
+		// [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
+		// [ planeY   dirY ]                                          [ -planeY  planeX ]
+
+		double invDet = 1.0 / (all->plane.x * all->plr->dir.y - all->plr->dir.x * all->plane.y); //required for correct matrix multiplication
+
+		double transformX = invDet * (all->plr->dir.y * spriteX - all->plr->dir.x * spriteY);
+		double transformY = invDet * (-all->plane.y * spriteX + all->plane.x * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
+
+		int spriteScreenX = (int)((all->pr->res_x / 2) * (1 + transformX / transformY));
+
+		//calculate height of the sprite on screen
+		int spriteHeight = fabs((int)(all->pr->res_y / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
+		//calculate lowest and highest pixel to fill in current stripe
+		int drawStartY = -spriteHeight / 2 + all->pr->res_y / 2;
+		if (drawStartY < 0)
+			drawStartY = 0;
+		int drawEndY = spriteHeight / 2 + all->pr->res_y / 2;
+		if (drawEndY >= all->pr->res_y)
+			drawEndY = all->pr->res_y - 1;
+
+		//calculate width of the sprite
+		int spriteWidth = abs( (int) (all->pr->res_y / (transformY)));
+		int drawStartX = -spriteWidth / 2 + spriteScreenX;
+		if (drawStartX < 0)
+			drawStartX = 0;
+		int drawEndX = spriteWidth / 2 + spriteScreenX;
+		if (drawEndX >= all->pr->res_x)
+			drawEndX = all->pr->res_x - 1;
+		tex_col.wall = &stex;
+		//loop through every vertical stripe of the sprite on screen
+		for(int stripe = drawStartX; stripe < drawEndX; stripe++)
+		{
+			int texX = (int)(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * texWidth / spriteWidth) / 256;
+			//the conditions in the if are:
+			//1) it's in front of camera plane so you don't see things behind you
+			//2) it's on the screen (left)
+			//3) it's on the screen (right)
+			//4) ZBuffer, with perpendicular distance
+			if (transformY > 0 && stripe > 0 && stripe < all->pr->res_x && transformY < ZBuffer[stripe])
+			{
+				for (int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
+				{
+					int d = (y) * 256 - all->pr->res_y * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
+					int texY = ((d * texHeight) / spriteHeight) / 256;
+					color.walls = get_tex_color(tex_col.wall, texX, texY);
+					if ((color.walls & 0x00FFFFFF) != 0)
+						fast_mlx_pixel_put(all->win, stripe, y, color.walls); //paint pixel if it isn't black, black is the invisible color
+				}
+			}
+		}
 	}
 }
 

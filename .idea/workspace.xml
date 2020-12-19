@@ -13,17 +13,9 @@
   <component name="ChangeListManager">
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cubs/cube_map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cubs/cube_map.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_image.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_parser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/cub_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser/cub_parser.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +85,7 @@
       <workItem from="1608279673148" duration="11669000" />
       <workItem from="1608297671658" duration="7438000" />
       <workItem from="1608363165139" duration="9857000" />
-      <workItem from="1608378728453" duration="9297000" />
+      <workItem from="1608378728453" duration="10337000" />
     </task>
     <task id="LOCAL-00001" summary="Added side movement">
       <created>1608365719602</created>
@@ -147,22 +139,22 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="1123" y="381" key="EnvironmentVariablesDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608387297512" />
-    <state width="2508" height="294" key="GridCell.Tab.0.bottom" timestamp="1608389924878">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608391599682">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="294" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608389924878" />
-    <state width="2508" height="294" key="GridCell.Tab.0.center" timestamp="1608389924878">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608391599682" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608391599682">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="294" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608389924878" />
-    <state width="2508" height="294" key="GridCell.Tab.0.left" timestamp="1608389924878">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608391599682" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608391599682">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="294" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608389924878" />
-    <state width="2508" height="294" key="GridCell.Tab.0.right" timestamp="1608389924878">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608391599682" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608391599682">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="294" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608389924878" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608391599682" />
     <state width="2508" height="369" key="GridCell.Tab.1.bottom" timestamp="1608387514211">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -211,6 +203,16 @@
           <url>file://$PROJECT_DIR$/parser/settings_parser.c</url>
           <line>32</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>395</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>397</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
