@@ -256,13 +256,13 @@ static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *p
 	all->plane.x = 0;
 	all->plane.y = 0.66;
 	if (all->pr->player_dir == 'W')
-		rotation(0, all, 1.57);
+		rotation(0, all, -M_PI / 2);
 	else if (all->pr->player_dir == 'N')
 		all->plr->dir.x = -1;
 	else if (all->pr->player_dir == 'E')
-		rotation(2, all, 1.57);
+		rotation(2, all, M_PI / 2);
 	else if (all->pr->player_dir == 'S')
-		rotation(0, all, 3.14);
+		rotation(0, all, M_PI);
 	all->txtrs = malloc(sizeof(t_textures));
 	all->txtrs->n_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->nw_prms.x, &all->txtrs->nw_prms.y);
 	all->txtrs->s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->so_wall, &all->txtrs->sw_prms.x, &all->txtrs->sw_prms.y);

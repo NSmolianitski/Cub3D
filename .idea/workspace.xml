@@ -13,7 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" afterDir="false" />
@@ -87,7 +86,7 @@
       <workItem from="1608276464675" duration="2959000" />
       <workItem from="1608279673148" duration="11669000" />
       <workItem from="1608297671658" duration="7438000" />
-      <workItem from="1608363165139" duration="3201000" />
+      <workItem from="1608363165139" duration="3834000" />
     </task>
     <task id="LOCAL-00001" summary="Added side movement">
       <created>1608365719602</created>
@@ -137,22 +136,22 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state width="517" height="582" key="DebuggerActiveHint/0.23.2560.1337@0.23.2560.1337" timestamp="1608283272378" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608366218250">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608368292549">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608366218250" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608366218249">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608368292549" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608368292548">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608366218249" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608366218249">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608368292548" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608368292548">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608366218249" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608366218250">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608368292548" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608368292549">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608366218250" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608368292549" />
     <state x="679" y="243" key="SettingsEditor" timestamp="1608125562453">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
