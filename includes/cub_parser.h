@@ -28,6 +28,8 @@ typedef struct	s_parser
 	char 		player_dir;
 	t_point		player_pos;
 	char 		**map;
+//	int			objs_num;
+//	t_point		*objs;
 }				t_parser;
 
 t_parser		*cub_parser(char **argv);

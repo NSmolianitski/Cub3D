@@ -35,7 +35,6 @@ typedef struct	s_player
 	double		x;
 	double		y;
 	t_dpoint	dir;
-	double		pov;
 }				t_player;
 
 typedef struct s_color
@@ -44,6 +43,12 @@ typedef struct s_color
 	int 		floor;
 	int			walls;
 }				t_color;
+
+typedef struct	s_sprite
+{
+	double		x;
+	double		y;
+}				t_sprite;
 
 typedef struct	s_textures
 {
@@ -55,6 +60,8 @@ typedef struct	s_textures
 	t_point		ww_prms;
 	void 		*e_wall;
 	t_point		ew_prms;
+	void 		*sprite;
+	t_point		sprt_prms;
 }				t_textures;
 
 typedef struct	s_tex_col
@@ -74,6 +81,11 @@ typedef struct	s_all
 	t_win		*win;
 	t_parser	*pr;
 	t_textures	*txtrs;
+//	t_win		*nw;
+//	t_win		*sw;
+//	t_win		*ww;
+//	t_win		*ew;
+//	t_win		*st;
 }				t_all;
 
 void            fast_mlx_pixel_put(t_win *win, int x, int y, int color);

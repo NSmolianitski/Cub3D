@@ -7,16 +7,39 @@
 
 #define texWidth 64
 #define texHeight 64
+#define numSprites 2
+
 t_win	nwall;
 t_win	swall;
 t_win	wwall;
 t_win	ewall;
+t_win	stex;
+
+//arrays used to sort the sprites
+int spriteOrder[numSprites];
+double spriteDistance[numSprites];
+//function used to sort the sprites
+//void sortSprites(int* order, double* dist, int amount)
+//{
+//	std::vector<std::pair<double, int>> sprites(amount);
+//	for(int i = 0; i < amount; i++) {
+//		sprites[i].first = dist[i];
+//		sprites[i].second = order[i];
+//	}
+//	std::sort(sprites.begin(), sprites.end());
+//	// restore in reverse order to go from farthest to nearest
+//	for(int i = 0; i < amount; i++) {
+//		dist[i] = sprites[amount - i - 1].first;
+//		order[i] = sprites[amount - i - 1].second;
+//	}
+//}
+//}
+
 static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color, t_tex_col *tex_col)
 {
 	int		y;
 
 	y = 0;
-//	tex_col->wall = &nwall;
 	while (y < draw_start)
 	{
 		fast_mlx_pixel_put(all->win, x, y, color.ceiling);
@@ -26,13 +49,9 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	{
 		tex_col->tex_y = (int)tex_col->tex_pos & (texHeight - 1);
 		tex_col->tex_pos += tex_col->tex_step;
+		color.walls = get_tex_color(tex_col->wall, tex_col->tex_x, tex_col->tex_y);
 		if (tex_col->wall_side == 1)
-		{
-			color.walls = get_tex_color(tex_col->wall, tex_col->tex_x, tex_col->tex_y);
 			color.walls = (color.walls >> 1) & 8355711;
-		}
-		else
-			color.walls = get_tex_color(tex_col->wall, tex_col->tex_x, tex_col->tex_y);
 		fast_mlx_pixel_put(all->win, x, draw_start, color.walls);
 		++draw_start;
 	}
@@ -44,7 +63,7 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 }
 
-static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side, t_tex_col *tex_col)
+static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side, t_tex_col *tex_col, double *ZBuffer)
 {
 	double		wall_dist;
 	int			draw_start;
@@ -78,12 +97,92 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	// Starting texture coordinate
 	tex_col->tex_pos = (draw_start - all->pr->res_y / 2 + lineHeight / 2) * tex_col->tex_step;
 	draw_vert(x, draw_start, draw_end, all, color, tex_col);
+
+	ZBuffer[x] = wall_dist;
+	//SPRITE CASTING
+	//sort sprites from far to close
+	static int ss = 0;
+	if (ss)
+		return;
+	t_sprite	sprite[2];
+	sprite[0].y = 5;
+	sprite[0].x = 2;
+	sprite[1].y = 8;
+	sprite[1].x = 4;
+	//SPRITE CASTING
+	//sort sprites from far to close
+	for(int i = 0; i < numSprites; i++)
+	{
+		spriteOrder[i] = i;
+		spriteDistance[i] = ((all->plr->x - sprite[i].x) * (all->plr->x - sprite[i].x) + (all->plr->y - sprite[i].y) * (all->plr->y - sprite[i].y)); //sqrt not taken, unneeded
+	}
+//	sortSprites(spriteOrder, spriteDistance, numSprites);
+
+	//after sorting the sprites, do the projection and draw them
+	for(int i = 0; i < numSprites; i++)
+	{
+		//translate sprite position to relative to camera
+		double spriteX = sprite[spriteOrder[i]].x - all->plr->y;
+		double spriteY = sprite[spriteOrder[i]].y - all->plr->x;
+
+		//transform sprite with the inverse camera matrix
+		// [ planeX   dirX ] -1                                       [ dirY      -dirX ]
+		// [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
+		// [ planeY   dirY ]                                          [ -planeY  planeX ]
+
+		double invDet = 1.0 / (all->plane.x * all->plr->dir.y - all->plr->dir.x * all->plane.y); //required for correct matrix multiplication
+
+		double transformX = invDet * (all->plr->dir.y * spriteX - all->plr->dir.x * spriteY);
+		double transformY = invDet * (-all->plane.y * spriteX + all->plane.x * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
+
+		int spriteScreenX = (int)((all->pr->res_x / 2) * (1 + transformX / transformY));
+
+		//calculate height of the sprite on screen
+		int spriteHeight = fabs((int)(all->pr->res_y / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
+		//calculate lowest and highest pixel to fill in current stripe
+		int drawStartY = -spriteHeight / 2 + all->pr->res_y / 2;
+		if (drawStartY < 0)
+			drawStartY = 0;
+		int drawEndY = spriteHeight / 2 + all->pr->res_y / 2;
+		if (drawEndY >= all->pr->res_y)
+			drawEndY = all->pr->res_y - 1;
+
+		//calculate width of the sprite
+		int spriteWidth = abs( (int) (all->pr->res_y / (transformY)));
+		int drawStartX = -spriteWidth / 2 + spriteScreenX;
+		if (drawStartX < 0)
+			drawStartX = 0;
+		int drawEndX = spriteWidth / 2 + spriteScreenX;
+		if (drawEndX >= all->pr->res_x)
+			drawEndX = all->pr->res_x - 1;
+		tex_col->wall = &stex;
+		//loop through every vertical stripe of the sprite on screen
+		for(int stripe = drawStartX; stripe < drawEndX; stripe++)
+		{
+			int texX = (int)(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * texWidth / spriteWidth) / 256;
+			//the conditions in the if are:
+			//1) it's in front of camera plane so you don't see things behind you
+			//2) it's on the screen (left)
+			//3) it's on the screen (right)
+			//4) ZBuffer, with perpendicular distance
+			if (transformY > 0 && stripe > 0 && stripe < all->pr->res_x && transformY < ZBuffer[stripe])
+			{
+				for (int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
+				{
+					int d = (y) * 256 - all->pr->res_y * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
+					int texY = ((d * texHeight) / spriteHeight) / 256;
+					color.walls = get_tex_color(tex_col->wall, texX, texY);
+					if ((color.walls & 0x00FFFFFF) != 0)
+						fast_mlx_pixel_put(all->win, stripe, y, color.walls); //paint pixel if it isn't black, black is the invisible color
+				}
+			}
+		}
+	}
 }
 
 static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_col)
 {
 	int	hit;
-	double angle;
 
 	hit = 0;
 	*side = 0;
@@ -114,10 +213,6 @@ static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_c
 			else if (*side == 1 && rc->step.y == -1)
 				tex_col->wall = &wwall;
 		}
-//		else if (ft_strchr("2", all->pr->map[rc->map.x][rc->map.y]))
-//		{
-//			hit = 1;
-//		}
 	}
 }
 
@@ -151,7 +246,9 @@ static void	ray_casting(t_all *all, t_color color)
 	double			cameraX;
 	int				side;
 	t_tex_col		tex_col;
+	double			*ZBuffer;
 
+	ZBuffer = malloc(sizeof(double) * all->pr->res_x);
 	for(int x = 0; x < all->pr->res_x; x++)
 	{
 		cameraX = 2 * x / (double)(all->pr->res_x - 1) - 1;
@@ -163,7 +260,8 @@ static void	ray_casting(t_all *all, t_color color)
 		rc.delta_dist.y = sqrt(1 + (rc.ray_dir.x * rc.ray_dir.x) / (rc.ray_dir.y * rc.ray_dir.y));
 		check_direction(&rc, all, &tex_col);
 		find_dist(&side, &rc, all, &tex_col);
-		draw_vertical_line(all, &rc, x, color, side, &tex_col);
+		draw_vertical_line(all, &rc, x, color, side, &tex_col, ZBuffer);
+//		free(ZBuffer);
 	}
 }
 
@@ -233,8 +331,8 @@ static void	draw_game(t_all *all)
 	color.walls = 0x0104d3e;
 	draw_screen(all, 0x0889bba);
 	ray_casting(all, color);
-	draw_map(all);
-	draw_player(all->plr, *all->win, 0x0636391);
+//	draw_map(all);
+//	draw_player(all->plr, *all->win, 0x0636391);
 	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, 0, 0);
 }
 
@@ -269,8 +367,10 @@ static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *p
 	all->txtrs->s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->s_wall, &all->txtrs->sw_prms.x, &all->txtrs->sw_prms.y);
 	all->txtrs->w_wall = mlx_xpm_file_to_image(all->win->mlx, parser->w_wall, &all->txtrs->ww_prms.x, &all->txtrs->ww_prms.y);
 	all->txtrs->e_wall = mlx_xpm_file_to_image(all->win->mlx, parser->e_wall, &all->txtrs->ew_prms.x, &all->txtrs->ew_prms.y);
+	all->txtrs->sprite = mlx_xpm_file_to_image(all->win->mlx, parser->sprite, &all->txtrs->sprt_prms.x, &all->txtrs->sprt_prms.y);
 	all->win->mlx = mlx_init();
 }
+
 
 void		game(t_parser *parser)
 {
@@ -283,7 +383,7 @@ void		game(t_parser *parser)
 	win.img = mlx_new_image(all.win->mlx, parser->res_x, parser->res_y);
 	win.addr = mlx_get_data_addr(win.img, &win.bpp, &win.ll, &win.end);
 	win.win = mlx_new_window(all.win->mlx, parser->res_x, parser->res_y, "Cub3D");
-	//Game draw
+		//Game draw
 	nwall.img = all.txtrs->n_wall;
 	nwall.addr = mlx_get_data_addr(nwall.img, &nwall.bpp, &nwall.ll, &nwall.end);
 	swall.img = all.txtrs->s_wall;
@@ -292,6 +392,8 @@ void		game(t_parser *parser)
 	wwall.addr = mlx_get_data_addr(wwall.img, &wwall.bpp, &wwall.ll, &wwall.end);
 	ewall.img = all.txtrs->e_wall;
 	ewall.addr = mlx_get_data_addr(ewall.img, &ewall.bpp, &ewall.ll, &ewall.end);
+	stex.img = all.txtrs->sprite;
+	stex.addr = mlx_get_data_addr(stex.img, &stex.bpp, &stex.ll, &stex.end);
 	render_next_frame(&all);
 	//Game control
 	cub_control(&all);
