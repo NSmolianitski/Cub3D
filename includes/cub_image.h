@@ -35,6 +35,7 @@ typedef struct	s_player
 	double		x;
 	double		y;
 	t_dpoint	dir;
+	double		pov;
 }				t_player;
 
 typedef struct s_color

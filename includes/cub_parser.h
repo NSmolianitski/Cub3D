@@ -1,8 +1,6 @@
 #ifndef CUB3D_CUB_PARSER_H
 #define CUB3D_CUB_PARSER_H
 
-//#include "cub_image.h"
-
 typedef struct	s_map_size
 {
 	int			x;

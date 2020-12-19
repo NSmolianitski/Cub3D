@@ -16,6 +16,7 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	int		y;
 
 	y = 0;
+//	tex_col->wall = &nwall;
 	while (y < draw_start)
 	{
 		fast_mlx_pixel_put(all->win, x, y, color.ceiling);
@@ -62,8 +63,10 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	draw_end = lineHeight / 2 + all->pr->res_y / 2;
 	if (draw_end >= all->pr->res_y)
 		draw_end = all->pr->res_y - 1;
-	if (side == 0) wall_x = all->plr->x + wall_dist * rc->ray_dir.y;
-	else           wall_x = all->plr->y + wall_dist * rc->ray_dir.x;
+	if (side == 0)
+		wall_x = all->plr->x + wall_dist * rc->ray_dir.y;
+	else
+		wall_x = all->plr->y + wall_dist * rc->ray_dir.x;
 	wall_x -= floor(wall_x);
 	tex_col->tex_x = (int)(wall_x * (double)(texWidth));
 	if (side == 0 && rc->ray_dir.x > 0)
@@ -80,6 +83,7 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_col)
 {
 	int	hit;
+	double angle;
 
 	hit = 0;
 	*side = 0;
@@ -101,14 +105,19 @@ static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_c
 		if (ft_strchr("12", all->pr->map[rc->map.x][rc->map.y]))
 		{
 			hit = 1;
-			if (*side == 0 && all->plr->x > rc->map.x)
+			angle = atan((rc->ray_dir.y - all->plr->y) / (rc->ray_dir.x - all->plr->x));
+			if (angle < 0)
+				angle *= -1;
+//			else if (angle > 2 * M_PI)
+//				angle -= M_PI;
+			if (*side == 0 && angle < M_PI)
 				tex_col->wall = &nwall;
-			else if (*side == 0 && all->plr->x < rc->map.x)
+			else if (*side == 0 && angle > M_PI)
 				tex_col->wall = &swall;
-			else if (*side == 1 && all->plr->y > rc->map.y)
-				tex_col->wall = &wwall;
-			else
+			else if (*side == 1 && angle < M_PI / 2 || angle > 3 * M_PI / 2)
 				tex_col->wall = &ewall;
+			else if (*side == 1 && angle > M_PI / 2 && angle < 3 * M_PI / 2)
+				tex_col->wall = &wwall;
 		}
 	}
 }

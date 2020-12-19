@@ -10,7 +10,7 @@ void	rotation(int keycode, t_all *all, double rs)
 	double	old_x;
 	double	old_plane_x;
 
-	if (keycode == 0)
+	if (keycode == 123)
 	{
 		old_x = all->plr->dir.x;
 		all->plr->dir.x = all->plr->dir.x * cos(rs) - all->plr->dir.y * sin(rs);
@@ -27,6 +27,32 @@ void	rotation(int keycode, t_all *all, double rs)
 		old_plane_x = all->plane.x;
 		all->plane.x = all->plane.x * cos(-rs) - all->plane.y * sin(-rs);
 		all->plane.y = old_plane_x * sin(-rs) + all->plane.y * cos(-rs);
+	}
+}
+
+void	move_side(int keycode, t_all *all, double rs, double ms)
+{
+	if (keycode == 2)
+	{
+		for (int x = 0; x < 15.00000000001; ++x)
+			rotation(124, all, rs);
+		if(all->pr->map[(int)(all->plr->y + all->plr->dir.x * ms)][(int)(all->plr->x)] != '1')
+			all->plr->y += all->plr->dir.x * ms;
+		if(all->pr->map[(int)(all->plr->y)][(int)(all->plr->x + all->plr->dir.y * ms)] != '1')
+			all->plr->x += all->plr->dir.y * ms;
+		for (int x = 0; x < 15.00000000001; ++x)
+			rotation(123, all, rs);
+	}
+	else
+	{
+		for (int x = 0; x < 15.00000000001; ++x)
+			rotation(123, all, rs);
+		if(all->pr->map[(int)(all->plr->y + all->plr->dir.x * ms)][(int)(all->plr->x)] != '1')
+			all->plr->y += all->plr->dir.x * ms;
+		if(all->pr->map[(int)(all->plr->y)][(int)(all->plr->x + all->plr->dir.y * ms)] != '1')
+			all->plr->x += all->plr->dir.y * ms;
+		for (int x = 0; x < 15.00000000001; ++x)
+			rotation(124, all, rs);
 	}
 }
 
@@ -49,10 +75,14 @@ void	move(int keycode, t_all *all)
 		if(all->pr->map[(int)(all->plr->y)][(int)(all->plr->x - all->plr->dir.y * ms)] != '1')
 			all->plr->x -= all->plr->dir.y * ms;
 	}
-	else if (keycode == 0 || keycode == 123) //Cделать движение боком на 'A' и 'D'!!!!!!!!!!!!!!!!!
-		rotation(0, all, rs);
-	else if (keycode == 2 || keycode == 124)
-		rotation(2, all, rs);
+	else if (keycode == 123)
+		rotation(123, all, rs);
+	else if (keycode == 124)
+		rotation(124, all, rs);
+	else if (keycode == 0)
+		move_side(0, all, rs, ms);
+	else if (keycode == 2)
+		move_side(2, all, rs, ms);
 	render_next_frame(all);
 }
 
