@@ -102,23 +102,22 @@ static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_c
 			*side = 1;
 
 		}
-		if (ft_strchr("12", all->pr->map[rc->map.x][rc->map.y]))
+		if (ft_strchr("1", all->pr->map[rc->map.x][rc->map.y]))
 		{
 			hit = 1;
-			angle = atan((rc->ray_dir.y - all->plr->y) / (rc->ray_dir.x - all->plr->x));
-			if (angle < 0)
-				angle *= -1;
-//			else if (angle > 2 * M_PI)
-//				angle -= M_PI;
-			if (*side == 0 && angle < M_PI)
+			if (*side == 0 && rc->step.x == -1)
 				tex_col->wall = &nwall;
-			else if (*side == 0 && angle > M_PI)
+			else if (*side == 0 && rc->step.x == 1)
 				tex_col->wall = &swall;
-			else if (*side == 1 && angle < M_PI / 2 || angle > 3 * M_PI / 2)
+			else if (*side == 1 && rc->step.y == 1)
 				tex_col->wall = &ewall;
-			else if (*side == 1 && angle > M_PI / 2 && angle < 3 * M_PI / 2)
+			else if (*side == 1 && rc->step.y == -1)
 				tex_col->wall = &wwall;
 		}
+//		else if (ft_strchr("2", all->pr->map[rc->map.x][rc->map.y]))
+//		{
+//			hit = 1;
+//		}
 	}
 }
 
