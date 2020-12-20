@@ -63,7 +63,7 @@ void	count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_
 		sprite.d_end.x = sprite.width / 2 + sprite.screen_x;
 		if (sprite.d_end.x >= all->pr->res_x)
 			sprite.d_end.x = all->pr->res_x - 1;
-		tex_col.wall = &stex;
+		tex_col.wall = &all->st;
 		draw_sprites(all, sprite, tex_col, color, z_buff);
 		++i;
 	}

@@ -12,27 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/draw_sprites.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/sort_sprites.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/sort_sprites.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/sort_sprites.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cubs/cube_map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cubs/cube_map.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/draw_sprites.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/draw_sprites.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/game.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_image.h" afterDir="false" />
     </list>
@@ -118,7 +104,7 @@
       <workItem from="1608297671658" duration="7438000" />
       <workItem from="1608363165139" duration="9857000" />
       <workItem from="1608378728453" duration="12181000" />
-      <workItem from="1608448559353" duration="9494000" />
+      <workItem from="1608448559353" duration="10716000" />
     </task>
     <task id="LOCAL-00001" summary="Added side movement">
       <created>1608365719602</created>
@@ -172,22 +158,22 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="1123" y="381" key="EnvironmentVariablesDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608387297512" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608462070596">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608463464327">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608462070596" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608462070596">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608463464327" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608463464326">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608462070596" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608462070595">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608463464326" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608463464326">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608462070595" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608462070596">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608463464326" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608463464327">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608462070596" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608463464327" />
     <state width="2508" height="369" key="GridCell.Tab.1.bottom" timestamp="1608387514211">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -236,11 +222,6 @@
           <url>file://$PROJECT_DIR$/parser/settings_parser.c</url>
           <line>32</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/images/game.c</url>
-          <line>283</line>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

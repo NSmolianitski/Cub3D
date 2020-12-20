@@ -94,13 +94,13 @@ static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_c
 		{
 			hit = 1;
 			if (*side == 0 && rc->step.x == -1)
-				tex_col->wall = &nwall;
+				tex_col->wall = &all->nw;
 			else if (*side == 0 && rc->step.x == 1)
-				tex_col->wall = &swall;
+				tex_col->wall = &all->sw;
 			else if (*side == 1 && rc->step.y == 1)
-				tex_col->wall = &ewall;
+				tex_col->wall = &all->ew;
 			else if (*side == 1 && rc->step.y == -1)
-				tex_col->wall = &wwall;
+				tex_col->wall = &all->ww;
 		}
 	}
 }
@@ -271,16 +271,16 @@ void		game(t_parser *parser)
 	win.addr = mlx_get_data_addr(win.img, &win.bpp, &win.ll, &win.end);
 	win.win = mlx_new_window(all.win->mlx, parser->res_x, parser->res_y, "Cub3D");
 		//Game draw
-	nwall.img = all.txtrs->n_wall;
-	nwall.addr = mlx_get_data_addr(nwall.img, &nwall.bpp, &nwall.ll, &nwall.end);
-	swall.img = all.txtrs->s_wall;
-	swall.addr = mlx_get_data_addr(swall.img, &swall.bpp, &swall.ll, &swall.end);
-	wwall.img = all.txtrs->w_wall;
-	wwall.addr = mlx_get_data_addr(wwall.img, &wwall.bpp, &wwall.ll, &wwall.end);
-	ewall.img = all.txtrs->e_wall;
-	ewall.addr = mlx_get_data_addr(ewall.img, &ewall.bpp, &ewall.ll, &ewall.end);
-	stex.img = all.txtrs->sprite;
-	stex.addr = mlx_get_data_addr(stex.img, &stex.bpp, &stex.ll, &stex.end);
+	all.nw.img = all.txtrs->n_wall;
+	all.nw.addr = mlx_get_data_addr(all.nw.img, &all.nw.bpp, &all.nw.ll, &all.nw.end);
+	all.sw.img = all.txtrs->s_wall;
+	all.sw.addr = mlx_get_data_addr(all.sw.img, &all.sw.bpp, &all.sw.ll, &all.sw.end);
+	all.ww.img = all.txtrs->w_wall;
+	all.ww.addr = mlx_get_data_addr(all.ww.img, &all.ww.bpp, &all.ww.ll, &all.ww.end);
+	all.ew.img = all.txtrs->e_wall;
+	all.ew.addr = mlx_get_data_addr(all.ew.img, &all.ew.bpp, &all.ew.ll, &all.ew.end);
+	all.st.img = all.txtrs->sprite;
+	all.st.addr = mlx_get_data_addr(all.st.img, &all.st.bpp, &all.st.ll, &all.st.end);
 	render_next_frame(&all);
 	//Game control
 	cub_control(&all);

@@ -17,12 +17,6 @@ typedef struct	s_win
 	int 		end;
 }				t_win;
 
-t_win	nwall;
-t_win	swall;
-t_win	wwall;
-t_win	ewall;
-t_win	stex;
-
 typedef struct	s_dpoint
 {
 	double		x;
@@ -102,11 +96,11 @@ typedef struct	s_all
 	t_win		*win;
 	t_parser	*pr;
 	t_textures	*txtrs;
-//	t_win		*nw;
-//	t_win		*sw;
-//	t_win		*ww;
-//	t_win		*ew;
-//	t_win		*st;
+	t_win		nw;
+	t_win		sw;
+	t_win		ww;
+	t_win		ew;
+	t_win		st;
 }				t_all;
 
 void            fast_mlx_pixel_put(t_win *win, int x, int y, int color);
