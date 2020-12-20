@@ -44,11 +44,11 @@ typedef struct s_color
 	int			walls;
 }				t_color;
 
-typedef struct	s_sprite
+typedef struct	s_sprites
 {
-	double		x;
-	double		y;
-}				t_sprite;
+	double		dist;
+	int			order;
+}				t_sprites;
 
 typedef struct	s_textures
 {

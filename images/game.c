@@ -16,21 +16,55 @@ t_win	stex;
 
 //arrays used to sort the sprites
 //function used to sort the sprites
-//void sortSprites(int* order, double* dist, int amount)
-//{
-//	std::vector<std::pair<double, int>> sprites(amount);
-//	for(int i = 0; i < amount; i++) {
-//		sprites[i].first = dist[i];
-//		sprites[i].second = order[i];
-//	}
-//	std::sort(sprites.begin(), sprites.end());
-//	// restore in reverse order to go from farthest to nearest
-//	for(int i = 0; i < amount; i++) {
-//		dist[i] = sprites[amount - i - 1].first;
-//		order[i] = sprites[amount - i - 1].second;
-//	}
-//}
-//}
+void	sort(t_sprites sprites[], int sprites_num)
+{
+	t_sprites	tmp;
+	int 		i;
+	int 		j;
+	int 		f;
+
+	j = 1;
+	while (j < sprites_num)
+	{
+		i = 0;
+		f = 0;
+		while (i < sprites_num - j)
+		{
+			if (sprites[i].dist > sprites[i + 1].dist)
+			{
+				tmp = sprites[i + 1];
+				sprites[i + 1] = sprites[i];
+				sprites[i] = tmp;
+				f = 1;
+			}
+			++i;
+		}
+		if (!f)
+			break ;
+		++j;
+	}
+}
+void sort_sprites(double *dist, int order[], int sprites_num)
+{
+	int	i;
+	t_sprites sprites[sprites_num];
+
+	i = 0;
+	while (i < sprites_num)
+	{
+		sprites[i].dist = dist[i];
+		sprites[i].order = order[i];
+		++i;
+	}
+	sort(sprites, sprites_num);
+	i = 0;
+	while (i < sprites_num)
+	{
+		dist[i] = sprites[sprites_num - i - 1].dist;
+		order[i] = sprites[sprites_num - i - 1].order;
+		++i;
+	}
+}
 
 static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color, t_tex_col *tex_col)
 {
@@ -165,8 +199,9 @@ static void	ray_casting(t_all *all, t_color color)
 	double			cameraX;
 	t_tex_col		tex_col;
 	double			ZBuffer[all->pr->res_x];
-	int spriteOrder[all->pr->objs_num];
-	double spriteDistance[all->pr->objs_num];
+	int				order[all->pr->objs_num];
+	double			distance[all->pr->objs_num];
+	int				i;
 
 	for(int x = 0; x < all->pr->res_x; x++)
 	{
@@ -183,32 +218,25 @@ static void	ray_casting(t_all *all, t_color color)
 	}
 	//SPRITE CASTING
 	//sort sprites from far to close
-	for(int i = 0; i < all->pr->objs_num; i++)
+	i = 0;
+	while (i < all->pr->objs_num)
 	{
-		spriteOrder[i] = i;
-		spriteDistance[i] = ((all->plr->x - all->pr->objs[i].x) * (all->plr->x - all->pr->objs[i].x) + (all->plr->y - all->pr->objs[i].y) * (all->plr->y - all->pr->objs[i].y)); //sqrt not taken, unneeded
+		order[i] = i;
+		distance[i] = (all->plr->x - all->pr->objs[i].x) * (all->plr->x - all->pr->objs[i].x) + (all->plr->y - all->pr->objs[i].y) * (all->plr->y - all->pr->objs[i].y); //sqrt not taken, unneeded
+		++i;
 	}
-//	sortSprites(spriteOrder, spriteDistance, numSprites);
+	sort_sprites(distance, order, all->pr->objs_num);
 
-	//after sorting the sprites, do the projection and draw them
-	for(int i = 0; i < all->pr->objs_num; i++)
+	i = 0;
+	while (i < all->pr->objs_num)
 	{
 		//translate sprite position to relative to camera
-		double spriteX = all->pr->objs[spriteOrder[i]].x - all->plr->y;
-		double spriteY = all->pr->objs[spriteOrder[i]].y - all->plr->x;
-
-		//transform sprite with the inverse camera matrix
-		// [ planeX   dirX ] -1                                       [ dirY      -dirX ]
-		// [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
-		// [ planeY   dirY ]                                          [ -planeY  planeX ]
-
+		double spriteX = all->pr->objs[order[i]].y - all->plr->y + 0.5;
+		double spriteY = all->pr->objs[order[i]].x - all->plr->x + 0.5;
 		double invDet = 1.0 / (all->plane.x * all->plr->dir.y - all->plr->dir.x * all->plane.y); //required for correct matrix multiplication
-
 		double transformX = invDet * (all->plr->dir.y * spriteX - all->plr->dir.x * spriteY);
 		double transformY = invDet * (-all->plane.y * spriteX + all->plane.x * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
-
 		int spriteScreenX = (int)((all->pr->res_x / 2) * (1 + transformX / transformY));
-
 		//calculate height of the sprite on screen
 		int spriteHeight = fabs((int)(all->pr->res_y / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
 		//calculate lowest and highest pixel to fill in current stripe
@@ -218,7 +246,6 @@ static void	ray_casting(t_all *all, t_color color)
 		int drawEndY = spriteHeight / 2 + all->pr->res_y / 2;
 		if (drawEndY >= all->pr->res_y)
 			drawEndY = all->pr->res_y - 1;
-
 		//calculate width of the sprite
 		int spriteWidth = abs( (int) (all->pr->res_y / (transformY)));
 		int drawStartX = -spriteWidth / 2 + spriteScreenX;
@@ -249,6 +276,7 @@ static void	ray_casting(t_all *all, t_color color)
 				}
 			}
 		}
+		++i;
 	}
 }
 
