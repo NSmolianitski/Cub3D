@@ -1,6 +1,8 @@
 #ifndef CUB3D_CUB_IMAGE_H
 #define CUB3D_CUB_IMAGE_H
 #define SCALE 20
+#define tex_width 64
+#define tex_height 64
 
 #include "cub_parser.h"
 
@@ -14,6 +16,12 @@ typedef struct	s_win
 	int 		ll;
 	int 		end;
 }				t_win;
+
+t_win	nwall;
+t_win	swall;
+t_win	wwall;
+t_win	ewall;
+t_win	stex;
 
 typedef struct	s_dpoint
 {
@@ -64,6 +72,19 @@ typedef struct	s_textures
 	t_point		sprt_prms;
 }				t_textures;
 
+typedef struct	s_draw_sprite
+{
+	double		x;
+	double		y;
+	t_point		d_start;
+	t_point		d_end;
+	t_dpoint	tf;
+	int 		screen_x;
+	int 		height;
+	int 		width;
+	double 		depth;
+}				t_draw_sprite;
+
 typedef struct	s_tex_col
 {
 	t_win		*wall;
@@ -97,5 +118,7 @@ void			draw_line(t_dpoint ray_end, int color, t_all *all, int len);
 void			draw_wall(t_dpoint start, t_dpoint ray_end, int color, t_all *all, int len);
 void			render_next_frame(t_all *all);
 int				get_tex_color(t_win *texture, int x, int y);
+void			sort_sprites(double *dist, int order[], int sprites_num, t_all *all);
+void			count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_color color);
 
 #endif

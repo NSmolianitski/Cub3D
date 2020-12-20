@@ -5,67 +5,6 @@
 #include "cub_image.h"
 #include "cub_control.h"
 
-#define texWidth 64
-#define texHeight 64
-
-t_win	nwall;
-t_win	swall;
-t_win	wwall;
-t_win	ewall;
-t_win	stex;
-
-//arrays used to sort the sprites
-//function used to sort the sprites
-void	sort(t_sprites sprites[], int sprites_num)
-{
-	t_sprites	tmp;
-	int 		i;
-	int 		j;
-	int 		f;
-
-	j = 1;
-	while (j < sprites_num)
-	{
-		i = 0;
-		f = 0;
-		while (i < sprites_num - j)
-		{
-			if (sprites[i].dist > sprites[i + 1].dist)
-			{
-				tmp = sprites[i + 1];
-				sprites[i + 1] = sprites[i];
-				sprites[i] = tmp;
-				f = 1;
-			}
-			++i;
-		}
-		if (!f)
-			break ;
-		++j;
-	}
-}
-void sort_sprites(double *dist, int order[], int sprites_num)
-{
-	int	i;
-	t_sprites sprites[sprites_num];
-
-	i = 0;
-	while (i < sprites_num)
-	{
-		sprites[i].dist = dist[i];
-		sprites[i].order = order[i];
-		++i;
-	}
-	sort(sprites, sprites_num);
-	i = 0;
-	while (i < sprites_num)
-	{
-		dist[i] = sprites[sprites_num - i - 1].dist;
-		order[i] = sprites[sprites_num - i - 1].order;
-		++i;
-	}
-}
-
 static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color color, t_tex_col *tex_col)
 {
 	int		y;
@@ -78,7 +17,7 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 	while (draw_start <= draw_end)
 	{
-		tex_col->tex_y = (int)tex_col->tex_pos & (texHeight - 1);
+		tex_col->tex_y = (int)tex_col->tex_pos & (tex_height - 1);
 		tex_col->tex_pos += tex_col->tex_step;
 		color.walls = get_tex_color(tex_col->wall, tex_col->tex_x, tex_col->tex_y);
 		if (tex_col->wall_side == 1)
@@ -94,7 +33,7 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 }
 
-static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side, t_tex_col *tex_col, double ZBuffer[])
+static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color color, int side, t_tex_col *tex_col, double z_buff[])
 {
 	double		wall_dist;
 	int			draw_start;
@@ -118,19 +57,16 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	else
 		wall_x = all->plr->y + wall_dist * rc->ray_dir.x;
 	wall_x -= floor(wall_x);
-	tex_col->tex_x = (int)(wall_x * (double)(texWidth));
+	tex_col->tex_x = (int)(wall_x * (double)(tex_width));
 	if (side == 0 && rc->ray_dir.x > 0)
-		tex_col->tex_x = texWidth - tex_col->tex_x - 1;
+		tex_col->tex_x = tex_width - tex_col->tex_x - 1;
 	if (side == 1 && rc->ray_dir.y < 0)
-		tex_col->tex_x = texWidth - tex_col->tex_x - 1;
+		tex_col->tex_x = tex_width - tex_col->tex_x - 1;
 	tex_col->wall_side = side;
-	tex_col->tex_step = 1.0 * texHeight / lineHeight;
-	// Starting texture coordinate
+	tex_col->tex_step = 1.0 * tex_height / lineHeight;
 	tex_col->tex_pos = (draw_start - all->pr->res_y / 2 + lineHeight / 2) * tex_col->tex_step;
 	draw_vert(x, draw_start, draw_end, all, color, tex_col);
-
-	ZBuffer[x] = wall_dist;
-
+	z_buff[x] = wall_dist;
 }
 
 static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_col)
@@ -198,10 +134,7 @@ static void	ray_casting(t_all *all, t_color color)
 	t_ray_casting	rc;
 	double			cameraX;
 	t_tex_col		tex_col;
-	double			ZBuffer[all->pr->res_x];
-	int				order[all->pr->objs_num];
-	double			distance[all->pr->objs_num];
-	int				i;
+	double			z_buff[all->pr->res_x];
 
 	for(int x = 0; x < all->pr->res_x; x++)
 	{
@@ -214,70 +147,9 @@ static void	ray_casting(t_all *all, t_color color)
 		rc.delta_dist.y = sqrt(1 + (rc.ray_dir.x * rc.ray_dir.x) / (rc.ray_dir.y * rc.ray_dir.y));
 		check_direction(&rc, all, &tex_col);
 		find_dist(&tex_col.wall_side, &rc, all, &tex_col);
-		draw_vertical_line(all, &rc, x, color, tex_col.wall_side, &tex_col, ZBuffer);
+		draw_vertical_line(all, &rc, x, color, tex_col.wall_side, &tex_col, z_buff);
 	}
-	//SPRITE CASTING
-	//sort sprites from far to close
-	i = 0;
-	while (i < all->pr->objs_num)
-	{
-		order[i] = i;
-		distance[i] = (all->plr->x - all->pr->objs[i].x) * (all->plr->x - all->pr->objs[i].x) + (all->plr->y - all->pr->objs[i].y) * (all->plr->y - all->pr->objs[i].y); //sqrt not taken, unneeded
-		++i;
-	}
-	sort_sprites(distance, order, all->pr->objs_num);
-
-	i = 0;
-	while (i < all->pr->objs_num)
-	{
-		//translate sprite position to relative to camera
-		double spriteX = all->pr->objs[order[i]].y - all->plr->y + 0.5;
-		double spriteY = all->pr->objs[order[i]].x - all->plr->x + 0.5;
-		double invDet = 1.0 / (all->plane.x * all->plr->dir.y - all->plr->dir.x * all->plane.y); //required for correct matrix multiplication
-		double transformX = invDet * (all->plr->dir.y * spriteX - all->plr->dir.x * spriteY);
-		double transformY = invDet * (-all->plane.y * spriteX + all->plane.x * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
-		int spriteScreenX = (int)((all->pr->res_x / 2) * (1 + transformX / transformY));
-		//calculate height of the sprite on screen
-		int spriteHeight = fabs((int)(all->pr->res_y / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
-		//calculate lowest and highest pixel to fill in current stripe
-		int drawStartY = -spriteHeight / 2 + all->pr->res_y / 2;
-		if (drawStartY < 0)
-			drawStartY = 0;
-		int drawEndY = spriteHeight / 2 + all->pr->res_y / 2;
-		if (drawEndY >= all->pr->res_y)
-			drawEndY = all->pr->res_y - 1;
-		//calculate width of the sprite
-		int spriteWidth = abs( (int) (all->pr->res_y / (transformY)));
-		int drawStartX = -spriteWidth / 2 + spriteScreenX;
-		if (drawStartX < 0)
-			drawStartX = 0;
-		int drawEndX = spriteWidth / 2 + spriteScreenX;
-		if (drawEndX >= all->pr->res_x)
-			drawEndX = all->pr->res_x - 1;
-		tex_col.wall = &stex;
-		//loop through every vertical stripe of the sprite on screen
-		for(int stripe = drawStartX; stripe < drawEndX; stripe++)
-		{
-			int texX = (int)(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * texWidth / spriteWidth) / 256;
-			//the conditions in the if are:
-			//1) it's in front of camera plane so you don't see things behind you
-			//2) it's on the screen (left)
-			//3) it's on the screen (right)
-			//4) ZBuffer, with perpendicular distance
-			if (transformY > 0 && stripe > 0 && stripe < all->pr->res_x && transformY < ZBuffer[stripe])
-			{
-				for (int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
-				{
-					int d = (y) * 256 - all->pr->res_y * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
-					int texY = ((d * texHeight) / spriteHeight) / 256;
-					color.walls = get_tex_color(tex_col.wall, texX, texY);
-					if ((color.walls & 0x00FFFFFF) != 0)
-						fast_mlx_pixel_put(all->win, stripe, y, color.walls); //paint pixel if it isn't black, black is the invisible color
-				}
-			}
-		}
-		++i;
-	}
+	count_draw_sprites(all, z_buff, tex_col, color);
 }
 
 void		draw_screen(t_all *all, int color)

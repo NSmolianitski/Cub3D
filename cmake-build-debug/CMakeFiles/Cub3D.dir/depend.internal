@@ -17,6 +17,10 @@ CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o
 CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o
  /Users/pkentaur/CLionProjects/Cub3D/get_next_line/get_next_line_utils.c
  /Users/pkentaur/CLionProjects/Cub3D/includes/get_next_line.h
+CMakeFiles/Cub3D.dir/images/draw_sprites.c.o
+ ../includes/cub_image.h
+ ../includes/cub_parser.h
+ /Users/pkentaur/CLionProjects/Cub3D/images/draw_sprites.c
 CMakeFiles/Cub3D.dir/images/game.c.o
  ../includes/cub_control.h
  ../includes/cub_image.h
@@ -28,6 +32,10 @@ CMakeFiles/Cub3D.dir/images/image_utils.c.o
  ../includes/cub_image.h
  ../includes/cub_parser.h
  /Users/pkentaur/CLionProjects/Cub3D/images/image_utils.c
+CMakeFiles/Cub3D.dir/images/sort_sprites.c.o
+ ../includes/cub_image.h
+ ../includes/cub_parser.h
+ /Users/pkentaur/CLionProjects/Cub3D/images/sort_sprites.c
 CMakeFiles/Cub3D.dir/libft/ft_atoi.c.o
  /Users/pkentaur/CLionProjects/Cub3D/libft/ft_atoi.c
 CMakeFiles/Cub3D.dir/libft/ft_bzero.c.o

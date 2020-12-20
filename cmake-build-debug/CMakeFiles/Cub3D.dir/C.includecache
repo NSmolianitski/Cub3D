@@ -22,6 +22,32 @@ stdlib.h
 
 ../includes/mlx.h
 
+/Users/pkentaur/CLionProjects/Cub3D/control/cub_control.c
+stdlib.h
+-
+unistd.h
+-
+math.h
+-
+cub_control.h
+/Users/pkentaur/CLionProjects/Cub3D/control/cub_control.h
+mlx.h
+/Users/pkentaur/CLionProjects/Cub3D/control/mlx.h
+cub_image.h
+/Users/pkentaur/CLionProjects/Cub3D/control/cub_image.h
+
+/Users/pkentaur/CLionProjects/Cub3D/cub3d.c
+cub_parser.h
+/Users/pkentaur/CLionProjects/Cub3D/cub_parser.h
+cub_image.h
+/Users/pkentaur/CLionProjects/Cub3D/cub_image.h
+
+/Users/pkentaur/CLionProjects/Cub3D/images/draw_sprites.c
+cub_image.h
+/Users/pkentaur/CLionProjects/Cub3D/images/cub_image.h
+math.h
+-
+
 /Users/pkentaur/CLionProjects/Cub3D/images/game.c
 math.h
 -
@@ -35,4 +61,12 @@ cub_image.h
 /Users/pkentaur/CLionProjects/Cub3D/images/cub_image.h
 cub_control.h
 /Users/pkentaur/CLionProjects/Cub3D/images/cub_control.h
+
+/Users/pkentaur/CLionProjects/Cub3D/images/image_utils.c
+cub_image.h
+/Users/pkentaur/CLionProjects/Cub3D/images/cub_image.h
+
+/Users/pkentaur/CLionProjects/Cub3D/images/sort_sprites.c
+cub_image.h
+/Users/pkentaur/CLionProjects/Cub3D/images/cub_image.h
 

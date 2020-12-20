@@ -17,6 +17,10 @@ CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o: ../includes/get_next_line.
 CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o: ../get_next_line/get_next_line_utils.c
 CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o: ../includes/get_next_line.h
 
+CMakeFiles/Cub3D.dir/images/draw_sprites.c.o: ../includes/cub_image.h
+CMakeFiles/Cub3D.dir/images/draw_sprites.c.o: ../includes/cub_parser.h
+CMakeFiles/Cub3D.dir/images/draw_sprites.c.o: ../images/draw_sprites.c
+
 CMakeFiles/Cub3D.dir/images/game.c.o: ../includes/cub_control.h
 CMakeFiles/Cub3D.dir/images/game.c.o: ../includes/cub_image.h
 CMakeFiles/Cub3D.dir/images/game.c.o: ../includes/cub_parser.h
@@ -27,6 +31,10 @@ CMakeFiles/Cub3D.dir/images/game.c.o: ../images/game.c
 CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../includes/cub_image.h
 CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../includes/cub_parser.h
 CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../images/image_utils.c
+
+CMakeFiles/Cub3D.dir/images/sort_sprites.c.o: ../includes/cub_image.h
+CMakeFiles/Cub3D.dir/images/sort_sprites.c.o: ../includes/cub_parser.h
+CMakeFiles/Cub3D.dir/images/sort_sprites.c.o: ../images/sort_sprites.c
 
 CMakeFiles/Cub3D.dir/libft/ft_atoi.c.o: ../libft/ft_atoi.c
 

@@ -251,6 +251,33 @@ get_next_line/get_next_line_utils.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.s
 .PHONY : get_next_line/get_next_line_utils.c.s
 
+images/draw_sprites.o: images/draw_sprites.c.o
+
+.PHONY : images/draw_sprites.o
+
+# target to build an object file
+images/draw_sprites.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/draw_sprites.c.o
+.PHONY : images/draw_sprites.c.o
+
+images/draw_sprites.i: images/draw_sprites.c.i
+
+.PHONY : images/draw_sprites.i
+
+# target to preprocess a source file
+images/draw_sprites.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/draw_sprites.c.i
+.PHONY : images/draw_sprites.c.i
+
+images/draw_sprites.s: images/draw_sprites.c.s
+
+.PHONY : images/draw_sprites.s
+
+# target to generate assembly for a file
+images/draw_sprites.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/draw_sprites.c.s
+.PHONY : images/draw_sprites.c.s
+
 images/game.o: images/game.c.o
 
 .PHONY : images/game.o
@@ -304,6 +331,33 @@ images/image_utils.s: images/image_utils.c.s
 images/image_utils.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/image_utils.c.s
 .PHONY : images/image_utils.c.s
+
+images/sort_sprites.o: images/sort_sprites.c.o
+
+.PHONY : images/sort_sprites.o
+
+# target to build an object file
+images/sort_sprites.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/sort_sprites.c.o
+.PHONY : images/sort_sprites.c.o
+
+images/sort_sprites.i: images/sort_sprites.c.i
+
+.PHONY : images/sort_sprites.i
+
+# target to preprocess a source file
+images/sort_sprites.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/sort_sprites.c.i
+.PHONY : images/sort_sprites.c.i
+
+images/sort_sprites.s: images/sort_sprites.c.s
+
+.PHONY : images/sort_sprites.s
+
+# target to generate assembly for a file
+images/sort_sprites.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/sort_sprites.c.s
+.PHONY : images/sort_sprites.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -1730,12 +1784,18 @@ help:
 	@echo "... get_next_line/get_next_line_utils.o"
 	@echo "... get_next_line/get_next_line_utils.i"
 	@echo "... get_next_line/get_next_line_utils.s"
+	@echo "... images/draw_sprites.o"
+	@echo "... images/draw_sprites.i"
+	@echo "... images/draw_sprites.s"
 	@echo "... images/game.o"
 	@echo "... images/game.i"
 	@echo "... images/game.s"
 	@echo "... images/image_utils.o"
 	@echo "... images/image_utils.i"
 	@echo "... images/image_utils.s"
+	@echo "... images/sort_sprites.o"
+	@echo "... images/sort_sprites.i"
+	@echo "... images/sort_sprites.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
