@@ -95,12 +95,13 @@ typedef struct	s_all
 	t_player	*plr;
 	t_win		*win;
 	t_parser	*pr;
-	t_textures	*txtrs;
+	t_textures	txtrs;
 	t_win		nw;
 	t_win		sw;
 	t_win		ww;
 	t_win		ew;
 	t_win		st;
+	int			is_save;
 }				t_all;
 
 void            fast_mlx_pixel_put(t_win *win, int x, int y, int color);
@@ -114,5 +115,7 @@ void			render_next_frame(t_all *all);
 int				get_tex_color(t_win *texture, int x, int y);
 void			sort_sprites(double *dist, int order[], int sprites_num, t_all *all);
 void			count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_color color);
+void			create_bmp();
+void			fill_bmp_header(unsigned char *bmp, int width, int height);
 
 #endif

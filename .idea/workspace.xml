@@ -12,15 +12,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/images/bmp.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/draw_sprites.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/draw_sprites.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/sort_sprites.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/sort_sprites.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/utils/cub_errors.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/utils/cub_errors.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/draw_sprites.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/draw_sprites.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cub3d.c" beforeDir="false" afterPath="$PROJECT_DIR$/cub3d.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/game.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_image.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/cub_errors.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cub_errors.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,9 +91,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -104,7 +122,9 @@
       <workItem from="1608297671658" duration="7438000" />
       <workItem from="1608363165139" duration="9857000" />
       <workItem from="1608378728453" duration="12181000" />
-      <workItem from="1608448559353" duration="10716000" />
+      <workItem from="1608448559353" duration="10971000" />
+      <workItem from="1608468205020" duration="1298000" />
+      <workItem from="1608535615006" duration="10295000" />
     </task>
     <task id="LOCAL-00001" summary="Added side movement">
       <created>1608365719602</created>
@@ -113,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608365719602</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="removed global texture images">
+      <created>1608463537085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608463537085</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,25 +158,26 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added side movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added side movement" />
+    <MESSAGE value="removed global texture images" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed global texture images" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1023" y="417" key="#TODO" timestamp="1608365592537">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="1023" y="417" key="#TODO/0.23.2560.1337@0.23.2560.1337" timestamp="1608365592537" />
-    <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608387300565">
+    <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608542228194">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608387300565" />
+    <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608542228194" />
     <state x="992" y="485" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607938117254">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="992" y="485" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1337@0.23.2560.1337" timestamp="1607938117254" />
-    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2" timestamp="1608365719376">
+    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2" timestamp="1608463536934">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2/0.23.2560.1337@0.23.2560.1337" timestamp="1608365719376" />
+    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2/0.23.2560.1337@0.23.2560.1337" timestamp="1608463536934" />
     <state width="517" height="582" key="DebuggerActiveHint" timestamp="1608283272378">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -158,22 +186,22 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="1123" y="381" key="EnvironmentVariablesDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608387297512" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608463464327">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608552212385">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608463464327" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608463464326">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608552212385" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608552212385">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608463464326" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608463464326">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608552212385" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608552212385">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608463464326" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608463464327">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608552212385" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608552212385">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608463464327" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608552212385" />
     <state width="2508" height="369" key="GridCell.Tab.1.bottom" timestamp="1608387514211">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -194,10 +222,10 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="679" y="243" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1608125562453" />
-    <state x="780" y="368" key="Vcs.Push.Dialog.v2" timestamp="1608365736193">
+    <state x="780" y="368" key="Vcs.Push.Dialog.v2" timestamp="1608463577856">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="780" y="368" key="Vcs.Push.Dialog.v2/0.23.2560.1337@0.23.2560.1337" timestamp="1608365736193" />
+    <state x="780" y="368" key="Vcs.Push.Dialog.v2/0.23.2560.1337@0.23.2560.1337" timestamp="1608463577856" />
     <state x="728" y="364" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1608023193934">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -210,10 +238,10 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="861" y="322" width="838" height="1032" key="run.anything.popup/0.23.2560.1337@0.23.2560.1337" timestamp="1608194820902" />
-    <state x="861" y="321" width="838" height="1032" key="search.everywhere.popup" timestamp="1608384476372">
+    <state x="861" y="321" width="838" height="1032" key="search.everywhere.popup" timestamp="1608540352863">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="861" y="321" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1337@0.23.2560.1337" timestamp="1608384476372" />
+    <state x="861" y="321" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1337@0.23.2560.1337" timestamp="1608540352863" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -222,6 +250,11 @@
           <url>file://$PROJECT_DIR$/parser/settings_parser.c</url>
           <line>32</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/images/game.c</url>
+          <line>243</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

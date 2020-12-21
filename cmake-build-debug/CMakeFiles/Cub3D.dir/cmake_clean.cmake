@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Cub3D.dir/cub3d.c.o"
   "CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o"
   "CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o"
+  "CMakeFiles/Cub3D.dir/images/bmp.c.o"
   "CMakeFiles/Cub3D.dir/images/draw_sprites.c.o"
   "CMakeFiles/Cub3D.dir/images/game.c.o"
   "CMakeFiles/Cub3D.dir/images/image_utils.c.o"

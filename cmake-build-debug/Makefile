@@ -251,6 +251,33 @@ get_next_line/get_next_line_utils.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.s
 .PHONY : get_next_line/get_next_line_utils.c.s
 
+images/bmp.o: images/bmp.c.o
+
+.PHONY : images/bmp.o
+
+# target to build an object file
+images/bmp.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/bmp.c.o
+.PHONY : images/bmp.c.o
+
+images/bmp.i: images/bmp.c.i
+
+.PHONY : images/bmp.i
+
+# target to preprocess a source file
+images/bmp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/bmp.c.i
+.PHONY : images/bmp.c.i
+
+images/bmp.s: images/bmp.c.s
+
+.PHONY : images/bmp.s
+
+# target to generate assembly for a file
+images/bmp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/bmp.c.s
+.PHONY : images/bmp.c.s
+
 images/draw_sprites.o: images/draw_sprites.c.o
 
 .PHONY : images/draw_sprites.o
@@ -1784,6 +1811,9 @@ help:
 	@echo "... get_next_line/get_next_line_utils.o"
 	@echo "... get_next_line/get_next_line_utils.i"
 	@echo "... get_next_line/get_next_line_utils.s"
+	@echo "... images/bmp.o"
+	@echo "... images/bmp.i"
+	@echo "... images/bmp.s"
 	@echo "... images/draw_sprites.o"
 	@echo "... images/draw_sprites.i"
 	@echo "... images/draw_sprites.s"

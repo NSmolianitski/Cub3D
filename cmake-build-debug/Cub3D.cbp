@@ -92,6 +92,9 @@
 		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/get_next_line/get_next_line_utils.c">
 			<Option target="Cub3D"/>
 		</Unit>
+		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/images/bmp.c">
+			<Option target="Cub3D"/>
+		</Unit>
 		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/images/draw_sprites.c">
 			<Option target="Cub3D"/>
 		</Unit>

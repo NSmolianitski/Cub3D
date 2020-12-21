@@ -209,24 +209,17 @@ static void	draw_map(t_all *all)
 	}
 }
 
-static void	draw_game(t_all *all)
+void		render_next_frame(t_all *all)
 {
 	t_color color;
 
+	mlx_clear_window(all->win->mlx, all->win->win);
 	color.ceiling = rgb_to_hex(all->pr->ceilling_color);
 	color.floor = rgb_to_hex(all->pr->floor_color);
 	color.walls = 0x0104d3e;
 	draw_screen(all, 0x0889bba);
 	ray_casting(all, color);
-//	draw_map(all);
-//	draw_player(all->plr, *all->win, 0x0636391);
 	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, 0, 0);
-}
-
-void		render_next_frame(t_all *all)
-{
-	mlx_clear_window(all->win->mlx, all->win->win);
-	draw_game(all);
 }
 
 static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *parser)
@@ -248,14 +241,14 @@ static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *p
 		rotation(2, all, M_PI / 2);
 	else if (all->pr->player_dir == 'S')
 		rotation(0, all, M_PI);
-	all->txtrs = malloc(sizeof(t_textures));
-	all->txtrs->n_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs->nw_prms.x, &all->txtrs->nw_prms.y);
-	all->txtrs->s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->so_wall, &all->txtrs->sw_prms.x, &all->txtrs->sw_prms.y);
-	all->txtrs->s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->s_wall, &all->txtrs->sw_prms.x, &all->txtrs->sw_prms.y);
-	all->txtrs->w_wall = mlx_xpm_file_to_image(all->win->mlx, parser->w_wall, &all->txtrs->ww_prms.x, &all->txtrs->ww_prms.y);
-	all->txtrs->e_wall = mlx_xpm_file_to_image(all->win->mlx, parser->e_wall, &all->txtrs->ew_prms.x, &all->txtrs->ew_prms.y);
-	all->txtrs->sprite = mlx_xpm_file_to_image(all->win->mlx, parser->sprite, &all->txtrs->sprt_prms.x, &all->txtrs->sprt_prms.y);
+//	all->txtrs = malloc(sizeof(t_textures));
 	all->win->mlx = mlx_init();
+	all->txtrs.n_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs.nw_prms.x, &all->txtrs.nw_prms.y);
+	all->txtrs.s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->so_wall, &all->txtrs.sw_prms.x, &all->txtrs.sw_prms.y);
+	all->txtrs.s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->s_wall, &all->txtrs.sw_prms.x, &all->txtrs.sw_prms.y);
+	all->txtrs.w_wall = mlx_xpm_file_to_image(all->win->mlx, parser->w_wall, &all->txtrs.ww_prms.x, &all->txtrs.ww_prms.y);
+	all->txtrs.e_wall = mlx_xpm_file_to_image(all->win->mlx, parser->e_wall, &all->txtrs.ew_prms.x, &all->txtrs.ew_prms.y);
+	all->txtrs.sprite = mlx_xpm_file_to_image(all->win->mlx, parser->sprite, &all->txtrs.sprt_prms.x, &all->txtrs.sprt_prms.y);
 }
 
 
@@ -270,18 +263,22 @@ void		game(t_parser *parser)
 	win.img = mlx_new_image(all.win->mlx, parser->res_x, parser->res_y);
 	win.addr = mlx_get_data_addr(win.img, &win.bpp, &win.ll, &win.end);
 	win.win = mlx_new_window(all.win->mlx, parser->res_x, parser->res_y, "Cub3D");
-		//Game draw
-	all.nw.img = all.txtrs->n_wall;
+	//Game draw
+	all.nw.img = all.txtrs.n_wall;
 	all.nw.addr = mlx_get_data_addr(all.nw.img, &all.nw.bpp, &all.nw.ll, &all.nw.end);
-	all.sw.img = all.txtrs->s_wall;
+	all.sw.img = all.txtrs.s_wall;
 	all.sw.addr = mlx_get_data_addr(all.sw.img, &all.sw.bpp, &all.sw.ll, &all.sw.end);
-	all.ww.img = all.txtrs->w_wall;
+	all.ww.img = all.txtrs.w_wall;
 	all.ww.addr = mlx_get_data_addr(all.ww.img, &all.ww.bpp, &all.ww.ll, &all.ww.end);
-	all.ew.img = all.txtrs->e_wall;
+	all.ew.img = all.txtrs.e_wall;
 	all.ew.addr = mlx_get_data_addr(all.ew.img, &all.ew.bpp, &all.ew.ll, &all.ew.end);
-	all.st.img = all.txtrs->sprite;
+	all.st.img = all.txtrs.sprite;
 	all.st.addr = mlx_get_data_addr(all.st.img, &all.st.bpp, &all.st.ll, &all.st.end);
 	render_next_frame(&all);
+	int width = 1920;
+	int height = 1080;
+	unsigned char bmp[54];
+	fill_bmp_header(bmp, width, height);
 	//Game control
 	cub_control(&all);
 	mlx_loop(all.win->mlx);

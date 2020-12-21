@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/pkentaur/CLionProjects/Cub3D/cub3d.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o"
   "/Users/pkentaur/CLionProjects/Cub3D/get_next_line/get_next_line.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o"
   "/Users/pkentaur/CLionProjects/Cub3D/get_next_line/get_next_line_utils.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o"
+  "/Users/pkentaur/CLionProjects/Cub3D/images/bmp.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/images/bmp.c.o"
   "/Users/pkentaur/CLionProjects/Cub3D/images/draw_sprites.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/images/draw_sprites.c.o"
   "/Users/pkentaur/CLionProjects/Cub3D/images/game.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o"
   "/Users/pkentaur/CLionProjects/Cub3D/images/image_utils.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o"

@@ -10,6 +10,8 @@ CMakeFiles/Cub3D.dir/control/cub_control.c.o
 CMakeFiles/Cub3D.dir/cub3d.c.o
  ../includes/cub_image.h
  ../includes/cub_parser.h
+ ../includes/cub_utils.h
+ ../includes/libft.h
  /Users/pkentaur/CLionProjects/Cub3D/cub3d.c
 CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o
  /Users/pkentaur/CLionProjects/Cub3D/get_next_line/get_next_line.c
@@ -17,6 +19,11 @@ CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o
 CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o
  /Users/pkentaur/CLionProjects/Cub3D/get_next_line/get_next_line_utils.c
  /Users/pkentaur/CLionProjects/Cub3D/includes/get_next_line.h
+CMakeFiles/Cub3D.dir/images/bmp.c.o
+ ../includes/cub_image.h
+ ../includes/cub_parser.h
+ ../includes/libft.h
+ /Users/pkentaur/CLionProjects/Cub3D/images/bmp.c
 CMakeFiles/Cub3D.dir/images/draw_sprites.c.o
  ../includes/cub_image.h
  ../includes/cub_parser.h

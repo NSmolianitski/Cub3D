@@ -9,6 +9,8 @@ CMakeFiles/Cub3D.dir/control/cub_control.c.o: ../control/cub_control.c
 
 CMakeFiles/Cub3D.dir/cub3d.c.o: ../includes/cub_image.h
 CMakeFiles/Cub3D.dir/cub3d.c.o: ../includes/cub_parser.h
+CMakeFiles/Cub3D.dir/cub3d.c.o: ../includes/cub_utils.h
+CMakeFiles/Cub3D.dir/cub3d.c.o: ../includes/libft.h
 CMakeFiles/Cub3D.dir/cub3d.c.o: ../cub3d.c
 
 CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o: ../get_next_line/get_next_line.c
@@ -16,6 +18,11 @@ CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o: ../includes/get_next_line.
 
 CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o: ../get_next_line/get_next_line_utils.c
 CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o: ../includes/get_next_line.h
+
+CMakeFiles/Cub3D.dir/images/bmp.c.o: ../includes/cub_image.h
+CMakeFiles/Cub3D.dir/images/bmp.c.o: ../includes/cub_parser.h
+CMakeFiles/Cub3D.dir/images/bmp.c.o: ../includes/libft.h
+CMakeFiles/Cub3D.dir/images/bmp.c.o: ../images/bmp.c
 
 CMakeFiles/Cub3D.dir/images/draw_sprites.c.o: ../includes/cub_image.h
 CMakeFiles/Cub3D.dir/images/draw_sprites.c.o: ../includes/cub_parser.h
