@@ -75,4 +75,4 @@ add_executable(Cub3D
 target_link_libraries(Cub3D /Users/pkentaur/CLionProjects/Cub3D/libmlx.a)
 target_link_libraries(Cub3D "-framework OpenGL")
 target_link_libraries(Cub3D "-framework AppKit")
-#add_definitions(-Wall -Wextra -Werror)
+add_definitions(-Wall -Wextra -Werror)

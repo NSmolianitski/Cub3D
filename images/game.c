@@ -105,7 +105,7 @@ static void	find_dist(int *side, t_ray_casting *rc, t_all *all, t_tex_col *tex_c
 	}
 }
 
-static void	check_direction(t_ray_casting *rc, t_all *all, t_tex_col *tex_col)
+static void	check_direction(t_ray_casting *rc, t_all *all)
 {
 	if(rc->ray_dir.x < 0)
 	{
@@ -145,7 +145,7 @@ static void	ray_casting(t_all *all, t_color color)
 		rc.map.y = (int)(all->plr->x);
 		rc.delta_dist.x = sqrt(1 + (rc.ray_dir.y * rc.ray_dir.y) / (rc.ray_dir.x * rc.ray_dir.x));
 		rc.delta_dist.y = sqrt(1 + (rc.ray_dir.x * rc.ray_dir.x) / (rc.ray_dir.y * rc.ray_dir.y));
-		check_direction(&rc, all, &tex_col);
+		check_direction(&rc, all);
 		find_dist(&tex_col.wall_side, &rc, all, &tex_col);
 		draw_vertical_line(all, &rc, x, color, tex_col.wall_side, &tex_col, z_buff);
 	}
@@ -169,57 +169,13 @@ void		draw_screen(t_all *all, int color)
 	}
 }
 
-void		draw_rect(t_all *all, int left, int top, int width, int height, int color)
-{
-	int x;
-	int y;
-
-	x = 0;
-	while (x < width)
-	{
-		y = 0;
-		while (y < height)
-		{
-			fast_mlx_pixel_put(all->win, left + x, top + y, color);
-			++y;
-		}
-		++x;
-	}
-}
-
-static void	draw_map(t_all *all)
-{
-	t_point	map;
-
-	map.y = 0;
-	while (all->pr->map[map.y])
-	{
-		map.x = 0;
-		while (all->pr->map[map.y][map.x])
-		{
-			if (all->pr->map[map.y][map.x] == '1')
-				draw_scaled_pixel(&map, *all->win, 0x0042f66);
-			else if (all->pr->map[map.y][map.x] == '2')
-				draw_scaled_pixel(&map, *all->win, 0x0c0eb34);
-			else if (all->pr->map[map.y][map.x] != ' ')
-				draw_scaled_pixel(&map, *all->win, 0x02d2d2e);
-			++map.x;
-		}
-		++map.y;
-	}
-}
-
 void		render_next_frame(t_all *all, int is_save, int flag)
 {
 	t_color color;
 
 	if (flag)
-	{
 		all->win->win = mlx_new_window(all->win->mlx, all->pr->res_x, all->pr->res_y, "Cub3D");
-		flag = 0;
-	}
-	if (!flag)
-		mlx_clear_window(all->win->mlx, all->win->win);
+	mlx_clear_window(all->win->mlx, all->win->win);
 	color.ceiling = rgb_to_hex(all->pr->ceilling_color);
 	color.floor = rgb_to_hex(all->pr->floor_color);
 	color.walls = 0x0104d3e;
@@ -272,10 +228,8 @@ void		game(t_parser *parser, int is_save)
 
 	flag = 1;
 	prepare_struct(&all, &win, &player, parser);
-	//Mlx init
 	win.img = mlx_new_image(all.win->mlx, parser->res_x, parser->res_y);
 	win.addr = mlx_get_data_addr(win.img, &win.bpp, &win.ll, &win.end);
-	//Game draw
 	all.nw.img = all.txtrs.n_wall;
 	all.nw.addr = mlx_get_data_addr(all.nw.img, &all.nw.bpp, &all.nw.ll, &all.nw.end);
 	all.sw.img = all.txtrs.s_wall;
@@ -286,10 +240,8 @@ void		game(t_parser *parser, int is_save)
 	all.ew.addr = mlx_get_data_addr(all.ew.img, &all.ew.bpp, &all.ew.ll, &all.ew.end);
 	all.st.img = all.txtrs.sprite;
 	all.st.addr = mlx_get_data_addr(all.st.img, &all.st.bpp, &all.st.ll, &all.st.end);
-	render_next_frame(&all, is_save, &flag);
+	render_next_frame(&all, is_save, flag);
 	flag = 0;
-//	win.win = mlx_new_window(all.win->mlx, parser->res_x, parser->res_y, "Cub3D");
-	//Game control
 	cub_control(&all);
 	mlx_loop(all.win->mlx);
 }

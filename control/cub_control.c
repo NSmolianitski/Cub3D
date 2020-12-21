@@ -56,7 +56,7 @@ void	move_side(int keycode, t_all *all, double rs, double ms)
 	}
 }
 
-void	move(int keycode, t_all *all)
+int		move(int keycode, t_all *all)
 {
 	double	ms = 0.1;
 	double	rs = 0.1;
@@ -84,6 +84,7 @@ void	move(int keycode, t_all *all)
 	else if (keycode == 2)
 		move_side(2, all, rs, ms);
 	render_next_frame(all, 0, 0);
+	return (0);
 }
 
 static int	close_game(t_all *all)

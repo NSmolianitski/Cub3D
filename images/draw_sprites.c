@@ -35,7 +35,7 @@ static void fill_sprite_prms(t_draw_sprite *sprite, t_all *all, const int order[
 	sprite->tf.x = sprite->depth * (all->plr->dir.y * sprite->x - all->plr->dir.x * sprite->y);
 	sprite->tf.y = sprite->depth * (-all->plane.y * sprite->x + all->plane.x * sprite->y);
 	sprite->screen_x = (int)((all->pr->res_x / 2) * (1 + sprite->tf.x / sprite->tf.y));
-	sprite->height = fabs((int)(all->pr->res_y / (sprite->tf.y)));
+	sprite->height = fabs((float)(all->pr->res_y / (sprite->tf.y)));
 	sprite->d_start.y = -sprite->height / 2 + all->pr->res_y / 2;
 	if (sprite->d_start.y < 0)
 		sprite->d_start.y = 0;
@@ -56,7 +56,7 @@ void	count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_
 		sprite.d_end.y = sprite.height / 2 + all->pr->res_y / 2;
 		if (sprite.d_end.y >= all->pr->res_y)
 			sprite.d_end.y = all->pr->res_y - 1;
-		sprite.width = fabs((int)(all->pr->res_y / (sprite.tf.y)));
+		sprite.width = fabs((float)(all->pr->res_y / (sprite.tf.y)));
 		sprite.d_start.x = -sprite.width / 2 + sprite.screen_x;
 		if (sprite.d_start.x < 0)
 			sprite.d_start.x = 0;

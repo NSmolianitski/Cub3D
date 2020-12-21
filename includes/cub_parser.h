@@ -1,5 +1,5 @@
 #ifndef CUB3D_CUB_PARSER_H
-#define CUB3D_CUB_PARSER_H
+# define CUB3D_CUB_PARSER_H
 
 typedef struct	s_map_size
 {

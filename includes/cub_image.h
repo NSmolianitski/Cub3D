@@ -1,10 +1,9 @@
 #ifndef CUB3D_CUB_IMAGE_H
-#define CUB3D_CUB_IMAGE_H
-#define SCALE 20
-#define tex_width 64
-#define tex_height 64
+# define CUB3D_CUB_IMAGE_H
+# define tex_width 64
+# define tex_height 64
 
-#include "cub_parser.h"
+# include "cub_parser.h"
 
 typedef struct	s_win
 {
@@ -39,7 +38,7 @@ typedef struct	s_player
 	t_dpoint	dir;
 }				t_player;
 
-typedef struct s_color
+typedef struct	s_color
 {
 	int 		ceiling;
 	int 		floor;

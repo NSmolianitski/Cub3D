@@ -10,7 +10,6 @@ static void	fill_bmp_header(t_all *all, int width, int height)
 	int 			y;
 	int 			x;
 	unsigned char	*colors;
-	int 			coords;
 	t_bmp			bmp;
 
 	size = width * height * 4;
