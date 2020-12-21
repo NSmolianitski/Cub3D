@@ -5,8 +5,14 @@ static void add_resolution(t_parser *parser, char *width, char *height)
 {
 	parser->res_x = ft_atoi(width);
 	parser->res_y = ft_atoi(height);
-	if (parser->res_x > 999999999 || parser->res_y > 999999999)
-		print_error("Wrong resolution");
+	if (parser->res_x > 2560)
+		parser->res_x = 2560;
+	else if (parser->res_x < 10)
+		parser->res_x = 10;
+	if (parser->res_y > 1440)
+		parser->res_y = 1440;
+	else if (parser->res_y < 10)
+		parser->res_y = 10;
 }
 
 void		parse_resolution(char *line, t_parser *parser, int i)

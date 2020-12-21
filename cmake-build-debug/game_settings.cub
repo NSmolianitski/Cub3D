@@ -1,10 +1,10 @@
-R 1920 1080
-NO ../textures/wood.xpm
+R 1 10
+NO ../textures/wood.xpm //Сделать обработку валидности пути
 SO ../textures/mossy.xpm
 WE ../textures/bluestone.xpm
 EA ../textures/redbrick.xpm
 S ../textures/barrel.xpm
-F 150, 119, 89
+F 150, 119, 89 //Сделать обработку лишних цифр
 C 133, 175, 199
 
 11111111111111111111111111
