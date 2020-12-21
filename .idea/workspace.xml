@@ -11,23 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/1.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/1.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/bmp.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/bmp.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/game.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cub_control.c" beforeDir="false" afterPath="$PROJECT_DIR$/control/cub_control.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cub3d.c" beforeDir="false" afterPath="$PROJECT_DIR$/cub3d.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cubs/cube_map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/cubs/cube_map.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/bmp.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/bmp.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_image.h" afterDir="false" />
-    </list>
+    <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,7 +93,7 @@
       <workItem from="1608468205020" duration="1298000" />
       <workItem from="1608535615006" duration="10496000" />
       <workItem from="1608554668902" duration="84000" />
-      <workItem from="1608554759591" duration="7408000" />
+      <workItem from="1608554759591" duration="7761000" />
     </task>
     <task id="LOCAL-00001" summary="Added side movement">
       <created>1608365719602</created>
@@ -171,22 +155,22 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="1123" y="381" key="EnvironmentVariablesDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608387297512" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608565249021">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608565613158">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608565249021" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608565249021">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608565613158" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608565613157">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608565249021" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608565249021">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608565613157" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608565613157">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608565249021" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608565249021">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608565613157" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608565613157">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608565249021" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608565613157" />
     <state width="2508" height="369" key="GridCell.Tab.1.bottom" timestamp="1608387514211">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
