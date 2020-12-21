@@ -104,18 +104,41 @@ typedef struct	s_all
 	int			is_save;
 }				t_all;
 
+# pragma pack(push, 1)
+
+typedef struct	s_bmp
+{
+	short		type;
+	int			size;
+	short		res;
+	short		res2;
+	int			offset;
+	int			h_size;
+	int			width;
+	int			height;
+	short		planes;
+	short		bpp;
+	int			compression;
+	int			i_size;
+	int			ppm_x;
+	int			ppm_y;
+	int			clrs;
+	int			clrs_imp;
+}				t_bmp;
+
+# pragma pack(pop)
+
 void            fast_mlx_pixel_put(t_win *win, int x, int y, int color);
-void			game(t_parser *parser);
+void			game(t_parser *parser, int is_save);
 int				rgb_to_hex(int arr[3]);
 void			draw_scaled_pixel(t_point *map, t_win img, int color);
 void			draw_player(t_player *player, t_win img, int color);
 void			draw_line(t_dpoint ray_end, int color, t_all *all, int len);
 void			draw_wall(t_dpoint start, t_dpoint ray_end, int color, t_all *all, int len);
-void			render_next_frame(t_all *all);
+void			render_next_frame(t_all *all, int is_save, int flag);
 int				get_tex_color(t_win *texture, int x, int y);
 void			sort_sprites(double *dist, int order[], int sprites_num, t_all *all);
 void			count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_color color);
 void			create_bmp();
-void			fill_bmp_header(unsigned char *bmp, int width, int height);
 
 #endif

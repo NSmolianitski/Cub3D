@@ -1,5 +1,3 @@
-#include <zconf.h>
-#include <fcntl.h>
 #include "cub_parser.h"
 #include "cub_image.h"
 #include "cub_utils.h"
@@ -15,18 +13,21 @@ static void	check_settings(char **argv)
 
 int		main(int argc, char **argv)
 {
-	t_parser	*parser;
-	int 		is_save;
+	t_parser		*parser;
+	int				is_save;
 
 	is_save = 0;
 	if (argc < 2 || argc > 3)
 		print_error("Wrong number of arguments");
 	check_settings(argv);
-	if (argc == 3 && ft_strncmp(argv[2], "--save", 7))
-		print_error("Invalid cub argument");
-	else
-		is_save = 1;
+	if (argc == 3)
+	{
+		if (ft_strncmp(argv[2], "--save", 7))
+			print_error("Invalid cub argument");
+		else
+			is_save = 1;
+	}
 	parser = cub_parser(argv);
-	game(parser);
+	game(parser, is_save);
 	return (0);
 }
