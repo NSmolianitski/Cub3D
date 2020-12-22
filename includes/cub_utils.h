@@ -1,7 +1,7 @@
 #ifndef CUB3D_CUB_UTILS_H
-#define CUB3D_CUB_UTILS_H
+# define CUB3D_CUB_UTILS_H
 
-#include "libft.h"
+# include "libft.h"
 
 void	double_free(char **str1, char **str2);
 void	*s_calloc(size_t count, size_t size, char c);

@@ -11,6 +11,8 @@
 #define WNA "Wrong number of arguments"
 #define ISFF "Invalid settings file format"
 #define ICA "Invalid cub argument"
+#define ITP "Invalid texture path"
+#define WFCC "Wrong floor or ceiling color"
 
 void	print_error(char *error)
 {
@@ -25,5 +27,7 @@ void	print_error(char *error)
 	(!cub_strcmp(error, WNA)) ? strprint(WNA, 2) : 0;
 	(!cub_strcmp(error, ISFF)) ? strprint(ISFF, 2) : 0;
 	(!cub_strcmp(error, ICA)) ? strprint(ICA, 2) : 0;
+	(!cub_strcmp(error, ITP)) ? strprint(ITP, 2) : 0;
+	(!cub_strcmp(error, WFCC)) ? strprint(WFCC, 2) : 0;
 	exit(1);
 }

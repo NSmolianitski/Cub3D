@@ -11,7 +11,6 @@ add_executable(Cub3D
         get_next_line/get_next_line_utils.c
         images/game.c
         images/image_utils.c
-        includes/cub3d.h
         includes/cub_control.h
         includes/cub_image.h
         includes/cub_parser.h
@@ -71,7 +70,7 @@ add_executable(Cub3D
         utils/cub_str_utils.c
         utils/cub_utils.c
         utils/cub_utils2.c
-        cub3d.c images/sort_sprites.c images/draw_sprites.c images/bmp.c)
+        cub3d.c images/sort_sprites.c images/draw_sprites.c images/bmp.c control/movement.c)
 target_link_libraries(Cub3D /Users/pkentaur/CLionProjects/Cub3D/libmlx.a)
 target_link_libraries(Cub3D "-framework OpenGL")
 target_link_libraries(Cub3D "-framework AppKit")

@@ -170,6 +170,33 @@ control/cub_control.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/control/cub_control.c.s
 .PHONY : control/cub_control.c.s
 
+control/movement.o: control/movement.c.o
+
+.PHONY : control/movement.o
+
+# target to build an object file
+control/movement.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/control/movement.c.o
+.PHONY : control/movement.c.o
+
+control/movement.i: control/movement.c.i
+
+.PHONY : control/movement.i
+
+# target to preprocess a source file
+control/movement.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/control/movement.c.i
+.PHONY : control/movement.c.i
+
+control/movement.s: control/movement.c.s
+
+.PHONY : control/movement.s
+
+# target to generate assembly for a file
+control/movement.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/control/movement.c.s
+.PHONY : control/movement.c.s
+
 cub3d.o: cub3d.c.o
 
 .PHONY : cub3d.o
@@ -1802,6 +1829,9 @@ help:
 	@echo "... control/cub_control.o"
 	@echo "... control/cub_control.i"
 	@echo "... control/cub_control.s"
+	@echo "... control/movement.o"
+	@echo "... control/movement.i"
+	@echo "... control/movement.s"
 	@echo "... cub3d.o"
 	@echo "... cub3d.i"
 	@echo "... cub3d.s"

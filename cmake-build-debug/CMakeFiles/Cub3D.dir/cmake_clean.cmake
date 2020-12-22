@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Cub3D.dir/control/cub_control.c.o"
+  "CMakeFiles/Cub3D.dir/control/movement.c.o"
   "CMakeFiles/Cub3D.dir/cub3d.c.o"
   "CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o"
   "CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o"

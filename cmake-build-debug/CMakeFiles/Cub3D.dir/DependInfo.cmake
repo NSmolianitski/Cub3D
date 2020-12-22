@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/pkentaur/CLionProjects/Cub3D/control/cub_control.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/control/cub_control.c.o"
+  "/Users/pkentaur/CLionProjects/Cub3D/control/movement.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/control/movement.c.o"
   "/Users/pkentaur/CLionProjects/Cub3D/cub3d.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o"
   "/Users/pkentaur/CLionProjects/Cub3D/get_next_line/get_next_line.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/get_next_line/get_next_line.c.o"
   "/Users/pkentaur/CLionProjects/Cub3D/get_next_line/get_next_line_utils.c" "/Users/pkentaur/CLionProjects/Cub3D/cmake-build-debug/CMakeFiles/Cub3D.dir/get_next_line/get_next_line_utils.c.o"

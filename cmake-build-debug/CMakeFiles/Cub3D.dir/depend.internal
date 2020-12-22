@@ -7,6 +7,11 @@ CMakeFiles/Cub3D.dir/control/cub_control.c.o
  ../includes/cub_parser.h
  ../includes/mlx.h
  /Users/pkentaur/CLionProjects/Cub3D/control/cub_control.c
+CMakeFiles/Cub3D.dir/control/movement.c.o
+ ../includes/cub_image.h
+ ../includes/cub_parser.h
+ ../includes/mlx.h
+ /Users/pkentaur/CLionProjects/Cub3D/control/movement.c
 CMakeFiles/Cub3D.dir/cub3d.c.o
  ../includes/cub_image.h
  ../includes/cub_parser.h
