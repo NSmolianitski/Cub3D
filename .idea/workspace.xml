@@ -30,11 +30,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/image_utils.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/sort_sprites.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/images/sort_sprites.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/parser/resolution_parser.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/parser/resolution_parser.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/sort_sprites.c" beforeDir="false" afterPath="$PROJECT_DIR$/images/sort_sprites.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/cub_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub_utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/cub_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser/cub_parser.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/map_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser/map_parser.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/resolution_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser/resolution_parser.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/cub_utils2.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cub_utils2.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608633835024</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="sort_sprites.c norm fix">
+      <created>1608634140290</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608634140290</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +213,8 @@
     <MESSAGE value="draw_sprites.c norm fix" />
     <MESSAGE value="game.c norm fix" />
     <MESSAGE value="image_utils.c.c norm fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="image_utils.c.c norm fix" />
+    <MESSAGE value="sort_sprites.c norm fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="sort_sprites.c norm fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1023" y="417" key="#TODO" timestamp="1608365592537">
@@ -217,10 +229,10 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="992" y="485" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1337@0.23.2560.1337" timestamp="1607938117254" />
-    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2" timestamp="1608633834904">
+    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2" timestamp="1608634140196">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2/0.23.2560.1337@0.23.2560.1337" timestamp="1608633834904" />
+    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2/0.23.2560.1337@0.23.2560.1337" timestamp="1608634140196" />
     <state width="517" height="582" key="DebuggerActiveHint" timestamp="1608283272378">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -229,22 +241,22 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="1123" y="381" key="EnvironmentVariablesDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608387297512" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608634114639">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608637181878">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608634114639" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608634114638">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608637181878" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608637181878">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608634114638" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608634114637">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608637181878" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608637181877">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608634114637" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608634114638">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608637181877" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608637181878">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608634114638" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608637181878" />
     <state width="2508" height="369" key="GridCell.Tab.1.bottom" timestamp="1608387514211">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -269,10 +281,10 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state width="625" height="500" key="SwitcherDM/0.23.2560.1337@0.23.2560.1337" timestamp="1608630613714" />
-    <state x="780" y="368" key="Vcs.Push.Dialog.v2" timestamp="1608633836471">
+    <state x="780" y="368" key="Vcs.Push.Dialog.v2" timestamp="1608634141935">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="780" y="368" key="Vcs.Push.Dialog.v2/0.23.2560.1337@0.23.2560.1337" timestamp="1608633836471" />
+    <state x="780" y="368" key="Vcs.Push.Dialog.v2/0.23.2560.1337@0.23.2560.1337" timestamp="1608634141935" />
     <state x="728" y="364" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1608023193934">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -298,7 +310,22 @@
           <line>32</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/parser/resolution_parser.c</url>
+          <line>22</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/parser/resolution_parser.c</url>
+          <line>92</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="line[*i]" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

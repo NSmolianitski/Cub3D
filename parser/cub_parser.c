@@ -28,7 +28,7 @@ static void	add_objs_coords(t_parser *parser)
 {
 	int		x;
 	int		y;
-	int 	num;
+	int		num;
 
 	num = 0;
 	y = 0;
@@ -53,7 +53,7 @@ static void	add_objs_coords(t_parser *parser)
 t_parser	*cub_parser(char **argv)
 {
 	t_parser	*parser;
-	int 		fd;
+	int			fd;
 
 	parser = (t_parser *)malloc(sizeof(t_parser));
 	fd = open(argv[1], O_RDONLY);

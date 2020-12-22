@@ -1,6 +1,12 @@
-int	cub_abs(int num)
+#include "cub_utils.h"
+
+void	check_err(int *i, char *line)
 {
-	if (num < 0)
-		return (-num);
-	return (num);
+	int	k;
+
+	k = *i;
+	while (line[k] == ' ')
+		++k;
+	if (line[k] == '\0')
+		print_error("Invalid cub settings");
 }

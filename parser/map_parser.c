@@ -14,7 +14,6 @@ static int	are_walls_valid(char **map, int i, int j, t_map_size map_size)
 			return (0);
 		else
 		{
-
 			if ((map[i][j + 1] == ' ' || map[i][j - 1] == ' ') ||
 				(map[i - 1][j] == ' ' || map[i + 1][j] == ' '))
 				return (0);
@@ -61,14 +60,14 @@ static int	check_map(char **map, t_map_size map_size, t_parser *parser)
 	return (1);
 }
 
-static char		**map_to_arr(t_list *lst_begin, t_parser *parser)
+static char	**map_to_arr(t_list *lst_begin, t_parser *parser)
 {
 	char		**map;
 	int			i;
 	t_map_size	map_size;
 
 	map_size.y = ft_lstsize(lst_begin);
-	map = ft_calloc( map_size.y + 1, sizeof(char *));
+	map = ft_calloc(map_size.y + 1, sizeof(char *));
 	if (!map)
 		print_error("Malloc returned NULL");
 	i = 0;
@@ -85,11 +84,11 @@ static char		**map_to_arr(t_list *lst_begin, t_parser *parser)
 	return (map);
 }
 
-void			map_parsing(t_parser *parser)
+void		map_parsing(t_parser *parser)
 {
 	t_list	*lst_begin;
 	char	*line;
-	int 	fd;
+	int		fd;
 	char	**map;
 
 	lst_begin = NULL;

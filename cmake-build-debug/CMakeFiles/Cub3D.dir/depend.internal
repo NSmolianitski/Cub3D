@@ -188,4 +188,6 @@ CMakeFiles/Cub3D.dir/utils/cub_utils.c.o
  ../includes/libft.h
  /Users/pkentaur/CLionProjects/Cub3D/utils/cub_utils.c
 CMakeFiles/Cub3D.dir/utils/cub_utils2.c.o
+ ../includes/cub_utils.h
+ ../includes/libft.h
  /Users/pkentaur/CLionProjects/Cub3D/utils/cub_utils2.c

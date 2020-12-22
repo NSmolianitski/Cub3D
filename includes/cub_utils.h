@@ -13,6 +13,6 @@ void	print_error(char *error);
 int		skip_spaces(const char *line, int i);
 int		skip_spaces_and_commas(const char *line, int i);
 void	double_close(int fd1, int fd2);
-int		cub_abs(int num);
+void	check_err(int *i, char *line);
 
 #endif

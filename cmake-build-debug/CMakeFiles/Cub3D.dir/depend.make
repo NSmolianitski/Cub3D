@@ -187,5 +187,7 @@ CMakeFiles/Cub3D.dir/utils/cub_str_utils.c.o: ../utils/cub_str_utils.c
 CMakeFiles/Cub3D.dir/utils/cub_utils.c.o: ../includes/libft.h
 CMakeFiles/Cub3D.dir/utils/cub_utils.c.o: ../utils/cub_utils.c
 
+CMakeFiles/Cub3D.dir/utils/cub_utils2.c.o: ../includes/cub_utils.h
+CMakeFiles/Cub3D.dir/utils/cub_utils2.c.o: ../includes/libft.h
 CMakeFiles/Cub3D.dir/utils/cub_utils2.c.o: ../utils/cub_utils2.c
 
