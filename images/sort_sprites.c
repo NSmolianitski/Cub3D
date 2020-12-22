@@ -3,9 +3,9 @@
 static void	sort(t_sprites sprites[], int sprites_num)
 {
 	t_sprites	tmp;
-	int 		i;
-	int 		j;
-	int 		f;
+	int			i;
+	int			j;
+	int			f;
 
 	j = 1;
 	while (j < sprites_num)
@@ -29,16 +29,29 @@ static void	sort(t_sprites sprites[], int sprites_num)
 	}
 }
 
+static void	reverse_sprites(int s_num, t_sprites s[], double *dist, int order[])
+{
+	int i;
+
+	i = 0;
+	while (i < s_num)
+	{
+		dist[i] = s[s_num - i - 1].dist;
+		order[i] = s[s_num - i - 1].order;
+		++i;
+	}
+}
+
 void		sort_sprites(double *dist, int order[], int sprites_num, t_all *all)
 {
-	int	i;
-	t_sprites sprites[sprites_num];
+	int			i;
+	t_sprites	sprites[sprites_num];
 
 	i = 0;
 	while (i < all->pr->objs_num)
 	{
 		order[i] = i;
-		dist[i] = (all->plr->x - all->pr->objs[i].x) * (all->plr->x - all->pr->objs[i].x) + (all->plr->y - all->pr->objs[i].y) * (all->plr->y - all->pr->objs[i].y); //sqrt not taken, unneeded
+		dist[i] = (all->plr->x - all->pr->objs[i].x) * (all->plr->x - all->pr->objs[i].x) + (all->plr->y - all->pr->objs[i].y) * (all->plr->y - all->pr->objs[i].y);
 		++i;
 	}
 	i = 0;
@@ -49,11 +62,5 @@ void		sort_sprites(double *dist, int order[], int sprites_num, t_all *all)
 		++i;
 	}
 	sort(sprites, sprites_num);
-	i = 0;
-	while (i < sprites_num)
-	{
-		dist[i] = sprites[sprites_num - i - 1].dist;
-		order[i] = sprites[sprites_num - i - 1].order;
-		++i;
-	}
+	reverse_sprites(sprites_num, sprites, dist, order);
 }
