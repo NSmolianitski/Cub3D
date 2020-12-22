@@ -149,7 +149,7 @@ static void	ray_casting(t_all *all, t_color color)
 		find_dist(&tex_col.wall_side, &rc, all, &tex_col);
 		draw_vertical_line(all, &rc, x, color, tex_col.wall_side, &tex_col, z_buff);
 	}
-	count_draw_sprites(all, z_buff, tex_col, color);
+	spr(all, z_buff, tex_col, color);
 }
 
 void		draw_screen(t_all *all, int color)

@@ -65,7 +65,7 @@ typedef struct	s_textures
 	t_point		sprt_prms;
 }				t_textures;
 
-typedef struct	s_draw_sprite
+typedef struct	s_ds
 {
 	double		x;
 	double		y;
@@ -76,7 +76,7 @@ typedef struct	s_draw_sprite
 	int			height;
 	int			width;
 	double		depth;
-}				t_draw_sprite;
+}				t_ds;
 
 typedef struct	s_tex_col
 {
@@ -86,6 +86,7 @@ typedef struct	s_tex_col
 	double		tex_step;
 	int			wall_side;
 	double		tex_pos;
+	t_color		clr;
 }				t_tex_col;
 
 typedef struct	s_all
@@ -132,7 +133,7 @@ int				rgb_to_hex(int arr[3]);
 void			render_next_frame(t_all *all, int is_save, int flag);
 int				get_tex_color(t_win *texture, int x, int y);
 void			sort_sprites(double *dist, int order[], int sprites_num, t_all *all);
-void			count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_color color);
+void			spr(t_all *all, double z_buff[], t_tex_col tex_col, t_color color);
 void			create_bmp(t_all *all);
 
 #endif

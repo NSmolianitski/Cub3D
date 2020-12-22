@@ -1,52 +1,54 @@
 #include "cub_image.h"
 #include <math.h>
 
-static void	draw_sprites(t_all *all, t_draw_sprite sprite, t_tex_col tex_col, t_color color, const double z_buff[])
+static void	draw_sprites(t_all *all, t_ds s, t_tex_col tc, double z_buff[])
 {
-	int	stripe;
-	int	y;
+	int		stp;
+	int		y;
+	int		d;
+	t_point	p;
 
-	stripe = sprite.d_start.x;
-	while (stripe < sprite.d_end.x)
+	stp = s.d_start.x;
+	while (stp < s.d_end.x)
 	{
-		int texX = (int)(256 * (stripe - (-sprite.width / 2 + sprite.screen_x)) * TEX_W / sprite.width) / 256;
-		if (sprite.tf.y > 0 && stripe > 0 && stripe < all->pr->res_x && sprite.tf.y < z_buff[stripe])
+		p.x = (int)(256 * (stp - (-s.width / 2 + s.screen_x)) * TEX_W / s.width) / 256;
+		if (s.tf.y > 0 && stp > 0 && stp < all->pr->res_x && s.tf.y < z_buff[stp])
 		{
-			y = sprite.d_start.y;
-			while (y < sprite.d_end.y)
+			y = s.d_start.y;
+			while (y < s.d_end.y)
 			{
-				int d = (y) * 256 - all->pr->res_y * 128 + sprite.height * 128;
-				int texY = ((d * TEX_H) / sprite.height) / 256;
-				color.walls = get_tex_color(tex_col.wall, texX, texY);
-				if ((color.walls & 0x00ffffff) != 0)
-					fast_mlx_pixel_put(all->win, stripe, y, color.walls);
+				d = (y) * 256 - all->pr->res_y * 128 + s.height * 128;
+				p.y = ((d * TEX_H) / s.height) / 256;
+				tc.clr.walls = get_tex_color(tc.wall, p.x, p.y);
+				if ((tc.clr.walls & 0x00ffffff) != 0)
+					fast_mlx_pixel_put(all->win, stp, y, tc.clr.walls);
 				++y;
 			}
 		}
-		++stripe;
+		++stp;
 	}
 }
 
-static void fill_sprite_prms(t_draw_sprite *sprite, t_all *all, const int order[], int i)
+static void	fill_sprite_prms(t_ds *s, t_all *all, const int order[], int i)
 {
-	sprite->x = all->pr->objs[order[i]].y - all->plr->y + 0.5;
-	sprite->y = all->pr->objs[order[i]].x - all->plr->x + 0.5;
-	sprite->depth = 1.0 / (all->plane.x * all->plr->dir.y - all->plr->dir.x * all->plane.y);
-	sprite->tf.x = sprite->depth * (all->plr->dir.y * sprite->x - all->plr->dir.x * sprite->y);
-	sprite->tf.y = sprite->depth * (-all->plane.y * sprite->x + all->plane.x * sprite->y);
-	sprite->screen_x = (int)((all->pr->res_x / 2) * (1 + sprite->tf.x / sprite->tf.y));
-	sprite->height = fabs((float)(all->pr->res_y / (sprite->tf.y)));
-	sprite->d_start.y = -sprite->height / 2 + all->pr->res_y / 2;
-	if (sprite->d_start.y < 0)
-		sprite->d_start.y = 0;
+	s->x = all->pr->objs[order[i]].y - all->plr->y + 0.5;
+	s->y = all->pr->objs[order[i]].x - all->plr->x + 0.5;
+	s->depth = 1.0 / (all->plane.x * all->plr->dir.y - all->plr->dir.x * all->plane.y);
+	s->tf.x = s->depth * (all->plr->dir.y * s->x - all->plr->dir.x * s->y);
+	s->tf.y = s->depth * (-all->plane.y * s->x + all->plane.x * s->y);
+	s->screen_x = (int)((all->pr->res_x / 2) * (1 + s->tf.x / s->tf.y));
+	s->height = fabs((float)(all->pr->res_y / (s->tf.y)));
+	s->d_start.y = -s->height / 2 + all->pr->res_y / 2;
+	if (s->d_start.y < 0)
+		s->d_start.y = 0;
 }
 
-void	count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_color color)
+void		spr(t_all *all, double z_buff[], t_tex_col tex_col, t_color color)
 {
 	int				i;
 	int				order[all->pr->objs_num];
 	double			distance[all->pr->objs_num];
-	t_draw_sprite	sprite;
+	t_ds			sprite;
 
 	sort_sprites(distance, order, all->pr->objs_num, all);
 	i = 0;
@@ -64,7 +66,8 @@ void	count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_
 		if (sprite.d_end.x >= all->pr->res_x)
 			sprite.d_end.x = all->pr->res_x - 1;
 		tex_col.wall = &all->st;
-		draw_sprites(all, sprite, tex_col, color, z_buff);
+		tex_col.clr = color;
+		draw_sprites(all, sprite, tex_col, z_buff);
 		++i;
 	}
 }
