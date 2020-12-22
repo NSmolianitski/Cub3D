@@ -133,6 +133,6 @@ void			render_next_frame(t_all *all, int is_save, int flag);
 int				get_tex_color(t_win *texture, int x, int y);
 void			sort_sprites(double *dist, int order[], int sprites_num, t_all *all);
 void			count_draw_sprites(t_all *all, const double z_buff[], t_tex_col tex_col, t_color color);
-void			create_bmp();
+void			create_bmp(t_all *all);
 
 #endif

@@ -17,7 +17,7 @@ static void	draw_vert(int x, int draw_start, int draw_end, t_all *all, t_color c
 	}
 	while (draw_start <= draw_end)
 	{
-		tex_col->tex_y = (int)tex_col->tex_pos & (tex_height - 1);
+		tex_col->tex_y = (int)tex_col->tex_pos & (TEX_H - 1);
 		tex_col->tex_pos += tex_col->tex_step;
 		color.walls = get_tex_color(tex_col->wall, tex_col->tex_x, tex_col->tex_y);
 		if (tex_col->wall_side == 1)
@@ -57,13 +57,13 @@ static void	draw_vertical_line(t_all *all, t_ray_casting *rc, int x, t_color col
 	else
 		wall_x = all->plr->y + wall_dist * rc->ray_dir.x;
 	wall_x -= floor(wall_x);
-	tex_col->tex_x = (int)(wall_x * (double)(tex_width));
+	tex_col->tex_x = (int)(wall_x * (double)(TEX_W));
 	if (side == 0 && rc->ray_dir.x > 0)
-		tex_col->tex_x = tex_width - tex_col->tex_x - 1;
+		tex_col->tex_x = TEX_W - tex_col->tex_x - 1;
 	if (side == 1 && rc->ray_dir.y < 0)
-		tex_col->tex_x = tex_width - tex_col->tex_x - 1;
+		tex_col->tex_x = TEX_W - tex_col->tex_x - 1;
 	tex_col->wall_side = side;
-	tex_col->tex_step = 1.0 * tex_height / lineHeight;
+	tex_col->tex_step = 1.0 * TEX_H / lineHeight;
 	tex_col->tex_pos = (draw_start - all->pr->res_y / 2 + lineHeight / 2) * tex_col->tex_step;
 	draw_vert(x, draw_start, draw_end, all, color, tex_col);
 	z_buff[x] = wall_dist;

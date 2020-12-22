@@ -9,14 +9,14 @@ static void	draw_sprites(t_all *all, t_draw_sprite sprite, t_tex_col tex_col, t_
 	stripe = sprite.d_start.x;
 	while (stripe < sprite.d_end.x)
 	{
-		int texX = (int)(256 * (stripe - (-sprite.width / 2 + sprite.screen_x)) * tex_width / sprite.width) / 256;
+		int texX = (int)(256 * (stripe - (-sprite.width / 2 + sprite.screen_x)) * TEX_W / sprite.width) / 256;
 		if (sprite.tf.y > 0 && stripe > 0 && stripe < all->pr->res_x && sprite.tf.y < z_buff[stripe])
 		{
 			y = sprite.d_start.y;
 			while (y < sprite.d_end.y)
 			{
 				int d = (y) * 256 - all->pr->res_y * 128 + sprite.height * 128;
-				int texY = ((d * tex_height) / sprite.height) / 256;
+				int texY = ((d * TEX_H) / sprite.height) / 256;
 				color.walls = get_tex_color(tex_col.wall, texX, texY);
 				if ((color.walls & 0x00ffffff) != 0)
 					fast_mlx_pixel_put(all->win, stripe, y, color.walls);
