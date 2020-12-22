@@ -29,6 +29,10 @@ CMakeFiles/Cub3D.dir/images/bmp.c.o: ../includes/cub_parser.h
 CMakeFiles/Cub3D.dir/images/bmp.c.o: ../includes/libft.h
 CMakeFiles/Cub3D.dir/images/bmp.c.o: ../images/bmp.c
 
+CMakeFiles/Cub3D.dir/images/draw_lines.c.o: ../includes/cub_image.h
+CMakeFiles/Cub3D.dir/images/draw_lines.c.o: ../includes/cub_parser.h
+CMakeFiles/Cub3D.dir/images/draw_lines.c.o: ../images/draw_lines.c
+
 CMakeFiles/Cub3D.dir/images/draw_sprites.c.o: ../includes/cub_image.h
 CMakeFiles/Cub3D.dir/images/draw_sprites.c.o: ../includes/cub_parser.h
 CMakeFiles/Cub3D.dir/images/draw_sprites.c.o: ../images/draw_sprites.c
@@ -39,6 +43,11 @@ CMakeFiles/Cub3D.dir/images/game.c.o: ../includes/cub_parser.h
 CMakeFiles/Cub3D.dir/images/game.c.o: ../includes/libft.h
 CMakeFiles/Cub3D.dir/images/game.c.o: ../includes/mlx.h
 CMakeFiles/Cub3D.dir/images/game.c.o: ../images/game.c
+
+CMakeFiles/Cub3D.dir/images/game_extra.c.o: ../includes/cub_image.h
+CMakeFiles/Cub3D.dir/images/game_extra.c.o: ../includes/cub_parser.h
+CMakeFiles/Cub3D.dir/images/game_extra.c.o: ../includes/libft.h
+CMakeFiles/Cub3D.dir/images/game_extra.c.o: ../images/game_extra.c
 
 CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../includes/cub_image.h
 CMakeFiles/Cub3D.dir/images/image_utils.c.o: ../includes/cub_parser.h

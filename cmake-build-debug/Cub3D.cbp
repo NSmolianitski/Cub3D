@@ -98,10 +98,16 @@
 		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/images/bmp.c">
 			<Option target="Cub3D"/>
 		</Unit>
+		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/images/draw_lines.c">
+			<Option target="Cub3D"/>
+		</Unit>
 		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/images/draw_sprites.c">
 			<Option target="Cub3D"/>
 		</Unit>
 		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/images/game.c">
+			<Option target="Cub3D"/>
+		</Unit>
+		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/images/game_extra.c">
 			<Option target="Cub3D"/>
 		</Unit>
 		<Unit filename="/Users/pkentaur/CLionProjects/Cub3D/images/image_utils.c">

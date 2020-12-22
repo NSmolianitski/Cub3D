@@ -135,6 +135,9 @@ typedef struct	s_bmp
 # pragma pack(pop)
 
 void			fast_mlx_pixel_put(t_win *win, int x, int y, int color);
+void			draw_v_line(t_all *all, t_ray_c *rc, t_tex_col *tc, double z_buff[]);
+void			ray_casting(t_all *all, t_color color);
+void			draw_screen(t_all *all, int color);
 void			game(t_parser *parser, int is_save);
 int				rgb_to_hex(int arr[3]);
 void			render_next_frame(t_all *all, int is_save, int flag);

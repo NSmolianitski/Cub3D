@@ -305,6 +305,33 @@ images/bmp.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/bmp.c.s
 .PHONY : images/bmp.c.s
 
+images/draw_lines.o: images/draw_lines.c.o
+
+.PHONY : images/draw_lines.o
+
+# target to build an object file
+images/draw_lines.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/draw_lines.c.o
+.PHONY : images/draw_lines.c.o
+
+images/draw_lines.i: images/draw_lines.c.i
+
+.PHONY : images/draw_lines.i
+
+# target to preprocess a source file
+images/draw_lines.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/draw_lines.c.i
+.PHONY : images/draw_lines.c.i
+
+images/draw_lines.s: images/draw_lines.c.s
+
+.PHONY : images/draw_lines.s
+
+# target to generate assembly for a file
+images/draw_lines.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/draw_lines.c.s
+.PHONY : images/draw_lines.c.s
+
 images/draw_sprites.o: images/draw_sprites.c.o
 
 .PHONY : images/draw_sprites.o
@@ -358,6 +385,33 @@ images/game.s: images/game.c.s
 images/game.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/game.c.s
 .PHONY : images/game.c.s
+
+images/game_extra.o: images/game_extra.c.o
+
+.PHONY : images/game_extra.o
+
+# target to build an object file
+images/game_extra.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/game_extra.c.o
+.PHONY : images/game_extra.c.o
+
+images/game_extra.i: images/game_extra.c.i
+
+.PHONY : images/game_extra.i
+
+# target to preprocess a source file
+images/game_extra.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/game_extra.c.i
+.PHONY : images/game_extra.c.i
+
+images/game_extra.s: images/game_extra.c.s
+
+.PHONY : images/game_extra.s
+
+# target to generate assembly for a file
+images/game_extra.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cub3D.dir/build.make CMakeFiles/Cub3D.dir/images/game_extra.c.s
+.PHONY : images/game_extra.c.s
 
 images/image_utils.o: images/image_utils.c.o
 
@@ -1844,12 +1898,18 @@ help:
 	@echo "... images/bmp.o"
 	@echo "... images/bmp.i"
 	@echo "... images/bmp.s"
+	@echo "... images/draw_lines.o"
+	@echo "... images/draw_lines.i"
+	@echo "... images/draw_lines.s"
 	@echo "... images/draw_sprites.o"
 	@echo "... images/draw_sprites.i"
 	@echo "... images/draw_sprites.s"
 	@echo "... images/game.o"
 	@echo "... images/game.i"
 	@echo "... images/game.s"
+	@echo "... images/game_extra.o"
+	@echo "... images/game_extra.i"
+	@echo "... images/game_extra.s"
 	@echo "... images/image_utils.o"
 	@echo "... images/image_utils.i"
 	@echo "... images/image_utils.s"

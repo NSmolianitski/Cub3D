@@ -70,7 +70,7 @@ add_executable(Cub3D
         utils/cub_str_utils.c
         utils/cub_utils.c
         utils/cub_utils2.c
-        cub3d.c images/sort_sprites.c images/draw_sprites.c images/bmp.c control/movement.c)
+        cub3d.c images/sort_sprites.c images/draw_sprites.c images/bmp.c control/movement.c images/draw_lines.c images/game_extra.c)
 target_link_libraries(Cub3D /Users/pkentaur/CLionProjects/Cub3D/libmlx.a)
 target_link_libraries(Cub3D "-framework OpenGL")
 target_link_libraries(Cub3D "-framework AppKit")
