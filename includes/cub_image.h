@@ -22,14 +22,15 @@ typedef struct	s_dpoint
 	double		y;
 }				t_dpoint;
 
-typedef struct	s_ray_casting
+typedef struct	s_ray_c
 {
-	t_dpoint	delta_dist;
-	t_dpoint	ray_dir;
+	t_dpoint	dd;
+	t_dpoint	rd;
 	t_point		step;
 	t_point		map;
-	t_dpoint	side_dist;
-}				t_ray_casting;
+	t_dpoint	sd;
+	int 		x;
+}				t_ray_c;
 
 typedef struct	s_player
 {
@@ -88,6 +89,12 @@ typedef struct	s_tex_col
 	double		tex_pos;
 	t_color		clr;
 }				t_tex_col;
+
+typedef struct	s_draw
+{
+	int			s;
+	int			e;
+}				t_draw;
 
 typedef struct	s_all
 {
