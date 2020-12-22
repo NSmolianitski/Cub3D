@@ -28,14 +28,14 @@ void	strprint(const char *str, int output)
 	write(output, str, ft_strlen(str));
 }
 
-int	skip_spaces(const char *line, int i)
+int		skip_spaces(const char *line, int i)
 {
 	while (line[i] == ' ')
 		++i;
 	return (i);
 }
 
-int	skip_spaces_and_commas(const char *line, int i)
+int		skip_spaces_and_commas(const char *line, int i)
 {
 	while (line[i] == ' ' || line[i] == ',')
 		++i;

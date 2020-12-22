@@ -11,7 +11,7 @@ static void	check_settings(char **argv)
 		print_error("Invalid settings file format");
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_parser		*parser;
 	int				is_save;

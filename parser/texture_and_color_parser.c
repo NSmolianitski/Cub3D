@@ -6,12 +6,12 @@
 void	parse_color(char *line, int color[], int i)
 {
 	char	*num;
-	int 	j;
-	int 	num_start;
+	int		j;
+	int		num_start;
 
 	++i;
 	j = 0;
-	while(j < 3)
+	while (j < 3)
 	{
 		i = skip_spaces_and_commas(line, i);
 		num_start = i;
@@ -22,15 +22,14 @@ void	parse_color(char *line, int color[], int i)
 		free(num);
 		++j;
 	}
-//	i = skip_spaces_and_commas(line, i);
 	if (line[i])
 		print_error("Wrong floor or ceiling color");
 }
 
-void	parse_texture_path(char *line, char **texture_path, int i)
+void	parse_texture_path(char *line, char **tp, int i)
 {
 	int		path;
-	int 	path_len;
+	int		path_len;
 	char	*substr;
 	int		fd;
 
@@ -46,9 +45,9 @@ void	parse_texture_path(char *line, char **texture_path, int i)
 	if (line[i])
 		print_error("Invalid cub settings");
 	substr = ft_substr(line, path, path_len);
-	*texture_path = ft_strdup(substr);
-	fd = open(*texture_path, O_RDONLY);
-	if (fd < 0 || ((*texture_path)[ft_strlen(*texture_path) - 1] != 'm' && (*texture_path)[ft_strlen(*texture_path) - 2] != 'p' && (*texture_path)[ft_strlen(*texture_path) - 3] != 'x' && (*texture_path)[ft_strlen(*texture_path) - 4] != '.'))
+	*tp = ft_strdup(substr);
+	fd = open(*tp, O_RDONLY);
+	if (fd < 0 || ((*tp)[ft_strlen(*tp) - 1] != 'm' && (*tp)[ft_strlen(*tp) - 2] != 'p' && (*tp)[ft_strlen(*tp) - 3] != 'x' && (*tp)[ft_strlen(*tp) - 4] != '.'))
 		print_error("Invalid texture path");
 	else
 		close(fd);

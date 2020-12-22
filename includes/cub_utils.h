@@ -3,7 +3,6 @@
 
 # include "libft.h"
 
-void	double_free(char **str1, char **str2);
 void	*s_calloc(size_t count, size_t size, char c);
 int		lst_find_longest(t_list *lst_begin);
 int		cub_strcpy(char *dst, char *src);
