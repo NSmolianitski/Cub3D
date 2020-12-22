@@ -24,8 +24,11 @@ CFLAGS	=	-Wall -Wextra -Werror
 
 OBJS	=	$(SRCS:.c=.o)
 
+%.o:		%.c
+			$(CC) $(CFLAGS) -Iincludes -c $< -o $@
+
 $(NAME):	$(OBJS) $(HEADERS)
-			@$(CC) $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+			$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJS)  -o $(NAME)
 			@echo -- Cub created --
 
 all:		$(NAME)

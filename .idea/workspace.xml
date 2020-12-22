@@ -32,8 +32,15 @@
     <list default="true" id="16929436-378a-4388-a8cb-251859d41e2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/cub3d.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/utils/cub_errors.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/utils/cub_errors.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/utils/cub_str_utils.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Cub3D.dir/utils/cub_str_utils.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Cub3D" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/game_settings.cub" beforeDir="false" afterPath="$PROJECT_DIR$/game_settings.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/cub_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser/cub_parser.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/map_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser/map_parser.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/settings_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser/settings_parser.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/cub_errors.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cub_errors.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,12 +66,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmake-build-debug" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cmake-build-debug" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/cmake-build-debug" />
       <recent name="$PROJECT_DIR$/textures" />
       <recent name="$PROJECT_DIR$/cubs" />
@@ -76,7 +88,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Cub3D" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="game_settings.cub --save" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3D" TARGET_NAME="Cub3D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Cub3D" RUN_TARGET_NAME="Cub3D">
+    <configuration name="Cub3D" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="game_settings.cub" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3D" TARGET_NAME="Cub3D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Cub3D" RUN_TARGET_NAME="Cub3D">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -118,7 +130,7 @@
       <workItem from="1608554668902" duration="84000" />
       <workItem from="1608554759591" duration="10084000" />
       <workItem from="1608622178019" duration="3495000" />
-      <workItem from="1608639464035" duration="3492000" />
+      <workItem from="1608639464035" duration="6424000" />
     </task>
     <task id="LOCAL-00001" summary="Added side movement">
       <created>1608365719602</created>
@@ -197,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608644251337</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Makefile backup">
+      <created>1608645135032</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608645135032</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,25 +256,26 @@
     <MESSAGE value="some norm fixes before editing with vim" />
     <MESSAGE value="some norm fixes with vim" />
     <MESSAGE value="norm is good now" />
-    <option name="LAST_COMMIT_MESSAGE" value="norm is good now" />
+    <MESSAGE value="Makefile backup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Makefile backup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1023" y="417" key="#TODO" timestamp="1608365592537">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="1023" y="417" key="#TODO/0.23.2560.1337@0.23.2560.1337" timestamp="1608365592537" />
-    <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608644711413">
+    <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608645234454">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608644711413" />
+    <state x="740" y="346" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608645234454" />
     <state x="992" y="485" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607938117254">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="992" y="485" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1337@0.23.2560.1337" timestamp="1607938117254" />
-    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2" timestamp="1608644251134">
+    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2" timestamp="1608645134934">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2/0.23.2560.1337@0.23.2560.1337" timestamp="1608644251134" />
+    <state x="405" y="88" width="1803" height="1187" key="CommitChangelistDialog2/0.23.2560.1337@0.23.2560.1337" timestamp="1608645134934" />
     <state width="517" height="582" key="DebuggerActiveHint" timestamp="1608283272378">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -264,22 +284,22 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="1123" y="381" key="EnvironmentVariablesDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1608387297512" />
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608644713696">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom" timestamp="1608648149874">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608644713696" />
-    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608644713695">
+    <state width="2508" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1337@0.23.2560.1337" timestamp="1608648149874" />
+    <state width="2508" height="369" key="GridCell.Tab.0.center" timestamp="1608648149873">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608644713695" />
-    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608644713695">
+    <state width="2508" height="369" key="GridCell.Tab.0.center/0.23.2560.1337@0.23.2560.1337" timestamp="1608648149873" />
+    <state width="2508" height="369" key="GridCell.Tab.0.left" timestamp="1608648149872">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608644713695" />
-    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608644713695">
+    <state width="2508" height="369" key="GridCell.Tab.0.left/0.23.2560.1337@0.23.2560.1337" timestamp="1608648149872" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right" timestamp="1608648149873">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608644713695" />
+    <state width="2508" height="369" key="GridCell.Tab.0.right/0.23.2560.1337@0.23.2560.1337" timestamp="1608648149873" />
     <state width="2508" height="369" key="GridCell.Tab.1.bottom" timestamp="1608387514211">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
@@ -304,10 +324,10 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state width="625" height="500" key="SwitcherDM/0.23.2560.1337@0.23.2560.1337" timestamp="1608630613714" />
-    <state x="780" y="368" key="Vcs.Push.Dialog.v2" timestamp="1608644253014">
+    <state x="780" y="368" key="Vcs.Push.Dialog.v2" timestamp="1608645136870">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
-    <state x="780" y="368" key="Vcs.Push.Dialog.v2/0.23.2560.1337@0.23.2560.1337" timestamp="1608644253014" />
+    <state x="780" y="368" key="Vcs.Push.Dialog.v2/0.23.2560.1337@0.23.2560.1337" timestamp="1608645136870" />
     <state x="728" y="364" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1608023193934">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>

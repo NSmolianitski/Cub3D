@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "cub_utils.h"
 
 #define IMS "Not a valid map symbol"
@@ -41,5 +42,6 @@ void	print_error(char *error)
 	(!cub_strcmp(error, ICA)) ? strprint(ICA, 2) : 0;
 	(!cub_strcmp(error, ITP)) ? strprint(ITP, 2) : 0;
 	(!cub_strcmp(error, WFCC)) ? strprint(WFCC, 2) : 0;
+	write(2, "\n", 1);
 	exit(1);
 }

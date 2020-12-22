@@ -73,7 +73,7 @@ void		settings_parsing(int fd, t_parser *parser)
 		(line[0] != '\0') ? ++settings_num : 0;
 		free(line);
 	}
-	map_fd = open("../cubs/cube_map.cub", O_TRUNC | O_WRONLY | O_CREAT, 0755);
+	map_fd = open("./cubs/cube_map.cub", O_TRUNC | O_WRONLY | O_CREAT, 0755);
 	write_lines(map_fd, line);
 	free(line);
 	while (get_next_line(fd, &line))

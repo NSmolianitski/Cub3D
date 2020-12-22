@@ -104,7 +104,7 @@ void		map_parsing(t_parser *parser)
 	char	**map;
 
 	lst_begin = NULL;
-	fd = open("../cubs/cube_map.cub", O_RDONLY);
+	fd = open("./cubs/cube_map.cub", O_RDONLY);
 	while (get_next_line(fd, &line))
 		ft_lstadd_back(&lst_begin, ft_lstnew(line));
 	ft_lstadd_back(&lst_begin, ft_lstnew(line));
