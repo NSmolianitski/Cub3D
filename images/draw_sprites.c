@@ -1,18 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_sprites.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkentaur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/22 15:43:36 by pkentaur          #+#    #+#             */
+/*   Updated: 2020/12/22 15:48:29 by pkentaur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub_image.h"
 #include <math.h>
 
 static void	draw_sprites(t_all *all, t_ds s, t_tex_col tc, double z_buff[])
 {
-	int		stp;
+	int		q;
 	int		y;
 	int		d;
 	t_point	p;
 
-	stp = s.d_start.x;
-	while (stp < s.d_end.x)
+	q = s.d_start.x;
+	while (q < s.d_end.x)
 	{
-		p.x = (int)(256 * (stp - (-s.width / 2 + s.screen_x)) * TEX_W / s.width) / 256;
-		if (s.tf.y > 0 && stp > 0 && stp < all->pr->res_x && s.tf.y < z_buff[stp])
+		p.x = (int)(256 * (q - (-s.width / 2 + s.screen_x))
+				* TEX_W / s.width) / 256;
+		if (s.tf.y > 0 && q > 0 && q < all->pr->res_x && s.tf.y < z_buff[q])
 		{
 			y = s.d_start.y;
 			while (y < s.d_end.y)
@@ -21,11 +34,11 @@ static void	draw_sprites(t_all *all, t_ds s, t_tex_col tc, double z_buff[])
 				p.y = ((d * TEX_H) / s.height) / 256;
 				tc.clr.walls = get_tex_color(tc.wall, p.x, p.y);
 				if ((tc.clr.walls & 0x00ffffff) != 0)
-					fast_mlx_pixel_put(all->win, stp, y, tc.clr.walls);
+					fast_mlx_pixel_put(all->win, q, y, tc.clr.walls);
 				++y;
 			}
 		}
-		++stp;
+		++q;
 	}
 }
 
@@ -33,7 +46,8 @@ static void	fill_sprite_prms(t_ds *s, t_all *all, const int order[], int i)
 {
 	s->x = all->pr->objs[order[i]].y - all->plr->y + 0.5;
 	s->y = all->pr->objs[order[i]].x - all->plr->x + 0.5;
-	s->depth = 1.0 / (all->plane.x * all->plr->dir.y - all->plr->dir.x * all->plane.y);
+	s->depth = 1.0 / (all->plane.x * all->plr->dir.y
+			- all->plr->dir.x * all->plane.y);
 	s->tf.x = s->depth * (all->plr->dir.y * s->x - all->plr->dir.x * s->y);
 	s->tf.y = s->depth * (-all->plane.y * s->x + all->plane.x * s->y);
 	s->screen_x = (int)((all->pr->res_x / 2) * (1 + s->tf.x / s->tf.y));

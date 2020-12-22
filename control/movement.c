@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkentaur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/22 15:37:25 by pkentaur          #+#    #+#             */
+/*   Updated: 2020/12/22 15:38:22 by pkentaur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -21,7 +33,8 @@ void		rotation(int keycode, t_all *all, double rs)
 	else
 	{
 		old_x = all->plr->dir.x;
-		all->plr->dir.x = all->plr->dir.x * cos(-rs) - all->plr->dir.y * sin(-rs);
+		all->plr->dir.x = all->plr->dir.x * cos(-rs) - all->plr->dir.y
+			* sin(-rs);
 		all->plr->dir.y = old_x * sin(-rs) + all->plr->dir.y * cos(-rs);
 		old_plane_x = all->plane.x;
 		all->plane.x = all->plane.x * cos(-rs) - all->plane.y * sin(-rs);
@@ -39,9 +52,11 @@ static void	move_left(t_all *all, double ms, double rs)
 		rotation(123, all, rs);
 		++x;
 	}
-	if (all->pr->map[(int)(all->plr->y + all->plr->dir.x * ms)][(int)(all->plr->x)] != '1')
+	if (all->pr->map[(int)(all->plr->y + all->plr->dir.x * ms)]
+			[(int)(all->plr->x)] != '1')
 		all->plr->y += all->plr->dir.x * ms;
-	if (all->pr->map[(int)(all->plr->y)][(int)(all->plr->x + all->plr->dir.y * ms)] != '1')
+	if (all->pr->map[(int)(all->plr->y)]
+			[(int)(all->plr->x + all->plr->dir.y * ms)] != '1')
 		all->plr->x += all->plr->dir.y * ms;
 	x = 0;
 	while (x < 15.00000000001)
@@ -63,9 +78,11 @@ void		move_side(int keycode, t_all *all, double rs, double ms)
 			rotation(124, all, rs);
 			++x;
 		}
-		if (all->pr->map[(int)(all->plr->y + all->plr->dir.x * ms)][(int)(all->plr->x)] != '1')
+		if (all->pr->map[(int)(all->plr->y + all->plr->dir.x * ms)]
+				[(int)(all->plr->x)] != '1')
 			all->plr->y += all->plr->dir.x * ms;
-		if (all->pr->map[(int)(all->plr->y)][(int)(all->plr->x + all->plr->dir.y * ms)] != '1')
+		if (all->pr->map[(int)(all->plr->y)]
+				[(int)(all->plr->x + all->plr->dir.y * ms)] != '1')
 			all->plr->x += all->plr->dir.y * ms;
 		x = 0;
 		while (x < 15.00000000001)

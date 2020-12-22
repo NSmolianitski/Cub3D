@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub_control.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkentaur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/22 15:36:04 by pkentaur          #+#    #+#             */
+/*   Updated: 2020/12/22 15:37:18 by pkentaur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub_control.h"
 #include "mlx.h"
 #include "cub_image.h"
 
-static void move_rotation(int keycode, t_all *all, double rs, double ms)
+static void	move_rotation(int keycode, t_all *all, double rs, double ms)
 {
 	if (keycode == 123)
 		rotation(123, all, rs);
@@ -14,11 +26,13 @@ static void move_rotation(int keycode, t_all *all, double rs, double ms)
 		move_side(2, all, rs, ms);
 }
 
-static void move_forward(t_all *all, double ms)
+static void	move_forward(t_all *all, double ms)
 {
-	if (all->pr->map[(int)(all->plr->y + all->plr->dir.x * ms)][(int)(all->plr->x)] != '1')
+	if (all->pr->map[(int)(all->plr->y + all->plr->dir.x * ms)]
+			[(int)(all->plr->x)] != '1')
 		all->plr->y += all->plr->dir.x * ms;
-	if (all->pr->map[(int)(all->plr->y)][(int)(all->plr->x + all->plr->dir.y * ms)] != '1')
+	if (all->pr->map[(int)(all->plr->y)]
+			[(int)(all->plr->x + all->plr->dir.y * ms)] != '1')
 		all->plr->x += all->plr->dir.y * ms;
 }
 
@@ -33,9 +47,11 @@ int			move(int keycode, t_all *all)
 		move_forward(all, ms);
 	else if (keycode == 1 || keycode == 125)
 	{
-		if (all->pr->map[(int)(all->plr->y - all->plr->dir.x * ms)][(int)(all->plr->x)] != '1')
+		if (all->pr->map[(int)(all->plr->y - all->plr->dir.x * ms)]
+				[(int)(all->plr->x)] != '1')
 			all->plr->y -= all->plr->dir.x * ms;
-		if (all->pr->map[(int)(all->plr->y)][(int)(all->plr->x - all->plr->dir.y * ms)] != '1')
+		if (all->pr->map[(int)(all->plr->y)]
+				[(int)(all->plr->x - all->plr->dir.y * ms)] != '1')
 			all->plr->x -= all->plr->dir.y * ms;
 	}
 	else

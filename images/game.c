@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkentaur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/22 15:49:07 by pkentaur          #+#    #+#             */
+/*   Updated: 2020/12/22 15:56:07 by pkentaur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "libft.h"
 #include "mlx.h"
@@ -10,7 +22,8 @@ void		render_next_frame(t_all *all, int is_save, int flag)
 	t_color color;
 
 	if (flag)
-		all->win->win = mlx_new_window(all->win->mlx, all->pr->res_x, all->pr->res_y, "Cub3D");
+		all->win->win = mlx_new_window(all->win->mlx, all->pr->res_x,
+				all->pr->res_y, "Cub3D");
 	mlx_clear_window(all->win->mlx, all->win->win);
 	color.ceiling = rgb_to_hex(all->pr->ceilling_color);
 	color.floor = rgb_to_hex(all->pr->floor_color);
@@ -23,20 +36,28 @@ void		render_next_frame(t_all *all, int is_save, int flag)
 		exit(0);
 	}
 	else
-		mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, 0, 0);
+		mlx_put_image_to_window(all->win->mlx,
+				all->win->win, all->win->img, 0, 0);
 }
 
 static void	fill_txtrs(t_all *all, t_parser *parser)
 {
-	all->txtrs.n_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall, &all->txtrs.nw_prms.x, &all->txtrs.nw_prms.y);
-	all->txtrs.s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->so_wall, &all->txtrs.sw_prms.x, &all->txtrs.sw_prms.y);
-	all->txtrs.s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->s_wall, &all->txtrs.sw_prms.x, &all->txtrs.sw_prms.y);
-	all->txtrs.w_wall = mlx_xpm_file_to_image(all->win->mlx, parser->w_wall, &all->txtrs.ww_prms.x, &all->txtrs.ww_prms.y);
-	all->txtrs.e_wall = mlx_xpm_file_to_image(all->win->mlx, parser->e_wall, &all->txtrs.ew_prms.x, &all->txtrs.ew_prms.y);
-	all->txtrs.sprite = mlx_xpm_file_to_image(all->win->mlx, parser->sprite, &all->txtrs.sprt_prms.x, &all->txtrs.sprt_prms.y);
+	all->txtrs.n_wall = mlx_xpm_file_to_image(all->win->mlx, parser->n_wall,
+			&all->txtrs.nw_prms.x, &all->txtrs.nw_prms.y);
+	all->txtrs.s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->so_wall,
+			&all->txtrs.sw_prms.x, &all->txtrs.sw_prms.y);
+	all->txtrs.s_wall = mlx_xpm_file_to_image(all->win->mlx, parser->s_wall,
+			&all->txtrs.sw_prms.x, &all->txtrs.sw_prms.y);
+	all->txtrs.w_wall = mlx_xpm_file_to_image(all->win->mlx, parser->w_wall,
+			&all->txtrs.ww_prms.x, &all->txtrs.ww_prms.y);
+	all->txtrs.e_wall = mlx_xpm_file_to_image(all->win->mlx, parser->e_wall,
+			&all->txtrs.ew_prms.x, &all->txtrs.ew_prms.y);
+	all->txtrs.sprite = mlx_xpm_file_to_image(all->win->mlx, parser->sprite,
+			&all->txtrs.sprt_prms.x, &all->txtrs.sprt_prms.y);
 }
 
-static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *parser)
+static void	prepare_struct(t_all *all, t_win *win,
+		t_player *player, t_parser *parser)
 {
 	all->win = win;
 	all->plr = player;
@@ -62,15 +83,20 @@ static void	prepare_struct(t_all *all, t_win *win, t_player *player, t_parser *p
 static void	fill_imgs(t_all *all)
 {
 	all->nw.img = all->txtrs.n_wall;
-	all->nw.addr = mlx_get_data_addr(all->nw.img, &all->nw.bpp, &all->nw.ll, &all->nw.end);
+	all->nw.addr = mlx_get_data_addr(all->nw.img,
+			&all->nw.bpp, &all->nw.ll, &all->nw.end);
 	all->sw.img = all->txtrs.s_wall;
-	all->sw.addr = mlx_get_data_addr(all->sw.img, &all->sw.bpp, &all->sw.ll, &all->sw.end);
+	all->sw.addr = mlx_get_data_addr(all->sw.img,
+			&all->sw.bpp, &all->sw.ll, &all->sw.end);
 	all->ww.img = all->txtrs.w_wall;
-	all->ww.addr = mlx_get_data_addr(all->ww.img, &all->ww.bpp, &all->ww.ll, &all->ww.end);
+	all->ww.addr = mlx_get_data_addr(all->ww.img,
+			&all->ww.bpp, &all->ww.ll, &all->ww.end);
 	all->ew.img = all->txtrs.e_wall;
-	all->ew.addr = mlx_get_data_addr(all->ew.img, &all->ew.bpp, &all->ew.ll, &all->ew.end);
+	all->ew.addr = mlx_get_data_addr(all->ew.img,
+			&all->ew.bpp, &all->ew.ll, &all->ew.end);
 	all->st.img = all->txtrs.sprite;
-	all->st.addr = mlx_get_data_addr(all->st.img, &all->st.bpp, &all->st.ll, &all->st.end);
+	all->st.addr = mlx_get_data_addr(all->st.img,
+			&all->st.bpp, &all->st.ll, &all->st.end);
 }
 
 void		game(t_parser *parser, int is_save)

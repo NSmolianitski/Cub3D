@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub_image.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkentaur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/22 15:59:01 by pkentaur          #+#    #+#             */
+/*   Updated: 2020/12/22 16:00:15 by pkentaur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_CUB_IMAGE_H
 # define CUB3D_CUB_IMAGE_H
 # define TEX_W 64
@@ -29,7 +41,7 @@ typedef struct	s_ray_c
 	t_point		step;
 	t_point		map;
 	t_dpoint	sd;
-	int 		x;
+	int			x;
 }				t_ray_c;
 
 typedef struct	s_player
@@ -135,15 +147,18 @@ typedef struct	s_bmp
 # pragma pack(pop)
 
 void			fast_mlx_pixel_put(t_win *win, int x, int y, int color);
-void			draw_v_line(t_all *all, t_ray_c *rc, t_tex_col *tc, double z_buff[]);
+void			draw_v_line(t_all *all, t_ray_c *rc, t_tex_col *tc,
+		double z_buff[]);
 void			ray_casting(t_all *all, t_color color);
 void			draw_screen(t_all *all, int color);
 void			game(t_parser *parser, int is_save);
 int				rgb_to_hex(int arr[3]);
 void			render_next_frame(t_all *all, int is_save, int flag);
 int				get_tex_color(t_win *texture, int x, int y);
-void			sort_sprites(double *dist, int order[], int sprites_num, t_all *all);
-void			spr(t_all *all, double z_buff[], t_tex_col tex_col, t_color color);
+void			sort_sprites(double *dist, int order[], int sprites_num,
+		t_all *all);
+void			spr(t_all *all, double z_buff[], t_tex_col tex_col,
+		t_color color);
 void			create_bmp(t_all *all);
 
 #endif

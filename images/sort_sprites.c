@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_sprites.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkentaur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/22 15:56:50 by pkentaur          #+#    #+#             */
+/*   Updated: 2020/12/22 15:57:35 by pkentaur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub_image.h"
 
 static void	sort(t_sprites sprites[], int sprites_num)
@@ -51,7 +63,9 @@ void		sort_sprites(double *dist, int order[], int sprites_num, t_all *all)
 	while (i < all->pr->objs_num)
 	{
 		order[i] = i;
-		dist[i] = (all->plr->x - all->pr->objs[i].x) * (all->plr->x - all->pr->objs[i].x) + (all->plr->y - all->pr->objs[i].y) * (all->plr->y - all->pr->objs[i].y);
+		dist[i] = (all->plr->x - all->pr->objs[i].x) * (all->plr->x -
+				all->pr->objs[i].x) + (all->plr->y - all->pr->objs[i].y)
+			* (all->plr->y - all->pr->objs[i].y);
 		++i;
 	}
 	i = 0;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_and_color_parser.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkentaur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/22 16:03:21 by pkentaur          #+#    #+#             */
+/*   Updated: 2020/12/22 16:06:44 by pkentaur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fcntl.h>
 #include <unistd.h>
 #include "libft.h"
@@ -26,7 +38,7 @@ void	parse_color(char *line, int color[], int i)
 		print_error("Wrong floor or ceiling color");
 }
 
-void	parse_texture_path(char *line, char **tp, int i)
+void	parse_texture_path(char *line, char **t, int i)
 {
 	int		path;
 	int		path_len;
@@ -45,9 +57,10 @@ void	parse_texture_path(char *line, char **tp, int i)
 	if (line[i])
 		print_error("Invalid cub settings");
 	substr = ft_substr(line, path, path_len);
-	*tp = ft_strdup(substr);
-	fd = open(*tp, O_RDONLY);
-	if (fd < 0 || ((*tp)[ft_strlen(*tp) - 1] != 'm' && (*tp)[ft_strlen(*tp) - 2] != 'p' && (*tp)[ft_strlen(*tp) - 3] != 'x' && (*tp)[ft_strlen(*tp) - 4] != '.'))
+	*t = ft_strdup(substr);
+	fd = open(*t, O_RDONLY);
+	if (fd < 0 || ((*t)[ft_strlen(*t) - 1] != 'm' && (*t)[ft_strlen(*t) - 2] !=
+	'p' && (*t)[ft_strlen(*t) - 3] != 'x' && (*t)[ft_strlen(*t) - 4] != '.'))
 		print_error("Invalid texture path");
 	else
 		close(fd);

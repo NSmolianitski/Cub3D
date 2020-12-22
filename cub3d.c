@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkentaur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/22 15:33:53 by pkentaur          #+#    #+#             */
+/*   Updated: 2020/12/22 15:35:46 by pkentaur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub_parser.h"
 #include "cub_image.h"
 #include "cub_utils.h"
 
 static void	check_settings(char **argv)
 {
-	int path_len;
+	int pl;
 
-	path_len = ft_strlen(argv[1]);
-	if (!(argv[1][path_len - 1] == 'b' && argv[1][path_len - 2] == 'u' && argv[1][path_len - 3] == 'c' && argv[1][path_len - 4] == '.'))
+	pl = ft_strlen(argv[1]);
+	if (!(argv[1][pl - 1] == 'b' && argv[1][pl - 2] ==
+				'u' && argv[1][pl - 3] == 'c' && argv[1][pl - 4] == '.'))
 		print_error("Invalid settings file format");
 }
 
