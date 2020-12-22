@@ -98,7 +98,7 @@ void		move_side(int keycode, t_all *all, double rs, double ms)
 int			close_game(t_all *all)
 {
 	mlx_destroy_window(all->win->mlx, all->win->win);
-	write(1, "Game is closed, bye!", 20);
+	write(1, "Game is closed, bye!\n", 21);
 	exit(0);
 }
 
