@@ -14,13 +14,27 @@ libft.h
 stdlib.h
 -
 
-/Users/pkentaur/CLionProjects/Cub3D/parser/texture_and_color_parser.c
-fcntl.h
+/Users/pkentaur/CLionProjects/Cub3D/utils/cub_errors.c
+stdlib.h
+-
+cub_utils.h
+/Users/pkentaur/CLionProjects/Cub3D/utils/cub_utils.h
+
+/Users/pkentaur/CLionProjects/Cub3D/utils/cub_str_utils.c
+unistd.h
+-
+libft.h
+/Users/pkentaur/CLionProjects/Cub3D/utils/libft.h
+
+/Users/pkentaur/CLionProjects/Cub3D/utils/cub_utils.c
+stdlib.h
 -
 unistd.h
 -
 libft.h
-/Users/pkentaur/CLionProjects/Cub3D/parser/libft.h
+/Users/pkentaur/CLionProjects/Cub3D/utils/libft.h
+
+/Users/pkentaur/CLionProjects/Cub3D/utils/cub_utils2.c
 cub_utils.h
-/Users/pkentaur/CLionProjects/Cub3D/parser/cub_utils.h
+/Users/pkentaur/CLionProjects/Cub3D/utils/cub_utils.h
 
